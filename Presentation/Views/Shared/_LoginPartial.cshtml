@@ -1,0 +1,32 @@
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+        <li class="nav-item dropdown">
+            <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="/Home/Index" method="post" id="logoutForm" class="navbar-right">
+                <span class="navbar-text" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Bienvenido: @UserManager.GetUserName(User)</span>
+                <button type="submit" class="btn btn-link navbar-btn navbar-link">Salir</button>
+            </form>
+        </li>
+    </ul>
+   
+}
+else
+{
+<ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+        
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Administrador
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            @*<a class="dropdown-item" asp-area="Identity" asp-page="/Account/Register">Registrar</a>*@
+            <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Login">Ingresar</a>
+        </div>
+    </li>
+</ul>
+}

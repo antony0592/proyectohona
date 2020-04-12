@@ -1,0 +1,40 @@
+﻿<div class="container">
+    <br />
+    <h5>Reserva en linea</h5>
+    <div class="row w-75">
+        <div class="col-12">
+            <form action="/Reservation/Data">
+                <div class="form-row">
+                    <div class="col-6">
+                        <label for="arrivaldate">Fecha de llegada </label>
+                        <input type="date" class="form-control" id="arrivaldate" required>
+                        <div class="valid-feedback">
+                            Fecha selecionada
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <label for="departuredate">Fecha de salida </label>
+                        <input type="date" class="form-control" id="departuredate" required>
+                        <div class="valid-feedback">
+                            Fecha selecionada
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label for="typeroom">Tipo de habitación </label>
+                    <select class="form-control" id="typeroom">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+                <br />
+                <button class="btn btn-primary" type="submit">Aceptar</button>
+            </form>
+        </div>
+        
+    </div>
+</div>
