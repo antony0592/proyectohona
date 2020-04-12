@@ -17,5 +17,30 @@ namespace Presentation.Controllers.Administrator
         {
             return View();
         }
+
+        [Authorize]
+        public IActionResult ModifyHome()
+        {
+            return View();
+        }
+
+        [Authorize]
+        public IActionResult ModifyAbout()
+        {
+            return View();
+        }
+
+        [Authorize]
+        public IActionResult ModifyFacilities()
+        {
+            return View();
+        }
+
+
+        [Authorize]
+        public IActionResult Locate()
+        {
+            return View();
+        }
     }
 }

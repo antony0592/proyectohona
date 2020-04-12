@@ -2,3 +2,7 @@
     e.preventDefault();
     $("#wrapper").toggleClass("toggled");
 });
+
+$(document).ready(function () {
+    $('#summernote').summernote();
+});
