@@ -185,11 +185,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Néstor\\source\\repos\\HotelSystemHona\\Domain\\Domain.csproj",
+      "projectUniqueName": "C:\\Users\\Néstor\\Documents\\GitHub\\proyectohona\\Domain\\Domain.csproj",
       "projectName": "Domain",
-      "projectPath": "C:\\Users\\Néstor\\source\\repos\\HotelSystemHona\\Domain\\Domain.csproj",
+      "projectPath": "C:\\Users\\Néstor\\Documents\\GitHub\\proyectohona\\Domain\\Domain.csproj",
       "packagesPath": "C:\\Users\\Néstor\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Néstor\\source\\repos\\HotelSystemHona\\Domain\\obj\\",
+      "outputPath": "C:\\Users\\Néstor\\Documents\\GitHub\\proyectohona\\Domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Néstor\\AppData\\Roaming\\NuGet\\NuGet.Config",

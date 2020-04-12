@@ -18,42 +18,6 @@ namespace Presentation.Controllers.Administrator
             return View();
         }
 
-        [Authorize]
-        public IActionResult ModifyPage()
-        {
-            return View();
-        }
-
-        [Authorize]
-        public IActionResult Availability()
-        {
-            return View();
-        }
-
-        [Authorize]
-        public IActionResult ManageRooms()
-        {
-            return View();
-        }
-
-        [Authorize]
-        public IActionResult Publicity()
-        {
-            return View();
-        }
-
-        [Authorize]
-        public IActionResult ReservationList()
-        {
-            return View();
-        }
-
-        [Authorize]
-        public IActionResult State()
-        {
-            return View();
-        }
-
 
     }
 }
