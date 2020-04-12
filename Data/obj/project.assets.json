@@ -201,11 +201,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Néstor\\source\\repos\\HotelSystemHona\\Data\\Data.csproj",
+      "projectUniqueName": "C:\\Users\\Néstor\\Documents\\GitHub\\proyectohona\\Data\\Data.csproj",
       "projectName": "Data",
-      "projectPath": "C:\\Users\\Néstor\\source\\repos\\HotelSystemHona\\Data\\Data.csproj",
+      "projectPath": "C:\\Users\\Néstor\\Documents\\GitHub\\proyectohona\\Data\\Data.csproj",
       "packagesPath": "C:\\Users\\Néstor\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Néstor\\source\\repos\\HotelSystemHona\\Data\\obj\\",
+      "outputPath": "C:\\Users\\Néstor\\Documents\\GitHub\\proyectohona\\Data\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Néstor\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -221,8 +221,8 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "C:\\Users\\Néstor\\source\\repos\\HotelSystemHona\\Domain\\Domain.csproj": {
-              "projectPath": "C:\\Users\\Néstor\\source\\repos\\HotelSystemHona\\Domain\\Domain.csproj"
+            "C:\\Users\\Néstor\\Documents\\GitHub\\proyectohona\\Domain\\Domain.csproj": {
+              "projectPath": "C:\\Users\\Néstor\\Documents\\GitHub\\proyectohona\\Domain\\Domain.csproj"
             }
           }
         }
