@@ -130,3 +130,7 @@ C:\Users\Néstor\Documents\GitHub\proyectohona\Presentation\obj\Debug\netcoreapp
 C:\Users\Néstor\Documents\GitHub\proyectohona\Presentation\obj\Debug\netcoreapp2.1\Razor\Views\AdministratorPublicity\Publicity.cshtml.g.cs
 C:\Users\Néstor\Documents\GitHub\proyectohona\Presentation\obj\Debug\netcoreapp2.1\Razor\Views\AdministratorReservationList\ReservationList.cshtml.g.cs
 C:\Users\Néstor\Documents\GitHub\proyectohona\Presentation\obj\Debug\netcoreapp2.1\Razor\Views\AdministratorState\State.cshtml.g.cs
+C:\Users\Néstor\Documents\GitHub\proyectohona\Presentation\obj\Debug\netcoreapp2.1\Razor\Views\AdministratorModifyPage\ModifyHome.cshtml.g.cs
+C:\Users\Néstor\Documents\GitHub\proyectohona\Presentation\obj\Debug\netcoreapp2.1\Razor\Views\AdministratorModifyPage\ModifyAbout.cshtml.g.cs
+C:\Users\Néstor\Documents\GitHub\proyectohona\Presentation\obj\Debug\netcoreapp2.1\Razor\Views\AdministratorModifyPage\ModifyFacilities.cshtml.g.cs
+C:\Users\Néstor\Documents\GitHub\proyectohona\Presentation\obj\Debug\netcoreapp2.1\Razor\Views\AdministratorModifyPage\ModifyLocate.cshtml.g.cs
