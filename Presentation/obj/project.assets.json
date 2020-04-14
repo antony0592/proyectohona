@@ -4631,7 +4631,6 @@
       },
       "Data/1.0.0": {
         "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Domain": "1.0.0"
         },
@@ -12675,20 +12674,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Néstor\\.nuget\\packages\\": {}
+    "C:\\Users\\Heller\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Néstor\\Documents\\GitHub\\proyectohona\\Presentation\\Presentation.csproj",
+      "projectUniqueName": "E:\\Documentos\\GitHub\\proyectohona\\Presentation\\Presentation.csproj",
       "projectName": "Presentation",
-      "projectPath": "C:\\Users\\Néstor\\Documents\\GitHub\\proyectohona\\Presentation\\Presentation.csproj",
-      "packagesPath": "C:\\Users\\Néstor\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Néstor\\Documents\\GitHub\\proyectohona\\Presentation\\obj\\",
+      "projectPath": "E:\\Documentos\\GitHub\\proyectohona\\Presentation\\Presentation.csproj",
+      "packagesPath": "C:\\Users\\Heller\\.nuget\\packages\\",
+      "outputPath": "E:\\Documentos\\GitHub\\proyectohona\\Presentation\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Microsoft\\Xamarin\\NuGet\\"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Néstor\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\Heller\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"
@@ -12700,11 +12704,11 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Users\\Néstor\\Documents\\GitHub\\proyectohona\\Business\\Business.csproj": {
-              "projectPath": "C:\\Users\\Néstor\\Documents\\GitHub\\proyectohona\\Business\\Business.csproj"
+            "E:\\Documentos\\GitHub\\proyectohona\\Business\\Business.csproj": {
+              "projectPath": "E:\\Documentos\\GitHub\\proyectohona\\Business\\Business.csproj"
             },
-            "C:\\Users\\Néstor\\Documents\\GitHub\\proyectohona\\Domain\\Domain.csproj": {
-              "projectPath": "C:\\Users\\Néstor\\Documents\\GitHub\\proyectohona\\Domain\\Domain.csproj"
+            "E:\\Documentos\\GitHub\\proyectohona\\Domain\\Domain.csproj": {
+              "projectPath": "E:\\Documentos\\GitHub\\proyectohona\\Domain\\Domain.csproj"
             }
           }
         }
@@ -12750,7 +12754,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
       }
     }
   }
