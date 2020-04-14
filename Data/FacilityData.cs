@@ -8,7 +8,6 @@ namespace Data
 {
     class FacilityData
     {
-        public int id { get; set; }
-        public string description { get; set; }
+        
     }
 }

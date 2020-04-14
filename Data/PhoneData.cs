@@ -8,8 +8,6 @@ namespace Data
 {
     class PhoneData
     {
-        public int id { get; set; }
-        public int idhotel { get; set; }
-        public decimal number { get; set; }
+        
     }
 }
