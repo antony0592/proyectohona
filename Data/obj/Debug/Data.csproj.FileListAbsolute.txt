@@ -1,0 +1,8 @@
+C:\Users\Néstor\source\repos\SistemaHoteleroHona\Data\bin\Debug\Data.dll
+C:\Users\Néstor\source\repos\SistemaHoteleroHona\Data\bin\Debug\Data.pdb
+C:\Users\Néstor\source\repos\SistemaHoteleroHona\Data\bin\Debug\Domain.dll
+C:\Users\Néstor\source\repos\SistemaHoteleroHona\Data\bin\Debug\Domain.pdb
+C:\Users\Néstor\source\repos\SistemaHoteleroHona\Data\obj\Debug\Data.csprojAssemblyReference.cache
+C:\Users\Néstor\source\repos\SistemaHoteleroHona\Data\obj\Debug\Data.csproj.CopyComplete
+C:\Users\Néstor\source\repos\SistemaHoteleroHona\Data\obj\Debug\Data.dll
+C:\Users\Néstor\source\repos\SistemaHoteleroHona\Data\obj\Debug\Data.pdb

@@ -1,0 +1,5 @@
+C:\Users\Néstor\source\repos\SistemaHoteleroHona\Domain\bin\Debug\Domain.dll
+C:\Users\Néstor\source\repos\SistemaHoteleroHona\Domain\bin\Debug\Domain.pdb
+C:\Users\Néstor\source\repos\SistemaHoteleroHona\Domain\obj\Debug\Domain.csprojAssemblyReference.cache
+C:\Users\Néstor\source\repos\SistemaHoteleroHona\Domain\obj\Debug\Domain.dll
+C:\Users\Néstor\source\repos\SistemaHoteleroHona\Domain\obj\Debug\Domain.pdb

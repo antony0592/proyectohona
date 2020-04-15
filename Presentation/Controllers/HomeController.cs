@@ -1,25 +1,35 @@
-﻿using System;
+﻿using Business;
+using Domain;
+using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Presentation.Models;
-
+using System.Web;
+using System.Web.Mvc;
 
 namespace Presentation.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+
+        ClientBusiness clientBusiness = new ClientBusiness();
+        public ActionResult Index()
         {
+            List<Client> clients = clientBusiness.GetAllClient();
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public ActionResult About()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            ViewBag.Message = "Your application description page.";
+
+            return View();
+        }
+
+        public ActionResult Contact()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
         }
     }
 }
