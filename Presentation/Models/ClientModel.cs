@@ -10,19 +10,15 @@ namespace Presentation.Models
     public class ClientModel
     {
         ClientBusiness clientBusiness;
-        public ClientModel(string connectionString) 
+        public ClientModel(string connectionString)
         {
             this.clientBusiness = new ClientBusiness(connectionString);
         }
 
-        public IList<Client> GetAllClients() 
+        public IList<Client> GetAllClients()
         {
             return clientBusiness.GetAllClients();
         }
-
-        
-
-
 
     }
 }

@@ -1,10 +1,12 @@
-﻿<div class="row">
+﻿@model Presentation.Models.HotelModel
+
+<div class="row">
     <div class="col-12">
         <div class="w-75">
             <br />
             <h5> Sobre Nosotros</h5>
             <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                @Model.aboutus
             </p>
         </div>
     </div>
@@ -14,7 +16,7 @@
             <div class="row w-75">
                 <div class="col-6">
                     <div class="img">
-                    <img class="img-fluid" src="~/images/Galeria/img_01.jpg"/>
+                        <img class="img-fluid" src="~/images/Galeria/img_01.jpg" />
                     </div>
                 </div>
                 <div class="col-6">
