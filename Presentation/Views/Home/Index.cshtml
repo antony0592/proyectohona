@@ -1,9 +1,7 @@
-﻿@{
-    var clients = ViewBag.Message;
+﻿
+@*@model List<Presentation.Models.HotelModel>*@
 
-}
-
-<h1> @ViewBag.Message </h1>
+@model Presentation.Models.HotelModel
 
 <div class="container">
     <div class="row">
@@ -11,7 +9,8 @@
             <div>
                 <br />
                 <img src="~/images/Hotel_Patito-02.svg" alt="imagenHotelPatito" />
-                <h5> Hotel Patito </h5>
+                <h5>@Model.name</h5>
+              
                 <div class="separatorline"></div>
                 <h6>HOTEL & RESORT</h6>
             </div>
@@ -19,16 +18,10 @@
         <div class="col-8">
             <br />
             <div class="w-75">
-                <h4> Bienvenidos al Hotel Patito</h4>
-                <p>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                </p>
-                <p>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                </p>
-                <p>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                </p>
+                <h4>Bienvenido al @Model.name</h4>
+                <p>@Model.description</p>
+               
+
             </div>
         </div>
     </div>

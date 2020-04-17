@@ -1,8 +1,9 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-      "C:\\Users\\Néstor\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\Néstor\\.nuget\\packages"
+      "C:\\Users\\Heller\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\Heller\\.nuget\\packages",
+      "C:\\Microsoft\\Xamarin\\NuGet"
     ]
   }
 }
