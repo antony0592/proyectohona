@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Presentacion</title>
+    <title>@ViewData["Title"]</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -27,7 +27,7 @@
 
         <!-- Sidebar -->
         <div class="bg-light border-right" id="sidebar-wrapper">
-            <div class="sidebar-heading"> <a><img class="img-fluid" src="~/images/Hotel_Patito-01.svg" alt="LOGO" /></a></div>
+            <div class="sidebar-heading"> <a><img class="img-fluid logohotel1" src="~/images/Hotel_Patito-01.svg" alt="LOGO" /></a></div>
             <div class="list-group list-group-flush">
                 <a href="/Home/Index" class="list-group-item list-group-item-action bg-light">Home</a>
                 <a href="/About/Home" class="list-group-item list-group-item-action bg-light">Sobre Nosotros</a>
@@ -66,11 +66,11 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
 
-            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom bordecss">
                 <button class="btn btn-primary" id="menu-toggle"><i class="fas fa-angle-left"></i><i class="fas fa-angle-right"></i></button>
-                <h3 id="HotelPatito">Hotel Patito</h3>
+                <h3 id="HotelPatito"><span class="titulo">Hotel Patito</span></h3>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon">Aceptar Cookies</span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -80,7 +80,6 @@
 
             <div class="container-fluid">
                 <br />
-                <div class="separatorline"></div>
                 @RenderBody()
             </div>
         </div>
@@ -91,13 +90,10 @@
     <partial name="_CookieConsentPartial" />
 
     <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <hr />
         <footer>
             <div class="separatorline w-100"></div>
             <div class="footer">
-                <p class="text-right"> Copyright&copy;Hotel Patito 2020 </p>
+                <p class="text-right copyright"> Copyright&copy;Hotel Patito 2020 </p>
             </div>
         </footer>
 
