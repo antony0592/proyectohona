@@ -24,12 +24,32 @@ namespace Presentation.Controllers
 
         public ActionResult Home()
         {
+            RepositoryContentPage contentpageModel = new RepositoryContentPage(connectionString);
+            IList<ContentPage> content = contentpageModel.GetAllContentPage();
+            List<ContentPageModel> contentPage = new List<ContentPageModel>();
+
+            for (int i = 0; i < content.Count; i++)            {
+                ContentPageModel contentNew = new ContentPageModel();
+                contentNew.referentpage = content[i].referentpage;
+                contentNew.urlimage = content[i].urlimage;
+                contentNew.typeimage = content[i].typeimage;
+                contentNew.content = content[i].content;
+                contentPage.Add(contentNew);
+            }
+
             RepositoryHotel hotelModel = new RepositoryHotel(connectionString);
             Hotel hotels = hotelModel.GetAllHotel();
             HotelModel hotel = new HotelModel();
             hotel.aboutus = hotels.aboutus;
-            
-            return View(hotel);
+
+            ViewBag.contentPage = contentPage;
+            ViewBag.hotel = hotel;
+            return View();
         }
+
+
+        
     }
+
+
 }

@@ -56,7 +56,7 @@ using Presentation.Models;
             WriteLiteral("\r\n<div class=\"container\">\r\n    <br />\r\n    <h5> Facilidades </h5>\r\n    <div class=\"row\">\r\n        <div class=\"col-4\">\r\n            <div class=\"img\">\r\n                ");
             EndContext();
             BeginContext(166, 67, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "0bdde952c87d48d59be24fc72717b732", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "884e0877fe5b4ecaaf266c728da4d84a", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -88,7 +88,7 @@ using Presentation.Models;
                 ");
             EndContext();
             BeginContext(1066, 68, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "ec6c546495234819b56dd40bfd27a3f3", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "e190b54762fe44589589b282e6cd58b6", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();

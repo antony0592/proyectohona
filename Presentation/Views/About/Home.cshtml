@@ -1,13 +1,17 @@
-﻿@model Presentation.Models.HotelModel
+﻿@{
+    List<ContentPageModel> contentPage = (List<ContentPageModel>)ViewBag.contentPage;    
+    HotelModel hotel = (HotelModel)ViewBag.hotel;
+}
 
 <div class="row">
     <div class="col-12">
         <div class="w-75">
             <br />
-            <h5> Sobre Nosotros</h5>
-            <p>
-                @Model.aboutus
-            </p>
+            <h5> Sobre Nosotros</h5>           
+                <p>
+                    @hotel.aboutus
+                </p>
+            
         </div>
     </div>
     <div class="col-12">
@@ -22,22 +26,16 @@
                 <div class="col-6">
                     <div class="container">
                         <div class="row">
-                            <div class="col-3 img"> <img class="img-fluid" src="~/images/Galeria/img_01.jpg" /></div>
-                            <div class="col-3 img"> <img class="img-fluid" src="~/images/Galeria/img_02.jpg" /></div>
-                            <div class="col-3 img"> <img class="img-fluid" src="~/images/Galeria/img_03.jpg" /></div>
-                            <div class="col-3 img"> <img class="img-fluid" src="~/images/Galeria/img_01.jpg" /></div>
-                            <div class="col-3 img"> <img class="img-fluid" src="~/images/Galeria/img_02.jpg" /></div>
-                            <div class="col-3 img"> <img class="img-fluid" src="~/images/Galeria/img_03.jpg" /></div>
-                            <div class="col-3 img"> <img class="img-fluid" src="~/images/Galeria/img_01.jpg" /></div>
-                            <div class="col-3 img"> <img class="img-fluid" src="~/images/Galeria/img_02.jpg" /></div>
-                            <div class="col-3 img"> <img class="img-fluid" src="~/images/Galeria/img_03.jpg" /></div>
-                            <div class="col-3 img"> <img class="img-fluid" src="~/images/Galeria/img_01.jpg" /></div>
-                            <div class="col-3 img"> <img class="img-fluid" src="~/images/Galeria/img_02.jpg" /></div>
-                            <div class="col-3 img"> <img class="img-fluid" src="~/images/Galeria/img_03.jpg" /></div>
-                            <div class="col-3 img"> <img class="img-fluid" src="~/images/Galeria/img_01.jpg" /></div>
-                            <div class="col-3 img"> <img class="img-fluid" src="~/images/Galeria/img_02.jpg" /></div>
-                            <div class="col-3 img"> <img class="img-fluid" src="~/images/Galeria/img_03.jpg" /></div>
-                            <div class="col-3 img"> <img class="img-fluid" src="~/images/Galeria/img_01.jpg" /></div>
+                            @foreach (ContentPageModel content in contentPage)
+                            {
+                                <div class="col-4">
+                                    <div class="img">
+                                        <img src="@content.urlimage" class="img-fluid">
+                                    </div>
+
+                                </div>
+
+                            }
                         </div>
                     </div>
                 </div>
