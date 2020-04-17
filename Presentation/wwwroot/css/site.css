@@ -1,12 +1,33 @@
 ﻿body {
     padding: 0px;
     margin: 0px;
+    background-color: #88f7e62b
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+}
+
+/*Titulo*/
+.titulo {
+    animation: jitter 200ms linear infinite;
+    color: #886d03;
+    display: inline-block
+}
+
+@keyframes jitter {
+    50% {
+        transform: skewY(0.7deg) skewX(-0.7deg) scale(1.006);
+    }
+}
+/*FIN Titulo*/
+
+.logohotel1 {
+    border: 1px solid rgba(1, 1, 1, 1);
+    border-style: solid;
+    border-radius: 0.25rem;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -36,6 +57,23 @@ h3#HotelPatito {
     padding: 10px;
 }
 
+/*Fondo color logo página pricipal*/
+#sidebar-wrapper .sidebar-heading {
+    background-color: #fff455 !important;
+}
+
+/*linea oscura superior*/
+.bordecss {
+    border-bottom: 1px solid #000 !important;
+}
+
+/*titulo de las páginas*/
+.titulopagina {
+    font-weight: bold;
+    font-style: italic;
+}
+
+
 .img {
     padding: 5px;
     border: groove;
@@ -45,4 +83,48 @@ h3#HotelPatito {
        * element that contains the map. */
 #map {
     height: 100%;
+}
+
+.copyright {
+    font: italic !important;
+    font-weight: bold;
+}
+
+/*Hover en el menú*/
+a.bg-light:hover, a.bg-light:focus, button.bg-light:hover, button.bg-light:focus {
+    background-color: #c4daec !important;
+}
+
+/*Letra negrita menu*/
+#sidebar-wrapper .list-group {
+    font-weight: bold !important;
+}
+
+/*Color fondo menu y frente*/
+.bg-light {
+    background-color: #d6f0ffb8 !important;
+}
+
+
+/*botón Administrador Menu principal*/
+.navbar-light .navbar-nav .nav-link {
+    border-style: dotted !important;
+    border: 1px solid rgb(84, 234, 0) !important;
+    border-top-style: solid !important;
+    border-right-style: solid !important;
+    border-bottom-style: solid !important;
+    border-left-style: solid !important;
+    background-color: #bbf7af !important;
+    border-radius: 0.25rem !important;
+}
+
+
+/*Efecto brdes en el menú lateral*/
+.list-group {
+    border-top-style: solid;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-style: solid;
+    border-radius: 0.25rem;
 }
