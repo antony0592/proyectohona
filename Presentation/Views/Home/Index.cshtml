@@ -1,16 +1,25 @@
 ﻿
-@*@model List<Presentation.Models.HotelModel>*@
+@{
+    List<ContentPageModel> contentPage = (List<ContentPageModel>)ViewBag.contentPage;
+    HotelModel hotel = (HotelModel)ViewBag.hotel;
+}
 
-@model Presentation.Models.HotelModel
 
 <div class="container">
     <div class="row">
         <div class="col-4 text-center">
             <div>
                 <br />
-                <img src="~/images/Hotel_Patito-02.svg" alt="imagenHotelPatito" />
-                <h5>@Model.name</h5>
-              
+
+                @foreach (ContentPageModel content in contentPage)
+                {
+                    <img src=@content.urlimage alt="imagenHotelPatito" />
+
+                }
+
+
+                <h5>@hotel.name</h5>
+
                 <div class="separatorline"></div>
                 <h6>HOTEL & RESORT</h6>
             </div>
@@ -18,9 +27,9 @@
         <div class="col-8">
             <br />
             <div class="w-75">
-                <h4>Bienvenido al @Model.name</h4>
-                <p>@Model.description</p>
-               
+                <h4>Bienvenido al @hotel.name</h4>
+                <p>@hotel.description</p>
+
 
             </div>
         </div>

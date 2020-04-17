@@ -35,24 +35,25 @@ namespace Presentation.Controllers
             hotel.description = hotels.description;
             hotel.address = hotels.address;
             /***************************************************/
-            //ViewBag.Mensaje=hotels[0].address.ToString();
+            RepositoryContentPage contentpageModel = new RepositoryContentPage(connectionString);
+            IList<ContentPage> content = contentpageModel.GetAllContentPage();
+            List<ContentPageModel> contentPage = new List<ContentPageModel>();
 
-            //RepositoryHotel hotelModel = new RepositoryHotel(connectionString);
-            //IList<Hotel> hotels = hotelModel.GetAllHotel();
-            //List<HotelModel> hotel = new List<HotelModel>();
-
-            //for (int i = 0; i<hotels.Count; i++)
-            //{
-            //    HotelModel hotelNew = new HotelModel();
-            //    hotelNew.name = hotels[0].name;
-            //    hotelNew.description = hotels[0].description;
-            //    hotelNew.aboutus= hotels[0].aboutus;
-            //    hotelNew.address = hotels[0].address;
-            //    hotelNew.pobox = hotels[0].pobox;
-            //    hotelNew.email = hotels[0].email;
-            //    hotel.Add(hotelNew);
-            //}
-            return View(hotel);
+            for (int i = 0; i < content.Count; i++)
+            {
+                if (content[i].referentpage.Equals("home"))
+                {
+                ContentPageModel contentNew = new ContentPageModel();
+                contentNew.referentpage = content[i].referentpage;
+                contentNew.urlimage = content[i].urlimage;
+                contentNew.typeimage = content[i].typeimage;
+                contentNew.content = content[i].content;
+                contentPage.Add(contentNew);
+                }
+            }
+            ViewBag.contentPage = contentPage;
+            ViewBag.hotel = hotel;
+            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
