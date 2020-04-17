@@ -24,10 +24,10 @@ namespace Presentation.Controllers
 
         public ActionResult Home()
         {
-            RepositorioHotel hotelModel = new RepositorioHotel(connectionString);
-            IList<Hotel> hotels = hotelModel.GetAllHotel();
+            RepositoryHotel hotelModel = new RepositoryHotel(connectionString);
+            Hotel hotels = hotelModel.GetAllHotel();
             HotelModel hotel = new HotelModel();
-            hotel.aboutus = hotels[0].aboutus;
+            hotel.aboutus = hotels.aboutus;
             
             return View(hotel);
         }

@@ -15,10 +15,10 @@ namespace Data
             this.connString = connString;
         }//Fin del constructor.
 
-        public List<Hotel> GetAllHotel()
+        public Hotel GetAllHotel()
         {
 
-            List<Hotel> hotels = new List<Hotel>();
+            Hotel hotel = new Hotel();
 
             using (SqlConnection connection = new SqlConnection(connString))
             {
@@ -30,7 +30,7 @@ namespace Data
                 //this reads all the rows coming from DB
                 while (sqlDataReader.Read())
                 {
-                    hotels.Add(new Hotel
+                    hotel= new Hotel
                     {
                         id = Convert.ToInt32(sqlDataReader["id"]),
                         name = sqlDataReader["name"].ToString(),
@@ -39,11 +39,11 @@ namespace Data
                         address = sqlDataReader["address"].ToString(),
                         pobox = sqlDataReader["pobox"].ToString(),
                         email = sqlDataReader["email"].ToString()
-                    });
+                    };
                 }
                 connection.Close();
             }
-            return hotels;
+            return hotel;
         }
     }
 }

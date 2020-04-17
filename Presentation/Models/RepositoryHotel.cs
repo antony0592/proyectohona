@@ -7,15 +7,15 @@ using Domain;
 
 namespace Presentation.Models
 {
-    public class RepositorioHotel
+    public class RepositoryHotel
     {
         HotelBusiness hotelBusiness;
-        public RepositorioHotel(string connectionString)
+        public RepositoryHotel(string connectionString)
         {
             this.hotelBusiness = new HotelBusiness(connectionString);
         }
 
-        public List<Hotel> GetAllHotel()
+        public Hotel GetAllHotel()
         {
             return hotelBusiness.GetAllHotel();
         }

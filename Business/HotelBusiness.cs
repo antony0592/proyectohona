@@ -16,7 +16,7 @@ namespace Business
         }//Fin del constructor.
 
 
-        public List<Hotel> GetAllHotel()
+        public Hotel GetAllHotel()
         {
             return this.hotelData.GetAllHotel();
         }

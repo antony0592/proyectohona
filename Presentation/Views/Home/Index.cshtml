@@ -1,10 +1,7 @@
-﻿@*@{
-    var hotel in Model;
-}*@
+﻿
+@*@model List<Presentation.Models.HotelModel>*@
 
-@model List<Presentation.Models.HotelModel>
-
-@*<h1> @ViewBag.Mensaje </h1>*@
+@model Presentation.Models.HotelModel
 
 <div class="container">
     <div class="row">
@@ -12,25 +9,18 @@
             <div>
                 <br />
                 <img src="~/images/Hotel_Patito-02.svg" alt="imagenHotelPatito" />
-                @*<h5>@Model.name</h5>*@
-                @foreach (var hotel in Model)
-                {
-                    <h5>@hotel.name</h5>
-                }
+                <h5>@Model.name</h5>
+              
                 <div class="separatorline"></div>
                 <h6>HOTEL & RESORT</h6>
             </div>
         </div>
         <div class="col-8">
-            <br/>
+            <br />
             <div class="w-75">
-
-                @*@Model.description*@
-                @foreach (var hotel in Model)
-                {
-                    <h4>Bienvenido al @hotel.name</h4>
-                    <p>@hotel.description</p>
-                }
+                <h4>Bienvenido al @Model.name</h4>
+                <p>@Model.description</p>
+               
 
             </div>
         </div>
