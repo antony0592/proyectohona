@@ -18,24 +18,24 @@
         <div class="container">
             <h5>Galería</h5>
             <div class="row w-75">
-                <div class="col-6">
+                <div class="col-sm-12 col-lg-6">
                     <div class="img">
-                        <img class="img-fluid" src="~/images/Galeria/img_01.jpg" />
+                        <img class="imgSelected img-fluid" src="@contentPage[0].urlimage" />
                     </div>
                 </div>
-                <div class="col-6">
+                <div class="col-sm-12 col-lg-6">
                     <div class="container">
                         <div class="row">
                             @foreach (ContentPageModel content in contentPage)
                             {
-                                <div class="col-4">
-
-                                    <div class="img">
-                                        <img src="@content.urlimage" class="img-fluid">
+                                if (content.referentpage != "publicity")
+                                {
+                                    <div class="col-4">
+                                        <div class="img">
+                                            <img src="@content.urlimage" class="imgGallery img-fluid">
+                                        </div>
                                     </div>
-
-                                </div>
-
+                                }
                             }
                         </div>
                     </div>

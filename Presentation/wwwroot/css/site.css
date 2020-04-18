@@ -1,7 +1,8 @@
 ﻿body {
     padding: 0px;
     margin: 0px;
-    background-color: #88f7e62b
+    background-color: #d6f0ffb8 background: -webkit-gradient(linear, left bottom, left top, from(#c4daec), to(#c4daec));
+    background: linear-gradient(0deg, #c4daec 0%, #d6f0ffb8 100%);
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -59,7 +60,7 @@ h3#HotelPatito {
 
 /*Fondo color logo página pricipal*/
 #sidebar-wrapper .sidebar-heading {
-    background-color: #fff455 !important;
+    background-color: #d6f0ffb8 !important;
 }
 
 /*linea oscura superior*/
@@ -109,13 +110,14 @@ a.bg-light:hover, a.bg-light:focus, button.bg-light:hover, button.bg-light:focus
 /*botón Administrador Menu principal*/
 .navbar-light .navbar-nav .nav-link {
     border-style: dotted !important;
-    border: 1px solid rgb(84, 234, 0) !important;
+    border: 1px solid #007bff !important;
     border-top-style: solid !important;
     border-right-style: solid !important;
     border-bottom-style: solid !important;
     border-left-style: solid !important;
-    background-color: #bbf7af !important;
+    background-color: #007bff !important;
     border-radius: 0.25rem !important;
+    color:white;
 }
 
 
@@ -127,4 +129,8 @@ a.bg-light:hover, a.bg-light:focus, button.bg-light:hover, button.bg-light:focus
     border-left-style: solid;
     border-style: solid;
     border-radius: 0.25rem;
+}
+
+.list-group-item:hover {
+    color:#007bff;
 }
