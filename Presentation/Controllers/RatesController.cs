@@ -4,17 +4,42 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Presentation.Models;
+using Domain;
+
 
 
 namespace Presentation.Controllers
 {
     public class RatesController : Controller
     {
-        // GET: Sales Rates
+        private readonly IConfiguration _configuration;
+        string connectionString = "";
+
+        public RatesController(IConfiguration configuration)
+        {
+            _configuration = configuration;
+            connectionString = _configuration.GetConnectionString("DefaultConnection");
+        }
+        // GET: Facilities
         public ActionResult Home()
         {
-            return View();
+            RepositoryTypeRoom repositoryTypeRoom = new RepositoryTypeRoom(connectionString);
+            IList<TypeRoom> typeRoom = repositoryTypeRoom.GetAllTypeRoom();
+            List<TypeRoomModel> typeRoomModel = new List<TypeRoomModel>();
+            for (int i = 0; i < typeRoom.Count; i++)
+            {
+                TypeRoomModel typeRoomNew = new TypeRoomModel();
+                typeRoomNew.quantityperson = typeRoom[i].quantityperson;
+                typeRoomNew.quantitybed = typeRoom[i].quantitybed;
+                typeRoomNew.description = typeRoom[i].description;
+                typeRoomNew.amount = typeRoom[i].amount;
+                typeRoomNew.urlimage = typeRoom[i].urlimage;
+                typeRoomNew.descriptiontyperoom = typeRoom[i].descriptiontyperoom;
+                typeRoomModel.Add(typeRoomNew);               
+            }
+            return View(typeRoomModel);
         }
     }
 }
