@@ -1,43 +1,33 @@
-﻿<div class="container">
+﻿@model List<Presentation.Models.TypeRoomModel>
+
+
+
+<div class="container">
     <br />
     <h5 class="titulopagina"> Tarifas </h5>
     <div class="row">
-        <div class="col-4">
-            <div class="img">
-                <img src="~/images/Facilidades/facilidad-01.jpg" class="img-fluid">
+        @foreach (var content in Model)
+        {
+            <div class="col-4">
+
+                <div class="img">
+                    <img src="@content.urlimage" class="img-fluid">
+                </div>
             </div>
-        </div>
-        <div class="col-8">
-            <h6>Habitación...</h6>
-            <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-            </p>
-            <ul>
-                <li>Caracteristica...</li>
-                <li>Caracteristica...</li>
-                <li>...</li>
-            </ul>
-        </div>
+            <div class="col-8">
+
+                <h6>@content.description</h6>
+                <p>
+                    @content.descriptiontyperoom 
+                </p>
+                <ul>
+                    <li>Cantidad de personas es @content.quantityperson </li>
+                    <li>Número de camas es @content.quantitybed </li>
+                    <li>Precio @content.amount</li>
+                </ul>
+            </div>
+        }
     </div>
     <br />
-    <div class="row">
-        <div class="col-4">
-            <div class="img">
-                <img src="~/images/Facilidades/facilidad-02.jpeg" class="img-fluid">
-            </div>
-        </div>
-        <div class="col-8">
-            <h6>Habitación...</h6>
-            <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-            </p>
-            <ul>
-                <li>Caracteristica...</li>
-                <li>Caracteristica...</li>
-                <li>...</li>
-            </ul>
-        </div>
-    </div>
+    
 </div>

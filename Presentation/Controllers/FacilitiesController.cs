@@ -31,7 +31,6 @@ namespace Presentation.Controllers
 
             for (int i = 0; i < content.Count; i++)
             {
-
                 if (content[i].referentpage.Equals("facility"))
                 {
                     ContentPageModel contentNew = new ContentPageModel();
