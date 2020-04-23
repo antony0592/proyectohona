@@ -28,8 +28,10 @@ namespace Presentation.Controllers
             RepositoryTypeRoom repositoryTypeRoom = new RepositoryTypeRoom(connectionString);
             IList<TypeRoom> typeRoom = repositoryTypeRoom.GetAllTypeRoom();
             List<TypeRoomModel> typeRoomModel = new List<TypeRoomModel>();
+            DateTime date = DateTime.Today;
             for (int i = 0; i < typeRoom.Count; i++)
             {
+                
                 TypeRoomModel typeRoomNew = new TypeRoomModel();
                 typeRoomNew.quantityperson = typeRoom[i].quantityperson;
                 typeRoomNew.quantitybed = typeRoom[i].quantitybed;
@@ -37,8 +39,14 @@ namespace Presentation.Controllers
                 typeRoomNew.amount = typeRoom[i].amount;
                 typeRoomNew.urlimage = typeRoom[i].urlimage;
                 typeRoomNew.descriptiontyperoom = typeRoom[i].descriptiontyperoom;
-                typeRoomModel.Add(typeRoomNew);               
+                if (date.ToString("MM")=="12" || date.ToString("MM") == "01" || date.ToString("MM") == "02" || date.ToString("MM") == "03") {
+                    typeRoomNew.amount += Convert.ToInt32(typeRoomNew.amount * 0.1);
+                }
+
+                    typeRoomModel.Add(typeRoomNew);
+
             }
+
             return View(typeRoomModel);
         }
     }
