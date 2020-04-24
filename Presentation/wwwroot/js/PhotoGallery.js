@@ -12,6 +12,5 @@ $(document).ready(function () {
         var srcSeledted = $(this).attr("src");
         $('.imgSelected').attr("src", srcSeledted);
     });
-
-   
 });
+

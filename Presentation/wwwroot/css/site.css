@@ -134,3 +134,8 @@ a.bg-light:hover, a.bg-light:focus, button.bg-light:hover, button.bg-light:focus
 .list-group-item:hover {
     color:#007bff;
 }
+
+.publicityimg {
+    height: 250px;
+    width: 250px;
+}

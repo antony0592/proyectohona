@@ -7,6 +7,7 @@ using Domain;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Presentation.Models;
+using System.Web;
 
 
 
@@ -56,10 +57,20 @@ namespace Presentation.Controllers
             return View();
         }
 
+        public JsonResult GetPublicity()
+        {
+            RepositoryContentPage contentpageModel = new RepositoryContentPage(connectionString);
+            var publicityList = contentpageModel.GetAllContentPage().Where(p => p.referentpage.Equals("publicity"));
+            return Json(publicityList);
+        }
+
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+
     }
 }
