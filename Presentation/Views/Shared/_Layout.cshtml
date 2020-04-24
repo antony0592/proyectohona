@@ -11,6 +11,7 @@
         <link href="~/css/side-bar/sidebar.css" rel="stylesheet">
         <link rel="icon" href="~/images/Hotel_Patito-02.svg">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+        
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -40,13 +41,7 @@
                     <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active" data-interval="10000">
-                                <img src="~/images/Publicidad/Hotel_Patito_Publicidad-03.svg" class="d-block w-100" alt="...">
-                            </div>
-                            <div class="carousel-item" data-interval="2000">
-                                <img src="~/images/Publicidad/Hotel_Patito_Publicidad-03.svg" class="d-block w-100" alt="...">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="~/images/Publicidad/Hotel_Patito_Publicidad-03.svg" class="d-block w-100" alt="...">
+                                <img src="~/images/Publicidad/Hotel_Patito_Publicidad-03.svg" class="publicityimg d-block w-100">
                             </div>
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
@@ -102,11 +97,12 @@
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/cauroselcontrol.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
         <!-- google Maps JavaScript -->
-        <script src="~/js/googleMap.js"></script>
+        @*<script src="~/js/googleMap.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADDcave8pQ7_Ifkosi3t5Pfc1kVxr2bwg&callback=initMap"
-                async defer></script>
+                async defer></script>*@
         <script src="~/js/PhotoGallery.js"></script>
     </environment>
     <environment exclude="Development">
