@@ -4,7 +4,7 @@ $(document).ready(function () {
     $('div').on('click', 'img.imgGallery', function () {
 
         $(this).animate({
-            opacity: "toggle"
+            opacity: 0.5
         }, 100, function () {
             // Animation complete.
         });

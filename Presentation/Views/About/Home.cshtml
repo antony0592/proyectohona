@@ -3,27 +3,28 @@
     HotelModel hotel = (HotelModel)ViewBag.hotel;
 }
 
+    <link href="~/css/gallery.css" rel="stylesheet">
 <div class="row">
-    <div class="col-12">
-        <div class="w-75">
+    <div class="col-12 p-2">
+        <div class="p-4">
+            <h4 class="titulopagina"> Sobre Nosotros</h4>
             <br />
-            <h5 class="titulopagina"> Sobre Nosotros</h5>           
-                <p>
-                    @hotel.aboutus
-                </p>
-            
+            <p class="text-justify">
+                @hotel.aboutus
+            </p>
+
         </div>
     </div>
-    <div class="col-12">
+    <div class="col-12 p-4">
         <div class="container">
             <h5>Galería</h5>
-            <div class="row w-75">
+            <div class="row">
                 <div class="col-sm-12 col-lg-6">
                     <div class="img">
                         <img class="imgSelected img-fluid" src="@contentPage[0].urlimage" />
                     </div>
                 </div>
-                <div class="col-sm-12 col-lg-6">
+                <div class="gallery col-sm-12 col-lg-6">
                     <div class="container">
                         <div class="row">
                             @foreach (ContentPageModel content in contentPage)

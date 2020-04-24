@@ -1,0 +1,14 @@
+﻿.gallery {
+    height: 290px;
+    width: 580px;
+    overflow-y: auto;
+}
+
+.imgSelected {
+height: 280px;
+}
+
+.imgGallery {
+height:50px;
+width:100px;
+}
