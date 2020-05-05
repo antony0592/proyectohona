@@ -17,15 +17,19 @@ namespace Presentation.Controllers
             return View();
         }
 
-        public ActionResult Datos()
+        public ActionResult Data()
         {
             return View();
         }
 
-        public ActionResult Confirmacion()
+        public ActionResult Confirmation()
         {
             return View();
         }
 
+        public ActionResult Payment()
+        {
+            return View();
+        }   
     }
 }
