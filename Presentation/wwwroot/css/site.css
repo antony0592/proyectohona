@@ -190,4 +190,9 @@ div#map {
     div#map {
         width: 100%;
     }
-} 
+}
+
+img#paypallogo {
+
+    width:30%;
+}
