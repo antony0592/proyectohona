@@ -80,7 +80,7 @@ using Microsoft.AspNetCore.Identity;
             WriteLiteral("    <ul class=\"navbar-nav ml-auto mt-2 mt-lg-0\">\r\n        <li class=\"nav-item dropdown\">\r\n            ");
             EndContext();
             BeginContext(283, 409, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1df0b247ce984ca18bff7e4e0645e371", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0786e00385664592810037e935a30aef", async() => {
                 BeginContext(421, 124, true);
                 WriteLiteral("\r\n                <span class=\"navbar-text\" asp-area=\"Identity\" asp-page=\"/Account/Manage/Index\" title=\"Manage\">Bienvenido: ");
                 EndContext();
@@ -147,7 +147,7 @@ else
             WriteLiteral("            ");
             EndContext();
             BeginContext(1232, 83, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "578e4c12526a4444ad5100b3ab11a83e", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "cec2ad82a6c44742a14911406f6d6497", async() => {
                 BeginContext(1303, 8, true);
                 WriteLiteral("Ingresar");
                 EndContext();

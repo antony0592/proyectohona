@@ -139,3 +139,55 @@ a.bg-light:hover, a.bg-light:focus, button.bg-light:hover, button.bg-light:focus
     height: 250px;
     width: 250px;
 }
+
+ figcaption {
+    display: block;
+}
+
+figcaption {
+    border: 0.1em solid #FF7400;
+    border-radius: 0.5em;
+    padding: 1em;
+    box-sizing: border-box;
+}
+
+div#map {
+    width: 47em;
+    height: 20em;
+    border-radius: 0,53em;
+}
+
+/*PARA HACER RESPONSIVE*/
+
+/* para 980px o menos */
+@media screen and (max-width:1080px) {
+    .row {
+        width: 100%;
+    }
+
+     div#map {
+        width: 100%;
+    }
+}
+
+/* para 700px o menos */
+@media screen and (max-width:790px) {
+    .row {
+        width: 100%;
+    }
+
+    div#map {
+        width: 100%;
+    }
+}
+
+/* para 480px o menos */
+@media screen and (max-width:480px) {
+    .row {
+        width: 100%;
+    }
+
+    div#map {
+        width: 100%;
+    }
+} 

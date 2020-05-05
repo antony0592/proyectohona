@@ -1,19 +1,33 @@
 ﻿@{
     HotelModel hotel = (HotelModel)ViewBag.hotel;
 }
-
+    <head>
+        <script src="~/js/googleMap.js" type="text/javascript"></script>
+    </head>
 <div class="row">
     <div class="col-12">
         <div class="w-75">
             <br />
             <h5 class="titulopagina"> Como Llegar</h5>
             <p>
-              @hotel.address
+                @hotel.address
+
             </p>
+            <article>
+                <figure>
+                    <figcaption>
+                        <p>¿Dónde puede encontrarnos?</p>
+                        <div id="map">Conectando al servidor de Google</div>
+                        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1JuYmoq83Om5mLz0qyg_k1viClteC2NU&callback=initMap">
+
+                        </script>
+                    </figcaption>
+                </figure>
+
+            </article>
+
         </div>
     </div>
-    <div class="col-12">
-        <div id="map"></div>
-    </div>
+   
 </div>
 
