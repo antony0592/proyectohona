@@ -20,5 +20,9 @@ namespace Presentation.Models
             return clientBusiness.GetAllClients();
         }
 
+        public Client GetClientById(int id)
+        {
+            return clientBusiness.GetClientById(id);
+        }
     }
 }

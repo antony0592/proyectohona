@@ -120,3 +120,11 @@ Business/bin/Debug/netstandard2.0/Business.dll
 .vs/HotelSystemHona/v16/.suo
 .vs/HotelSystemHona/DesignTimeBuild/.dtbcache
 .vs/HotelSystemHona/config/applicationhost.config
+Presentation/obj/Debug/netcoreapp2.1/Presentation.csprojAssemblyReference.cache
+Data/obj/Debug/netstandard2.0/Data.csprojAssemblyReference.cache
+Business/obj/Debug/netstandard2.0/Business.csprojAssemblyReference.cache
+.vs/HotelSystemHona/v16/Server/sqlite3/storage.ide-wal
+.vs/HotelSystemHona/v16/Server/sqlite3/storage.ide-wal
+.vs/HotelSystemHona/v16/Server/sqlite3/storage.ide
+.vs/HotelSystemHona/v16/Server/sqlite3/storage.ide-wal
+.vs/HotelSystemHona/v16/Server/sqlite3/storage.ide

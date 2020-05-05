@@ -25,34 +25,37 @@
             <div>
                 <br />
                 <h6>Monto de su reservación $XYZ </h6>
+                <h3 id="welcomeback"></h3>
                 <form>
                     <div class="form-group row">
                         <label for="idnumber" class="col-sm-2 col-form-label">Identificación:</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="idnumber" required>
+                            <input type="number" pattern="/[^0-9]" maxlength="9" minlength="9" min="100000000" placeholder="123456789" class="form-control" id="idnumber" required>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="name" class="col-sm-2 col-form-label">Nombre</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="name" required>
+                            <input type="text" class="form-control" id="clientname" required>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="lastname" class="col-sm-2 col-form-label">Apellidos</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="lastname" required>
+                            <input type="text" class="form-control" id="clientlastname" required>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="email" class="col-sm-2 col-form-label">Correo</label>
                         <div class="col-sm-10">
-                            <input type="email" class="form-control" id="email" required>
+                            <input type="email" class="form-control" id="clientemail" required>
                         </div>
                     </div>
 
-                    <button data-toggle="modal" data-target="#paymentModal" class="btn btn-primary" type="submit">Procesar pago</button>
-                    <button class="btn btn-danger" type="button">Cancelar</button>
+                    <button id="payment" data-toggle="modal" @*data-target="#paymentModal"*@ class="btn btn-primary" type="submit">Procesar pago</button>
+                    <a href="/Reservation/Home" class="btn btn-danger" type="button">Cancelar</a>
+                    <br />
+                    <label id="paymenterror"></label>
                 </form>
             </div>
         </div>
@@ -64,11 +67,11 @@
 <div class="modal fade text-center" id="paymentModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog text-center" role="document">
         <div class="modal-content text-center">
-            <div class="modal-header text-center">
+            @*<div class="modal-header text-center">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-            </div>
+            </div>*@
             <div class="modal-body text-center">
                 <form id="formpaypal">
                     <div class="col-md-12 text-center">
@@ -76,18 +79,21 @@
                     </div>
                     <div class="form-group row text-center">
                         <div class="col-md-12 text-center">
-                            <input type="text" class="form-control" placeholder="Correo electrónico" required >
+                            <input id="paypalemail" type="text" class="form-control" placeholder="Correo electrónico" required >
                         </div>
                     </div>
                     <div class="form-group row text-center">
                         <div class="col-sm-12 text-center">
-                            <input type="password" class="form-control" placeholder="Ingrese su contraseña" required>
+                            <input id="paypalpassword" type="password" class="form-control" placeholder="Ingrese su contraseña" required>
                         </div>
                     </div>
                     <div class="form-group row text-center">
                         <div class="col-sm-12 text-center">
-                            <button id="loginpaypal" class="btn btn-primary"> Iniciar sesion</button>
+                            <button type="submit" id="loginpaypal" class="btn btn-primary"> Iniciar sesion</button>
+                            <br />
+                            <label id="paypalerror" style="color:red"></label>
                         </div>
+                        
                     </div>
                     <div class="form-group row text-center">
                         <div class="col-sm-12 text-center">
@@ -96,7 +102,7 @@
                             <br />
                             <a>--- o ---</a>
                             <br />
-                            <button class="btn btn-secondary">Registrarse </button>
+                            <a href="https://www.paypal.com/welcome/flow/signup?flow=eyJyZXR1cm5VcmwiOiIvY3Ivd2ViYXBwcy9tcHAvd2VsY29tZS10by1wYXlwYWw.aW50MT1za2lwJmdlbj1tYWxlIiwiY2FuY2VsVXJsIjoiL2NyL3dlYmFwcHMvbXBwL3dlbGNvbWUtdG8tcGF5cGFsP2ludDE9c2tpcCZnZW49bWFsZSIsImZsYWdzIjpbImVuYWJsZUZJIl0sInRyYWZmaWNTb3VyY2UiOiJwcm9ncmVzc2l2ZW5vZGV3ZWIifQ==&returnUrl=https%3A%2F%2Fwww.paypal.com%2Fcr%2Fwebapps%2Fmpp%2Fwelcome-to-paypal%3Fint1%3Dskip&gen=male&tsrce=&product_flow=tesla&intent=tesla&country.x=CR&locale.x=es_XC" class="btn btn-secondary">Registrarse </a>
                         </div>
                     </div>
                 </form>
@@ -116,9 +122,10 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
             </div>
         </div>
     </div>
 </div>
-
+<br />
+<br />
+<br />

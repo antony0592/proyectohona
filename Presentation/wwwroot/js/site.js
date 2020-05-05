@@ -24,22 +24,3 @@ $(function () {
     });
 });
 
-$(document).ready(function () {
-
-    $('form').on('click', '#loginpaypal', function (e) {
-        e.preventDefault();
-        $("#formpaypal").hide();
-
-        $(this).closest(".modal-body").append("<img id='loader' src='/images/loader.gif' />");
-
-        $(this).animate({
-            opacity: 0.5
-        }, 2000, function () {
-                $(this).closest(".modal-body").find("img#loader").hide();
-                $("#conpay").show();
-        });
-
-       
-        
-    });
-});
