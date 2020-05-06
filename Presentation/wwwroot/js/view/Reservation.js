@@ -67,6 +67,8 @@ $(document).ready(function () {
                 $(this).closest(".modal-body").find("img#loader").hide();
                     $("#formpay").show();
                     $("#clientemailinpaypal").html($("#clientemail").val());
+                    $("#clientnameinpaypal").html($("#clientename").val());
+
                     console.log(client);
             });
         }
