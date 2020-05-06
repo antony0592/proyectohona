@@ -1,4 +1,4 @@
-﻿//Document ready
+﻿//Document ready.
 var client;
 $(document).ready(function () {
 
