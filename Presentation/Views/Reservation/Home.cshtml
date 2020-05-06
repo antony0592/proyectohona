@@ -7,7 +7,7 @@
                 <div class="form-row">
                     <div class="col-6">
                         <label for="arrivaldate">Fecha de llegada </label>
-                        <input type="date" class="form-control" id="arrivaldate" required>
+                        <input type="date" class="form-control" id="arrivaldate" onchange="datechange()" required>
                         <div class="valid-feedback">
                             Fecha selecionada
                         </div>
@@ -38,3 +38,51 @@
         
     </div>
 </div>
+<script>
+    // Function which returns a minimum of two digits in case the value is less than 10
+    const getTwoDigits = (value) => value < 10 ? `0${value}` : value;
+
+    const formatDate = (date) => {
+        const day = getTwoDigits(date.getDate());
+        const month = getTwoDigits(date.getMonth() + 1); // add 1 since getMonth returns 0-11 for the months
+        const year = date.getFullYear();
+
+        return `${year}-${month}-${day}`;
+    }
+
+    const formatDate2 = (date) => {
+        const day = getTwoDigits(date.getDate()+2);
+        const month = getTwoDigits(date.getMonth() + 1); // add 1 since getMonth returns 0-11 for the months
+        const year = date.getFullYear();
+
+        return `${year}-${month}-${day}`;
+    }
+
+    const formatDate3 = (date) => {
+        const day = getTwoDigits(date.getDate() + 1);
+        const month = getTwoDigits(date.getMonth() + 1); // add 1 since getMonth returns 0-11 for the months
+        const year = date.getFullYear();
+
+        return `${year}-${month}-${day}`;
+    }
+
+    const formatTime = (date) => {
+        const hours = getTwoDigits(date.getHours());
+        const mins = getTwoDigits(date.getMinutes());
+
+        return `${hours}:${mins}`;
+    }
+
+    const date = new Date();
+    /*define valores por defecto y minimos en el selector de fecha*/
+    document.getElementById('arrivaldate').value = formatDate(date);
+    document.getElementById('arrivaldate').min = formatDate(date);
+    /*define valores por defecto y minimos en el selector de fecha*/
+    document.getElementById('departuredate').value = formatDate2(date);
+    document.getElementById('departuredate').min = formatDate3(date);
+
+    /*Cambia automáticamente el límite del siguiente selector de fecha*/ 
+    function datechange() {
+        document.getElementById('departuredate').min = document.getElementById('arrivaldate').value;
+    }
+</script>
