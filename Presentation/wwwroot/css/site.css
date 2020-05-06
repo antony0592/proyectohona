@@ -50,6 +50,11 @@ div.separatorline {
     background: black;
 }
 
+div.separatorline2 {
+    height: 2px;
+    background: #808080;
+}
+
 h3#HotelPatito {
     padding-left: 10px;
 }
@@ -190,4 +195,9 @@ div#map {
     div#map {
         width: 100%;
     }
-} 
+}
+
+img#paypallogo {
+
+    width:30%;
+}

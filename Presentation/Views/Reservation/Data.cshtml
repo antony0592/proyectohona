@@ -1,6 +1,7 @@
 ﻿
 @{
     ViewData["Title"] = "Datos";
+    var reservationCost = ViewBag.ReservationCost;
 }
 
 <div class="container">
@@ -24,62 +25,154 @@
         <div class="col-12">
             <div>
                 <br />
-                <h6>Monto de su reservación $XYZ </h6>
+                <h6>Monto de su reservación <i class="fas fa-dollar-sign">@reservationCost</i>  </h6>
+               
+                <h3 id="welcomeback" style="color:blue"></h3>
                 <form>
+                    <div class="form-group row">
+                        <label for="idnumber" class="col-sm-2 col-form-label">Identificación:</label>
+                        <div class="col-sm-10">
+                            <input type="number" pattern="/[^0-9]" maxlength="9" minlength="9" min="100000000" placeholder="123456789" class="form-control" id="idnumber" required>
+                        </div>
+                    </div>
                     <div class="form-group row">
                         <label for="name" class="col-sm-2 col-form-label">Nombre</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="name" required>
+                            <input type="text" class="form-control" id="clientname" required>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="lastname" class="col-sm-2 col-form-label">Apellidos</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="lastname" required>
+                            <input type="text" class="form-control" id="clientlastname" required>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="email" class="col-sm-2 col-form-label">Correo</label>
                         <div class="col-sm-10">
-                            <input type="email" class="form-control" id="email" required>
+                            <input type="email" class="form-control" id="clientemail" required>
                         </div>
                     </div>
-                    
-                    <button  data-toggle="modal" data-target="#paymentModal" class="btn btn-primary" type="submit">Procesar pago</button>
-                    <button class="btn btn-danger" type="button">Cancelar</button>
+
+                    <button id="payment" data-toggle="modal" class="btn btn-primary" type="submit">Procesar pago</button>
+                    <a href="/Reservation/Home" class="btn btn-danger" type="button">Cancelar</a>
+                    <br />
+                    <label id="paymenterror"></label>
                 </form>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Modal -->
-<div class="modal fade" id="paymentModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="/Reservation/Confirmation">
 
-                    <div class="form-group row">
-                        <label for="creditcard" class="col-sm-2 col-form-label">Tarjeta de crédito</label>
-                        <div class="col-sm-10">
-                            <input type="number" class="form-control" id="creditcard" required>
+<!-- Modal -->
+<div class="modal fade text-center" id="paymentModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog text-center" role="document">
+        <div class="modal-content text-center">
+            <div class="modal-body text-center">
+                <form id="formpaypal">
+                    <div class="col-md-12 text-center">
+                        <img src="~/images/PayPal-Logo.png" id="paypallogo" />
+                    </div>
+                    <div class="form-group row text-center">
+                        <div class="col-md-12 text-center">
+                            <input id="paypalemail" type="text" class="form-control" placeholder="Correo electrónico" required >
                         </div>
                     </div>
+                    <div class="form-group row text-center">
+                        <div class="col-sm-12 text-center">
+                            <input id="paypalpassword" type="password" class="form-control" placeholder="Ingrese su contraseña" required>
+                        </div>
+                    </div>
+                    <div class="form-group row text-center">
+                        <div class="col-sm-12 text-center">
+                            <button type="submit" id="loginpaypal" class="btn btn-primary"> Iniciar sesion</button>
+                            <br />
+                            <label id="paypalerror" style="color:red"></label>
+                        </div>
+                        
+                    </div>
+                    <div class="form-group row text-center">
+                        <div class="col-sm-12 text-center">
+                            <br />
+                            <a href="#">¿Tienen problemas para iniciar sesion?</a>
+                            <br />
+                            <a>--- o ---</a>
+                            <br />
+                            <a href="https://www.paypal.com/welcome/flow/signup?flow=eyJyZXR1cm5VcmwiOiIvY3Ivd2ViYXBwcy9tcHAvd2VsY29tZS10by1wYXlwYWw.aW50MT1za2lwJmdlbj1tYWxlIiwiY2FuY2VsVXJsIjoiL2NyL3dlYmFwcHMvbXBwL3dlbGNvbWUtdG8tcGF5cGFsP2ludDE9c2tpcCZnZW49bWFsZSIsImZsYWdzIjpbImVuYWJsZUZJIl0sInRyYWZmaWNTb3VyY2UiOiJwcm9ncmVzc2l2ZW5vZGV3ZWIifQ==&returnUrl=https%3A%2F%2Fwww.paypal.com%2Fcr%2Fwebapps%2Fmpp%2Fwelcome-to-paypal%3Fint1%3Dskip&gen=male&tsrce=&product_flow=tesla&intent=tesla&country.x=CR&locale.x=es_XC" class="btn btn-secondary">Registrarse </a>
+                        </div>
+                    </div>
+                </form>
 
-                    <button type="submit" class="btn btn-primary">Procesar pago</button>
+                <form id="formpay" style="display:none" action="/Reservation/Confirmation">
+                    <div class="row">
+                        <div class="col-12">
+                            <h3> Hotel Patito</h3>
+                        </div>
+                        <div class="col-12 separatorline2"></div>
+                        <div class="col-6 text-left">
+                            <h4><img src="~/images/PayPal-Logo.png" id="paypallogo" /></h4>
+                        </div>
+                        <div class="col-6 text-right">
+                            <h4><i class="fas fa-dollar-sign">@reservationCost</i></h4>
+                        </div>
+                        <div class="col-12 separatorline2"></div>
+                        <div class="col-12 text-left">
+                            <p id="clientnameinpaypal">Nombre Cliente</p>
+                        </div>
+                        <div class="col-12 separatorline2"></div>
+                        <div class="col-6 text-left">
+                            <p>Enviar a: <small id="clientemailinpaypal">Email Cliente</small></p>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" required>
+                                <label class="form-check-label" for="defaultCheck2">
+                                    Esta es mi direccion de preferencia
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6 text-right">
+                            <a href="#">Cambiar</a>
+                        </div>
+                        <div class="col-12 separatorline2"></div>
+                        <div class="col-12 text-left">
+                            <p>Agregar tarjeta de crédito:</p>
+                        </div>
+                        <div class="col-6 text-left">
+                            <input placeholder="Nombre" required/>
+                        </div>
+                        <div class="col-6 text-right">
+                            <input placeholder="Apellidos" required/>
+                        </div>
+                        <br />
+                        <br />
+                        <div class="col-12 text-left">
+                            <input type="number" maxlength="16" min="1000000000000000" placeholder="Número de tarjeta" required/>
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                        <div class="col-12 text-left">
+                            <i class="fab fa-cc-mastercard"></i><i class="fab fa-cc-visa"></i><i class="fab fa-cc-amex"></i><i class="fab fa-cc-discover"></i>
+                        </div>
+                        <br />
+                        <div class="col-6 text-left">
+                            <input type="number" maxlength="4" min="0000" placeholder="MM/AA" required/>
+                        </div>
+                        <div class="col-6 text-right">
+                            <input type="number" maxlength="4" min="0000" placeholder="CVV" required />
+                            <i class="far fa-credit-card"></i>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+
+                    <button type="submit" class="btn btn-primary">Pagar ahora</button>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                
             </div>
         </div>
     </div>
 </div>
+<br />
+<br />
+<br />

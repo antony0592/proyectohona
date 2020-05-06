@@ -21,5 +21,10 @@ namespace Business
         {
             return this.clientData.GetAllClients();
         }
+
+        public Client GetClientById(int id)
+        {
+            return this.clientData.GetAllClients().Find(c=>c.identification.Equals(id));
+        }
     }
 }
