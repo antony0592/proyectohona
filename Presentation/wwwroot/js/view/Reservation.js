@@ -1,4 +1,5 @@
 ﻿//Document ready
+var client;
 $(document).ready(function () {
 
     $("#idnumber").keyup(function (e) {
@@ -26,7 +27,8 @@ $(document).ready(function () {
     });
 
     $("#payment").on("click", function (e) {
-        var client = {
+
+        client = {
             id: $("#idnumber").val(),
             name: $("clientname").val(),
             lastname: $("#clientlastname").val(),
@@ -63,7 +65,9 @@ $(document).ready(function () {
                 opacity: 0.5
             }, 2000, function () {
                 $(this).closest(".modal-body").find("img#loader").hide();
-                $("#conpay").show();
+                    $("#formpay").show();
+                    $("#clientemailinpaypal").html($("#clientemail").val());
+                    console.log(client);
             });
         }
     });

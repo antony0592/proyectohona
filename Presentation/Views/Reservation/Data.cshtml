@@ -1,6 +1,7 @@
 ﻿
 @{
     ViewData["Title"] = "Datos";
+    var reservationCost = ViewBag.ReservationCost;
 }
 
 <div class="container">
@@ -24,8 +25,9 @@
         <div class="col-12">
             <div>
                 <br />
-                <h6>Monto de su reservación $XYZ </h6>
-                <h3 id="welcomeback"></h3>
+                <h6>Monto de su reservación <i class="fas fa-dollar-sign">@reservationCost</i>  </h6>
+               
+                <h3 id="welcomeback" style="color:blue"></h3>
                 <form>
                     <div class="form-group row">
                         <label for="idnumber" class="col-sm-2 col-form-label">Identificación:</label>
@@ -52,7 +54,7 @@
                         </div>
                     </div>
 
-                    <button id="payment" data-toggle="modal" @*data-target="#paymentModal"*@ class="btn btn-primary" type="submit">Procesar pago</button>
+                    <button id="payment" data-toggle="modal" class="btn btn-primary" type="submit">Procesar pago</button>
                     <a href="/Reservation/Home" class="btn btn-danger" type="button">Cancelar</a>
                     <br />
                     <label id="paymenterror"></label>
@@ -67,11 +69,6 @@
 <div class="modal fade text-center" id="paymentModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog text-center" role="document">
         <div class="modal-content text-center">
-            @*<div class="modal-header text-center">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>*@
             <div class="modal-body text-center">
                 <form id="formpaypal">
                     <div class="col-md-12 text-center">
@@ -107,17 +104,67 @@
                     </div>
                 </form>
 
-                <form id="conpay" style="display:none" action="/Reservation/Confirmation">
-                    <div class="text-center">
-                        <h2> Hotel Patito</h2>
-                        <div class="row">
-                            <div class="col-6">
-                                <img src="~/images/PayPal-Logo.png" id="paypallogo" />
-                                <label>$5000</label>
+                <form id="formpay" style="display:none" action="/Reservation/Confirmation">
+                    <div class="row">
+                        <div class="col-12">
+                            <h3> Hotel Patito</h3>
+                        </div>
+                        <div class="col-12 separatorline2"></div>
+                        <div class="col-6 text-left">
+                            <h4><img src="~/images/PayPal-Logo.png" id="paypallogo" /></h4>
+                        </div>
+                        <div class="col-6 text-right">
+                            <h4><i class="fas fa-dollar-sign">@reservationCost</i></h4>
+                        </div>
+                        <div class="col-12 separatorline2"></div>
+                        <div class="col-12 text-left">
+                            <p id="clientnameinpaypal">Nombre Cliente</p>
+                        </div>
+                        <div class="col-12 separatorline2"></div>
+                        <div class="col-6 text-left">
+                            <p>Enviar a: <small id="clientemailinpaypal">Email Cliente</small></p>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" required>
+                                <label class="form-check-label" for="defaultCheck2">
+                                    Esta es mi direccion de preferencia
+                                </label>
                             </div>
                         </div>
+                        <div class="col-6 text-right">
+                            <a href="#">Cambiar</a>
+                        </div>
+                        <div class="col-12 separatorline2"></div>
+                        <div class="col-12 text-left">
+                            <p>Agregar tarjeta de crédito:</p>
+                        </div>
+                        <div class="col-6 text-left">
+                            <input placeholder="Nombre" required/>
+                        </div>
+                        <div class="col-6 text-right">
+                            <input placeholder="Apellidos" required/>
+                        </div>
+                        <br />
+                        <br />
+                        <div class="col-12 text-left">
+                            <input type="number" maxlength="16" min="1000000000000000" placeholder="Número de tarjeta" required/>
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                        <div class="col-12 text-left">
+                            <i class="fab fa-cc-mastercard"></i><i class="fab fa-cc-visa"></i><i class="fab fa-cc-amex"></i><i class="fab fa-cc-discover"></i>
+                        </div>
+                        <br />
+                        <div class="col-6 text-left">
+                            <input type="number" maxlength="4" min="0000" placeholder="MM/AA" required/>
+                        </div>
+                        <div class="col-6 text-right">
+                            <input type="number" maxlength="4" min="0000" placeholder="CVV" required />
+                            <i class="far fa-credit-card"></i>
+                        </div>
                     </div>
-                    <button>Pagar ahora</button>
+                    <br />
+                    <br />
+
+                    <button type="submit" class="btn btn-primary">Pagar ahora</button>
                 </form>
             </div>
             <div class="modal-footer">

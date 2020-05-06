@@ -29,6 +29,8 @@ namespace Presentation.Controllers
 
         public ActionResult Data()
         {
+            //acase optiene el costo de la reserva y se guarda para ser usada en la vista
+            ViewBag.ReservationCost = 5000;
             return View();
         }
 
