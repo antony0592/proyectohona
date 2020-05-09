@@ -374,3 +374,4 @@ C:\Users\danie\Documents\GitHub\proyectohona\Presentation\obj\Debug\netcoreapp2.
 C:\Users\danie\Documents\GitHub\proyectohona\Presentation\obj\Debug\netcoreapp2.1\Presentation.csproj.CopyComplete
 C:\Users\danie\Documents\GitHub\proyectohona\Presentation\obj\Debug\netcoreapp2.1\Presentation.dll
 C:\Users\danie\Documents\GitHub\proyectohona\Presentation\obj\Debug\netcoreapp2.1\Presentation.pdb
+E:\Documentos\GitHub\proyectohona\Presentation\obj\Debug\netcoreapp2.1\Razor\Views\Reservation\Payment.cshtml.g.cs
