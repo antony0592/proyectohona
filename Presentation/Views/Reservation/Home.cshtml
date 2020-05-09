@@ -1,4 +1,7 @@
-﻿<div class="container">
+﻿@{
+    var typeRoomList = ViewBag.TypeRoom;
+}
+<div class="container">
     <br />
     <h5 class="titulopagina">Reserva en linea</h5>
     <div class="row w-75">
@@ -24,18 +27,35 @@
                 <div class="form-group">
                     <label for="typeroom">Tipo de habitación </label>
                     <select class="form-control" id="typeroom">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
+                        @foreach (var room in typeRoomList)
+                        {
+                            <option value="@room.id">@room.description</option>
+                        }
                     </select>
                 </div>
                 <br />
-                <button class="btn btn-primary" type="submit">Buscar Resultados</button>
+                <button id="searchroom00" class="btn btn-primary" type="submit">Buscar Resultados</button>
             </form>
         </div>
-        
+        <h3>Resultados:</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Tipo Habitación</th>
+                    <th scope="col">Número Habitación</th>
+                    <th scope="col">Reservar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row"><input type="text" class="form-control" id="result1" readonly></th>
+                    <td><input type="text" class="form-control" id="result2" readonly></td>
+                    <td><input type="text" class="form-control" id="result3" readonly></td>
+                    <td><button class="btn btn-primary" type="submit">Reservar</button></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 <script>
@@ -51,7 +71,7 @@
     }
 
     const formatDate2 = (date) => {
-        const day = getTwoDigits(date.getDate()+2);
+        const day = getTwoDigits(date.getDate() + 2);
         const month = getTwoDigits(date.getMonth() + 1); // add 1 since getMonth returns 0-11 for the months
         const year = date.getFullYear();
 
@@ -81,7 +101,7 @@
     document.getElementById('departuredate').value = formatDate2(date);
     document.getElementById('departuredate').min = formatDate3(date);
 
-    /*Cambia automáticamente el límite del siguiente selector de fecha*/ 
+    /*Cambia automáticamente el límite del siguiente selector de fecha*/
     function datechange() {
         document.getElementById('departuredate').min = document.getElementById('arrivaldate').value;
     }
