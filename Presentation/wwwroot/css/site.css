@@ -150,7 +150,6 @@ a.bg-light:hover, a.bg-light:focus, button.bg-light:hover, button.bg-light:focus
 }
 
 figcaption {
-    border: 0.1em solid #FF7400;
     border-radius: 0.5em;
     padding: 1em;
     box-sizing: border-box;
