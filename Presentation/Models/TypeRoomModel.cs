@@ -29,12 +29,6 @@ namespace Presentation.Models
         {
             return typeroombusiness.GetAllTypeRoom();
         }
-
-        public IList<TypeRoom> Getsearchroom()
-        {
-            return typeroombusiness.Getsearchroom();
-        }
-
     }
 
 }
