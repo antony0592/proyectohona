@@ -89,3 +89,31 @@ function isNull(object) {
     }
     return inWhite;
 }
+
+
+$(document).ready(function () {
+    $("#searchroom").on("click", function (e) {
+        e.preventDefault();
+
+        var dataObject = JSON.stringify({
+            'input': $('#arrivaldate').val(),
+            'input': $('#departuredate').val(),
+            'input': $('#typeroom').val(),
+        });
+
+            $.ajax({
+                url: "/Reservation/Getsearchroom/",
+                type: "POST",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                data: dataObject,
+                success: function (result) {
+                    $("#welcomeback").html("Gracias por reservar nuevamente con nosotros: <br/> <small> ");
+                },
+
+                error: function (errorMessage) {
+                    alert(errorMessage.responseText);
+                }
+            });
+    });
+});

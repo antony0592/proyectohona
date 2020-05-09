@@ -20,6 +20,7 @@ namespace Business
         {
             return this.typeRoom.GetAllTypeRoom();
         }
+
     }
 }
 
