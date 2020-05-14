@@ -16,10 +16,17 @@ namespace Presentation.Models
         {
             this.roomBusiness = new RoomBusiness(connectionString);
         }
+      
+        public IList<Room> GetRoom(int typeroom)
+        {
+            return roomBusiness.Getsearchroom(typeroom);
+        }
 
         public Room Getsearchroom(string date1, string date2, int typeroom)
         {
             return roomBusiness.Getsearchroom(date1, date2, typeroom);
         }
+
+
     }
 }

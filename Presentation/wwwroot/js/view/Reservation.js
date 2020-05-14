@@ -101,19 +101,58 @@ $(document).ready(function () {
             'input': $('#typeroom').val(),
         });
 
-            $.ajax({
-                url: "/Reservation/Getsearchroom/",
-                type: "POST",
-                contentType: "application/json;charset=utf-8",
-                dataType: "json",
-                data: dataObject,
-                success: function (result) {
-                    $("#welcomeback").html("Gracias por reservar nuevamente con nosotros: <br/> <small> ");
-                },
+        $.ajax({
+            url: "/Reservation/Getsearchroom/",
+            type: "GET",
+            data: { 'date1': $('#arrivaldate').val(), 'date2': $('#departuredate').val(), 'typeroom': $('#typeroomcb').val() },
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            //data: dataObject,
+            success: function (result) {
+
+                if (result) {
+                    $("#typeroom").html(" " + result.typeroom + " ");
+                    $("#number").html(" " + result.number + " ");
+                    $("#quantityperson").html(" " + result.quantityperson + " ");
+                    $("#quantitybed").html(" " + result.quantitybed + " ");
+                    $("#amount").html(" " + result.amount + " ");
+                    $("#amountsumit").val(result.amount);
+                    $("#alert").html("Hemos encontrado esta habitación para ti:");
+                }
+                if (!result) {  
+                    $("#typeroom").html("---");
+                    $("#number").html("---");
+                    $("#quantityperson").html("---");
+                    $("#quantitybed").html("---");
+                    $("#amount").html("---");
+                    $("#alert").html("NO HEMOS ENCONTRADO TU HABITACIÓN PERO ENCONTRAMOS ESTAS OTRAS:");
+                }
+               
+            },
 
                 error: function (errorMessage) {
                     alert(errorMessage.responseText);
                 }
             });
+    });
+});
+
+
+
+$(document).ready(function () {
+    $("#gopay").on("click", function (e) {
+        e.preventDefault();
+        $.ajax({
+            url: "/Reservation/Data",
+            type: "GET",
+            data: { 'precio': $('#amountsumit').val() },
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            //data: dataObject,
+            success: function (result) {},
+            error: function (errorMessage) {
+                alert(errorMessage.responseText);
+            }
+        });
     });
 });

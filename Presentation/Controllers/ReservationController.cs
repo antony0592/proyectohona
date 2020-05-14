@@ -32,10 +32,10 @@ namespace Presentation.Controllers
             return View();
         }
 
-        public ActionResult Data()
+        public ActionResult Data(int amountsumit)
         {
             //acase optiene el costo de la reserva y se guarda para ser usada en la vista
-            var montoTotal = 22563;
+            var montoTotal = amountsumit;
                 
             ViewBag.ReservationCost = montoTotal;
             return View();

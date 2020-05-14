@@ -6,56 +6,60 @@
     <h5 class="titulopagina">Reserva en linea</h5>
     <div class="row w-75">
         <div class="col-12">
-            <form action="/Reservation/Data">
-                <div class="form-row">
-                    <div class="col-6">
-                        <label for="arrivaldate">Fecha de llegada </label>
-                        <input type="date" class="form-control" id="arrivaldate" onchange="datechange()" required>
-                        <div class="valid-feedback">
-                            Fecha selecionada
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <label for="departuredate">Fecha de salida </label>
-                        <input type="date" class="form-control" id="departuredate" required>
-                        <div class="valid-feedback">
-                            Fecha selecionada
-                        </div>
+            <div class="form-row">
+                <div class="col-6">
+                    <label for="arrivaldate">Fecha de llegada </label>
+                    <input type="date" class="form-control" id="arrivaldate" onchange="datechange()" required>
+                    <div class="valid-feedback">
+                        Fecha selecionada
                     </div>
                 </div>
-                <br />
-                <div class="form-group">
-                    <label for="typeroom">Tipo de habitación </label>
-                    <select class="form-control" id="typeroom">
-                        @foreach (var room in typeRoomList)
-                        {
-                            <option value="@room.id">@room.description</option>
-                        }
-                    </select>
+                <div class="col-6">
+                    <label for="departuredate">Fecha de salida </label>
+                    <input type="date" class="form-control" id="departuredate" required>
+                    <div class="valid-feedback">
+                        Fecha selecionada
+                    </div>
                 </div>
-                <br />
-                <button id="searchroom00" class="btn btn-primary" type="submit">Buscar Resultados</button>
-            </form>
+            </div>
+            <br />
+            <div class="form-group">
+                <label for="typeroomcb">Tipo de habitación </label>
+                <select class="form-control" id="typeroomcb">
+                    @foreach (var room in typeRoomList)
+                    {
+                        <option value="@room.id">@room.description</option>
+                    }
+                </select>
+            </div>
+            <br />
+            <button id="searchroom" class="btn btn-primary" type="submit">Buscar Resultados</button>
         </div>
-        <h3>Resultados:</h3>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Tipo Habitación</th>
-                    <th scope="col">Número Habitación</th>
-                    <th scope="col">Reservar</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row"><input type="text" class="form-control" id="result1" readonly></th>
-                    <td><input type="text" class="form-control" id="result2" readonly></td>
-                    <td><input type="text" class="form-control" id="result3" readonly></td>
-                    <td><button class="btn btn-primary" type="submit">Reservar</button></td>
-                </tr>
-            </tbody>
-        </table>
+        <form action="/Reservation/Data">
+            <h2 id="alert" style="color:darkred"></h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Tipo Habitación</th>
+                        <th scope="col">Número Habitación</th>
+                        <th scope="col">Capacidad Personas</th>
+                        <th scope="col">Cantidad Camas</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row"><h5 id="typeroom" style="color:blue"></h5></th>
+                        <td><h5 id="number" style="color:blue"></h5></td>
+                        <td><h5 id="quantityperson" style="color:blue"></h5></td>
+                        <td><h5 id="quantitybed" style="color:blue"></h5></td>
+                        <td><h5 id="amount" style="color:blue"></h5><input type="text" name="amountsumit" id="amountsumit" style="visibility:hidden" readonly></td>
+                        <td><button class="btn btn-success btn-lg" type="submit">Reservar</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
     </div>
 </div>
 <script>
