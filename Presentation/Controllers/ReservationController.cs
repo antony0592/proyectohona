@@ -15,6 +15,8 @@ namespace Presentation.Controllers
         private readonly IConfiguration _configuration;
         string connectionString = "";
 
+        
+
         public ReservationController(IConfiguration configuration)
         {
             _configuration = configuration;
@@ -24,13 +26,18 @@ namespace Presentation.Controllers
         // GET: Reservation
         public ActionResult Home()
         {
+            TypeRoomModel typeRoomModel = new TypeRoomModel(connectionString);
+
+            ViewBag.TypeRoom = typeRoomModel.GetAllTypeRoom();
             return View();
         }
 
-        public ActionResult Data()
+        public ActionResult Data(int amountsumit)
         {
             //acase optiene el costo de la reserva y se guarda para ser usada en la vista
-            ViewBag.ReservationCost = 5000;
+            var montoTotal = amountsumit;
+                
+            ViewBag.ReservationCost = montoTotal;
             return View();
         }
 
@@ -49,6 +56,13 @@ namespace Presentation.Controllers
             ClientModel clientModel = new ClientModel(connectionString);
             var cliente = clientModel.GetClientById(id);
             return Json(cliente);
+        }
+
+        public JsonResult Getsearchroom(string date1, string date2, int typeroom)
+        {
+            RoomModel RoomModel = new RoomModel(connectionString);
+            var search = RoomModel.Getsearchroom(date1, date2, typeroom);
+            return Json(search);
         }
     }
 }

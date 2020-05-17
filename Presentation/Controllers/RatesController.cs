@@ -32,7 +32,7 @@ namespace Presentation.Controllers
             for (int i = 0; i < typeRoom.Count; i++)
             {
                 
-                TypeRoomModel typeRoomNew = new TypeRoomModel();
+                TypeRoomModel typeRoomNew = new TypeRoomModel(connectionString);
                 typeRoomNew.quantityperson = typeRoom[i].quantityperson;
                 typeRoomNew.quantitybed = typeRoom[i].quantitybed;
                 typeRoomNew.description = typeRoom[i].description;

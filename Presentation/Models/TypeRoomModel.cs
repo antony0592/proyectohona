@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Business;
+using Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,6 +17,18 @@ namespace Presentation.Models
         public int amount { get; set; }
         public String urlimage { get; set; }
         public String descriptiontyperoom { get; set; }
+
+        TypeRoomBusiness typeroombusiness;
+
+        public TypeRoomModel(string connectionString)
+        {
+            this.typeroombusiness = new TypeRoomBusiness(connectionString);
+        }
+
+        public IList<TypeRoom> GetAllTypeRoom()
+        {
+            return typeroombusiness.GetAllTypeRoom();
+        }
     }
 
 }
