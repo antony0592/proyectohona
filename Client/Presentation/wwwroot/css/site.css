@@ -1,0 +1,202 @@
+﻿body {
+    padding: 0px;
+    margin: 0px;
+    background-color: #d6f0ffb8 background: -webkit-gradient(linear, left bottom, left top, from(#c4daec), to(#c4daec));
+    background: linear-gradient(0deg, #c4daec 0%, #d6f0ffb8 100%);
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/*Titulo*/
+.titulo {
+    animation: jitter 200ms linear infinite;
+    color: #886d03;
+    display: inline-block
+}
+
+@keyframes jitter {
+    50% {
+        transform: skewY(0.7deg) skewX(-0.7deg) scale(1.006);
+    }
+}
+/*FIN Titulo*/
+
+.logohotel1 {
+    border: 1px solid rgba(1, 1, 1, 1);
+    border-style: solid;
+    border-radius: 0.25rem;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+div.separatorline {
+    height: 4px;
+    background: black;
+}
+
+div.separatorline2 {
+    height: 2px;
+    background: #808080;
+}
+
+h3#HotelPatito {
+    padding-left: 10px;
+}
+
+.footer {
+    padding: 10px;
+}
+
+/*Fondo color logo página pricipal*/
+#sidebar-wrapper .sidebar-heading {
+    background-color: #d6f0ffb8 !important;
+}
+
+/*linea oscura superior*/
+.bordecss {
+    border-bottom: 1px solid #000 !important;
+}
+
+/*titulo de las páginas*/
+.titulopagina {
+    font-weight: bold;
+    font-style: italic;
+}
+
+
+.img {
+    padding: 5px;
+    border: groove;
+}
+
+/* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+#map {
+    height: 100%;
+}
+
+.copyright {
+    font: italic !important;
+    font-weight: bold;
+}
+
+/*Hover en el menú*/
+a.bg-light:hover, a.bg-light:focus, button.bg-light:hover, button.bg-light:focus {
+    background-color: #c4daec !important;
+}
+
+/*Letra negrita menu*/
+#sidebar-wrapper .list-group {
+    font-weight: bold !important;
+}
+
+/*Color fondo menu y frente*/
+.bg-light {
+    background-color: #d6f0ffb8 !important;
+}
+
+
+/*botón Administrador Menu principal*/
+.navbar-light .navbar-nav .nav-link {
+    border-style: dotted !important;
+    border: 1px solid #007bff !important;
+    border-top-style: solid !important;
+    border-right-style: solid !important;
+    border-bottom-style: solid !important;
+    border-left-style: solid !important;
+    background-color: #007bff !important;
+    border-radius: 0.25rem !important;
+    color:white;
+}
+
+
+/*Efecto brdes en el menú lateral*/
+.list-group {
+    border-top-style: solid;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-style: solid;
+    border-radius: 0.25rem;
+}
+
+.list-group-item:hover {
+    color:#007bff;
+}
+
+.publicityimg {
+    height: 250px;
+    width: 250px;
+}
+
+ figcaption {
+    display: block;
+}
+
+figcaption {
+    border-radius: 0.5em;
+    padding: 1em;
+    box-sizing: border-box;
+}
+
+div#map {
+    width: 47em;
+    height: 20em;
+    border-radius: 0,53em;
+}
+
+/*PARA HACER RESPONSIVE*/
+
+/* para 980px o menos */
+@media screen and (max-width:1080px) {
+    .row {
+        width: 100%;
+    }
+
+     div#map {
+        width: 100%;
+    }
+}
+
+/* para 700px o menos */
+@media screen and (max-width:790px) {
+    .row {
+        width: 100%;
+    }
+
+    div#map {
+        width: 100%;
+    }
+}
+
+/* para 480px o menos */
+@media screen and (max-width:480px) {
+    .row {
+        width: 100%;
+    }
+
+    div#map {
+        width: 100%;
+    }
+}
+
+img#paypallogo {
+
+    width:30%;
+}
