@@ -2,6 +2,9 @@
 @{
     ViewData["Title"] = "Datos";
     var reservationCost = ViewBag.ReservationCost;
+    var reservationtyperoom = ViewBag.ReservationTypeRoom;
+    var roomdescription = ViewBag.Reservationroomdescription;
+    var urlimages = ViewBag.Reservationurlimage;
 }
 
 <div class="container">
@@ -10,23 +13,22 @@
     <br />
     <div class="row w-75">
         <div class="col-4">
-            <h6>Habitacion disponible</h6>
+            <h6>Habitacion @reservationtyperoom disponible</h6>
             <div class="img">
-                <img src="~/images/Facilidades/facilidad-01.jpg" class="img-fluid">
+                <img src="@urlimages" class="img-fluid">
             </div>
         </div>
         <div class="col-8">
             <br />
             <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                @roomdescription
             </p>
         </div>
         <div class="col-12">
             <div>
                 <br />
                 <h5 style="color:red">Monto de su reservación:  <i class="fas fa-dollar-sign">@reservationCost</i>  </h5>
-               
+
                 <h3 id="welcomeback" style="color:blue"></h3>
                 <form>
                     <div class="form-group row">
@@ -76,7 +78,7 @@
                     </div>
                     <div class="form-group row text-center">
                         <div class="col-md-12 text-center">
-                            <input id="paypalemail" type="text" class="form-control" placeholder="Correo electrónico" required >
+                            <input id="paypalemail" type="text" class="form-control" placeholder="Correo electrónico" required>
                         </div>
                     </div>
                     <div class="form-group row text-center">
@@ -90,7 +92,7 @@
                             <br />
                             <label id="paypalerror" style="color:red"></label>
                         </div>
-                        
+
                     </div>
                     <div class="form-group row text-center">
                         <div class="col-sm-12 text-center">
@@ -138,15 +140,15 @@
                             <p>Agregar tarjeta de crédito:</p>
                         </div>
                         <div class="col-6 text-left">
-                            <input placeholder="Nombre" required/>
+                            <input placeholder="Nombre" required />
                         </div>
                         <div class="col-6 text-right">
-                            <input placeholder="Apellidos" required/>
+                            <input placeholder="Apellidos" required />
                         </div>
                         <br />
                         <br />
                         <div class="col-12 text-left">
-                            <input type="number" maxlength="16" min="1000000000000000" placeholder="Número de tarjeta" required/>
+                            <input type="number" maxlength="16" min="1000000000000000" placeholder="Número de tarjeta" required />
                             <i class="fas fa-credit-card"></i>
                         </div>
                         <div class="col-12 text-left">
@@ -154,7 +156,7 @@
                         </div>
                         <br />
                         <div class="col-6 text-left">
-                            <input type="number" maxlength="4" min="0000" placeholder="MM/AA" required/>
+                            <input type="number" maxlength="4" min="0000" placeholder="MM/AA" required />
                         </div>
                         <div class="col-6 text-right">
                             <input type="number" maxlength="4" min="0000" placeholder="CVV" required />
