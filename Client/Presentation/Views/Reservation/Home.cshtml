@@ -25,7 +25,7 @@
             <br />
             <div class="form-group">
                 <label for="typeroomcb">Tipo de habitación </label>
-                <select class="form-control" id="typeroomcb">
+                <select class="form-control" id="typeroomcb" name="typeroomcb">
                     @foreach (var room in typeRoomList)
                     {
                         <option value="@room.id">@room.description</option>
@@ -35,7 +35,7 @@
             <br />
             <button id="searchroom" class="btn btn-primary" type="submit">Buscar Resultados</button>
         </div>
-        <form action="/Reservation/Data">
+        <form action="/Reservation/Data" method="POST">
             <h2 id="alert" style="color:darkred"></h2>
             <table class="table">
                 <thead>
@@ -48,17 +48,13 @@
                         <th scope="col"></th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row"><h5 id="typeroom" style="color:blue"></h5></th>
-                        <td><h5 id="number" style="color:blue"></h5></td>
-                        <td><h5 id="quantityperson" style="color:blue"></h5></td>
-                        <td><h5 id="quantitybed" style="color:blue"></h5></td>
-                        <td><h5 id="amount" style="color:blue"></h5><input type="text" name="amountsumit" id="amountsumit" style="visibility:hidden" readonly></td>
-                        <td><button class="btn btn-success btn-lg" type="submit">Reservar</button></td>
-                    </tr>
+                <tbody id="bodytable">
                 </tbody>
             </table>
+            <input type="text" name="amountsumit" id="amountsumit" style="visibility:hidden" readonly>
+            <input type="text" name="roomsumit" id="roomsumit" style="visibility:hidden" readonly>
+            <textarea name="roomdescriptionsumit" id="roomdescriptionsumit" style="visibility:hidden" rows="4" cols="50"></textarea>
+            <input type="text" name="urlimagesumit" id="urlimagesumit" style="visibility:hidden" readonly>
         </form>
     </div>
 </div>
