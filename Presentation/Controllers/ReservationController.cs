@@ -32,12 +32,16 @@ namespace Presentation.Controllers
             return View();
         }
 
-        public ActionResult Data(int amountsumit)
+        public ActionResult Data(int amountsumit, string roomsumit, string roomdescriptionsumit, string urlimagesumit)
         {
             //acase optiene el costo de la reserva y se guarda para ser usada en la vista
             var montoTotal = amountsumit;
-                
+            var typeroom = roomsumit;
+
             ViewBag.ReservationCost = montoTotal;
+            ViewBag.ReservationTypeRoom = typeroom;
+            ViewBag.Reservationroomdescription = roomdescriptionsumit;
+            ViewBag.Reservationurlimage = urlimagesumit;
             return View();
         }
 

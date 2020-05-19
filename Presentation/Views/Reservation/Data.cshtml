@@ -2,6 +2,9 @@
 @{
     ViewData["Title"] = "Datos";
     var reservationCost = ViewBag.ReservationCost;
+    var reservationtyperoom = ViewBag.ReservationTypeRoom;
+    var roomdescription = ViewBag.Reservationroomdescription;
+    var urlimages = ViewBag.Reservationurlimage;
 }
 
 <div class="container">
@@ -10,16 +13,15 @@
     <br />
     <div class="row w-75">
         <div class="col-4">
-            <h6>Habitacion disponible</h6>
+            <h6>Habitacion @reservationtyperoom disponible</h6>
             <div class="img">
-                <img src="~/images/Facilidades/facilidad-01.jpg" class="img-fluid">
+                <img src="@urlimages" class="img-fluid">
             </div>
         </div>
         <div class="col-8">
             <br />
             <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+               @roomdescription
             </p>
         </div>
         <div class="col-12">

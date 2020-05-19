@@ -95,39 +95,47 @@ $(document).ready(function () {
     $("#searchroom").on("click", function (e) {
         e.preventDefault();
 
-        var dataObject = JSON.stringify({
-            'input': $('#arrivaldate').val(),
-            'input': $('#departuredate').val(),
-            'input': $('#typeroom').val(),
-        });
-
         $.ajax({
             url: "/Reservation/Getsearchroom/",
             type: "GET",
             data: { 'date1': $('#arrivaldate').val(), 'date2': $('#departuredate').val(), 'typeroom': $('#typeroomcb').val() },
             contentType: "application/json;charset=utf-8",
             dataType: "json",
-            //data: dataObject,
             success: function (result) {
-
+                $("#bodytable").html("");//limpia tabla
                 if (result) {
-                    $("#typeroom").html(" " + result.typeroom + " ");
-                    $("#number").html(" " + result.number + " ");
-                    $("#quantityperson").html(" " + result.quantityperson + " ");
-                    $("#quantitybed").html(" " + result.quantitybed + " ");
-                    $("#amount").html(" " + result.amount + " ");
-                    $("#amountsumit").val(result.amount);
-                    $("#alert").html("Hemos encontrado esta habitación para ti:");
+                    for (var i = 0; i < result.length; i++) {
+                        $("#amountsumit").val(result[i].amount);
+                        $("#roomsumit").val(result[i].typeroom);
+                        $("#roomdescriptionsumit").val(result[i].descriptiontyperoom);
+                        $("#urlimagesumit").val(result[i].urlimage);
+                        var tr = "<tr>" +
+                            "<td>" + result[i].typeroom + "</td>" +
+                            "<td>" + result[i].number + "</td>" +
+                            "<td>" + result[i].quantityperson + "</td>" +
+                            "<td>" + result[i].quantitybed + "</td>" +
+                            "<td>" + result[i].amount + "</td>" +
+                            "<td><button class='btn btn-success btn - lg' type='submit'>Reservar</button></td>" +
+                            "<tr>" +
+                            $("#bodytable").append(tr);
+                        if (result[i].idtyperoom == $('#typeroomcb').val()) {
+                                $("#alert").html("Hemos encontrado esta habitación para ti:");
+                            } else { $("#alert").html("NO HEMOS ENCONTRADO TU HABITACIÓN PERO ENCONTRAMOS ESTA OTRA DISPONIBLE:"); }
+                    }
                 }
-                if (!result) {  
-                    $("#typeroom").html("---");
-                    $("#number").html("---");
-                    $("#quantityperson").html("---");
-                    $("#quantitybed").html("---");
-                    $("#amount").html("---");
-                    $("#alert").html("NO HEMOS ENCONTRADO TU HABITACIÓN PERO ENCONTRAMOS ESTAS OTRAS:");
+                if (!result) {
+                    $("#alert").html("SIN RESULTADOS");
+                    var tr = "<tr>" +
+                        "<td>--</td>" +
+                        "<td>--</td>" +
+                         "<td>--</td>" +
+                        "<td>--</td>" +
+                        "<td>--</td>" +
+                        "<td><button class='btn btn-success btn - lg' type='submit'>Reservar</button></td>" +
+                        "<tr>" +
+                        $("#bodytable").append(tr);
                 }
-               
+
             },
 
                 error: function (errorMessage) {

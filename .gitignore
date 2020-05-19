@@ -241,3 +241,7 @@ Presentation/obj/Presentation.csproj.nuget.cache
 Presentation/obj/Presentation.csproj.nuget.dgspec.json
 Presentation/obj/Presentation.csproj.nuget.g.props
 Presentation/obj/project.assets.json
+*.dll
+*.dll
+*.v2
+*.pdb
