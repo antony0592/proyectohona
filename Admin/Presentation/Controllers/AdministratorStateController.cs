@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Presentation.Controllers.Administrator
 {
+    [Authorize(Roles = "Admin")]
     public class AdministratorStateController : Controller
     {
         // GET: /<controller>/
