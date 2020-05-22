@@ -21,6 +21,14 @@ namespace Business
             return this.typeRoom.GetAllTypeRoom();
         }
 
+        public List<TypeRoom> Getroom(string description)
+        {
+            return this.typeRoom.Getroom(description);
+        }
+
+
+
+
     }
 }
 

@@ -14,21 +14,14 @@ namespace Domain
         {
             this.id = id;
             this.idtyperoom = idtyperoom;
-            this.typeroom = typeroom;
             this.state = state;
-            this.number = number;
-            this.quantityperson = quantityperson;
-            this.quantitybed = quantitybed;
-            this.amount = amount;
+            this.number = number;            
         }
 
         public int id { get; set; }
         public int idtyperoom { get; set; }
-        public string typeroom { get; set; }
         public int state { get; set; }
         public int number { get; set; }
-        public int quantityperson { get; set; }
-        public int quantitybed { get; set; }
-        public int amount { get; set; }
+        
     }            
 }

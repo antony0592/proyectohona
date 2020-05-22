@@ -63,3 +63,16 @@ C:\Users\danie\Documents\GitHub\proyectohona\Business\obj\Debug\netstandard2.0\B
 C:\Users\danie\Documents\GitHub\proyectohona\Business\obj\Debug\netstandard2.0\Business.csproj.CopyComplete
 C:\Users\danie\Documents\GitHub\proyectohona\Business\obj\Debug\netstandard2.0\Business.dll
 C:\Users\danie\Documents\GitHub\proyectohona\Business\obj\Debug\netstandard2.0\Business.pdb
+E:\Documentos\GitHub\proyectohona\Client\Business\bin\Debug\netstandard2.0\Business.deps.json
+E:\Documentos\GitHub\proyectohona\Client\Business\bin\Debug\netstandard2.0\Business.dll
+E:\Documentos\GitHub\proyectohona\Client\Business\bin\Debug\netstandard2.0\Business.pdb
+E:\Documentos\GitHub\proyectohona\Client\Business\bin\Debug\netstandard2.0\Data.dll
+E:\Documentos\GitHub\proyectohona\Client\Business\bin\Debug\netstandard2.0\Domain.dll
+E:\Documentos\GitHub\proyectohona\Client\Business\bin\Debug\netstandard2.0\Data.pdb
+E:\Documentos\GitHub\proyectohona\Client\Business\bin\Debug\netstandard2.0\Domain.pdb
+E:\Documentos\GitHub\proyectohona\Client\Business\obj\Debug\netstandard2.0\Business.csprojAssemblyReference.cache
+E:\Documentos\GitHub\proyectohona\Client\Business\obj\Debug\netstandard2.0\Business.AssemblyInfoInputs.cache
+E:\Documentos\GitHub\proyectohona\Client\Business\obj\Debug\netstandard2.0\Business.AssemblyInfo.cs
+E:\Documentos\GitHub\proyectohona\Client\Business\obj\Debug\netstandard2.0\Business.csproj.CopyComplete
+E:\Documentos\GitHub\proyectohona\Client\Business\obj\Debug\netstandard2.0\Business.dll
+E:\Documentos\GitHub\proyectohona\Client\Business\obj\Debug\netstandard2.0\Business.pdb
