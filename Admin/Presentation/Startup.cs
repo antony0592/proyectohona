@@ -37,11 +37,11 @@ namespace Presentation
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>(options =>
+
+            services.AddIdentity<IdentityUser, IdentityRole>(options =>
             {
                 //options for login password and user
                 options.Lockout.MaxFailedAccessAttempts = 10;
@@ -51,24 +51,22 @@ namespace Presentation
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireUppercase = false;
                 options.User.RequireUniqueEmail = true;
-                
             })
-                .AddRoles<IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+           .AddEntityFrameworkStores<ApplicationDbContext>()
+           .AddDefaultTokenProviders();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            services.AddMvc(options =>
-            {
-            var policy = new AuthorizationPolicyBuilder()
-                .RequireAuthenticatedUser()
-                .Build();
-                options.Filters.Add(new AuthorizeFilter(policy));
-            }).AddXmlSerializerFormatters();
+            /*services.AddMvc().AddRazorPagesOptions(options => {
+                options.Conventions.AddAreaPageRoute("Identity", "/Account/Login", "");
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            */
+
 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider)
         {
             if (env.IsDevelopment())
             {
@@ -84,7 +82,6 @@ namespace Presentation
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
             app.UseAuthentication();
 
             app.UseMvc(routes =>
@@ -93,6 +90,58 @@ namespace Presentation
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+            // Identity / Account / Login
+             //CreateRoles(serviceProvider).Wait();
         }
+
+        private async Task CreateRoles(IServiceProvider serviceProvider)
+        {
+            //initializing custom roles   
+            var RoleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            var UserManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
+            string[] roleNames = { "Admin", "User" };
+            IdentityResult roleResult;
+
+            foreach (var roleName in roleNames)
+            {
+                var roleExist = await RoleManager.RoleExistsAsync(roleName);
+                if (!roleExist)
+                {
+                    //create the roles and seed them to the database: Question 1  
+                    roleResult = await RoleManager.CreateAsync(new IdentityRole(roleName));
+                }
+            }
+
+            IdentityUser user = await UserManager.FindByEmailAsync("admin@admin.com");
+
+            if (user == null)
+            {
+                user = new IdentityUser()
+                {
+                    UserName = "admin@admin.com",
+                    Email = "admin@admin.com",
+                };
+                await UserManager.CreateAsync(user, "Test@123");
+            }
+            await UserManager.AddToRoleAsync(user, "Admin");
+
+
+            IdentityUser user1 = await UserManager.FindByEmailAsync("client@gmail.com");
+
+            if (user1 == null)
+            {
+                user1 = new IdentityUser()
+                {
+                    UserName = "client@gmail.com",
+                    Email = "client@gmail.com",
+                };
+                await UserManager.CreateAsync(user1, "Test@123");
+            }
+            await UserManager.AddToRoleAsync(user1, "User");
+
+
+
+        }
+
     }
 }
