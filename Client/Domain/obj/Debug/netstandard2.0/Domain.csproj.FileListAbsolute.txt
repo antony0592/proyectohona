@@ -38,3 +38,11 @@ C:\Users\danie\Documents\GitHub\proyectohona\Domain\obj\Debug\netstandard2.0\Dom
 C:\Users\danie\Documents\GitHub\proyectohona\Domain\obj\Debug\netstandard2.0\Domain.AssemblyInfo.cs
 C:\Users\danie\Documents\GitHub\proyectohona\Domain\obj\Debug\netstandard2.0\Domain.dll
 C:\Users\danie\Documents\GitHub\proyectohona\Domain\obj\Debug\netstandard2.0\Domain.pdb
+E:\Documentos\GitHub\proyectohona\Client\Domain\bin\Debug\netstandard2.0\Domain.deps.json
+E:\Documentos\GitHub\proyectohona\Client\Domain\bin\Debug\netstandard2.0\Domain.dll
+E:\Documentos\GitHub\proyectohona\Client\Domain\bin\Debug\netstandard2.0\Domain.pdb
+E:\Documentos\GitHub\proyectohona\Client\Domain\obj\Debug\netstandard2.0\Domain.csprojAssemblyReference.cache
+E:\Documentos\GitHub\proyectohona\Client\Domain\obj\Debug\netstandard2.0\Domain.AssemblyInfoInputs.cache
+E:\Documentos\GitHub\proyectohona\Client\Domain\obj\Debug\netstandard2.0\Domain.AssemblyInfo.cs
+E:\Documentos\GitHub\proyectohona\Client\Domain\obj\Debug\netstandard2.0\Domain.dll
+E:\Documentos\GitHub\proyectohona\Client\Domain\obj\Debug\netstandard2.0\Domain.pdb

@@ -9,7 +9,7 @@ namespace Presentation.Models
 {
     public class TypeRoomModel
     {
-       
+
         public int id { get; set; }
         public int quantityperson { get; set; }
         public int quantitybed { get; set; }
@@ -18,17 +18,5 @@ namespace Presentation.Models
         public String urlimage { get; set; }
         public String descriptiontyperoom { get; set; }
 
-        TypeRoomBusiness typeroombusiness;
-
-        public TypeRoomModel(string connectionString)
-        {
-            this.typeroombusiness = new TypeRoomBusiness(connectionString);
-        }
-
-        public IList<TypeRoom> GetAllTypeRoom()
-        {
-            return typeroombusiness.GetAllTypeRoom();
-        }
     }
-
 }

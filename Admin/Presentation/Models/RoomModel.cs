@@ -10,23 +10,10 @@ namespace Presentation.Models
 {
     public class RoomModel
     {
-        RoomBusiness roomBusiness;
-
-        public RoomModel(string connectionString)
-        {
-            this.roomBusiness = new RoomBusiness(connectionString);
-        }
-      
-        public IList<Room> GetRoom(int typeroom)
-        {
-            return roomBusiness.Getsearchroom(typeroom);
-        }
-
-        public Room Getsearchroom(string date1, string date2, int typeroom)
-        {
-            return roomBusiness.Getsearchroom(date1, date2, typeroom);
-        }
-
+        public int id { get; set; }
+        public int idtyperoom { get; set; }
+        public int state { get; set; }
+        public int number { get; set; }
 
     }
 }

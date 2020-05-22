@@ -15,16 +15,12 @@ namespace Business
             this.roomData = new RoomData(connString);
         }//Fin del constructor.
 
-        public List<Room> Getsearchroom(int typeroom)
+        public List<Room> GetAllRoom()
         {
-            return this.roomData.Getsearchroom(typeroom);
+            return this.roomData.GetAllRoom();
         }
+              
 
-        public Room Getsearchroom(string date1, string date2, int typeroom)
-        {
-            /*LÓGICA*/
-
-            return this.roomData.Getsearchroom(typeroom).Find(c => c.idtyperoom.Equals(typeroom));
-        }
+       
     }
 }

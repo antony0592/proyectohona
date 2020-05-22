@@ -20,5 +20,9 @@ namespace Presentation.Models
             return typeRoomBusiness.GetAllTypeRoom();
         }
 
+        public List<TypeRoom> Getroom(string description)
+        {
+            return typeRoomBusiness.Getroom(description);
+        }
     }
 }
