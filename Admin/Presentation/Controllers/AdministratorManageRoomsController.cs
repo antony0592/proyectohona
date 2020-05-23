@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Domain;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Presentation.Models;
@@ -53,7 +55,7 @@ namespace Presentation.Controllers.Administrator
             {
                 if (typeRoom[i].description.Equals(description))
                 {
-                    ViewBag.description= typeRoom[i].description;
+                    ViewBag.description = typeRoom[i].description;
                     ViewBag.urlimage = typeRoom[i].urlimage;
                     ViewBag.descriptiontyperoom = typeRoom[i].descriptiontyperoom;
                     ViewBag.amount = typeRoom[i].amount;
@@ -63,37 +65,10 @@ namespace Presentation.Controllers.Administrator
                 typeroomModel.Add(typeRoomNew);
             }
             return View(typeroomModel);
-
-            }
-
-
-            //[HttpPost]
-            //public ActionResult GetRoomUpdate(string description)
-            //{
-            //    RepositoryTypeRoom repositoryTyperoom = new RepositoryTypeRoom(connectionString);
-            //    IList<TypeRoom> typeRoom = repositoryTyperoom.GetAllTypeRoom();
-
-            //    for (int i = 0; i < typeRoom.Count; i++)
-            //    {
-            //        if (typeRoom[i].description.Equals(description))
-            //        {
-            //            ViewBag.urlimage = typeRoom[i].urlimage;
-            //            ViewBag.descriptiontyperoom = typeRoom[i].descriptiontyperoom;
-            //            ViewBag.amount = typeRoom[i].amount;
-            //        }
-
-            //    }
-            //    return View();
-
-            //}
-
-            //public JsonResult Getroom(string description)
-            //{
-            //    {
-            //        RepositoryTypeRoom typeRoomModel = new RepositoryTypeRoom(connectionString);
-            //        var search = typeRoomModel.Getroom(description);
-            //        return Json(search);
-            //    }
-            //}
         }
     }
+
+    public abstract class HttpPostedFileBase
+    {
+    }
+}
