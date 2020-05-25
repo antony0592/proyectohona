@@ -78,7 +78,24 @@ namespace Data
             return typeRoom;
         }
 
+       
 
+        public void UpdateTypeRoom(string description, string amount, string urlimage, int descriptionType)
+        {
+            SqlConnection connection = new SqlConnection(this.connString);
+            String sqlStoredProcedure = "UpdateTypeRoom";
+            SqlCommand cmdInsertar = new SqlCommand(sqlStoredProcedure, connection);
+            cmdInsertar.CommandType = System.Data.CommandType.StoredProcedure;
+            cmdInsertar.Parameters.Add(new SqlParameter("@description", description));
+            cmdInsertar.Parameters.Add(new SqlParameter("@amount", amount));
+            cmdInsertar.Parameters.Add(new SqlParameter("@urlimage", urlimage));
+            cmdInsertar.Parameters.Add(new SqlParameter("@id", descriptionType));
+            cmdInsertar.Connection.Open();
+            cmdInsertar.ExecuteNonQuery();
+
+            cmdInsertar.Connection.Close();
+
+        }
 
     }
 }
