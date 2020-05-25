@@ -17,6 +17,7 @@ namespace Presentation.Controllers.Administrator
     [Authorize(Roles = "Admin")]
     public class AdministratorManageRoomsController : Controller
     {
+        public static string counter;
         private readonly IConfiguration _configuration;
         string connectionString = "";
 
@@ -29,46 +30,75 @@ namespace Presentation.Controllers.Administrator
         // GET: /<controller>/
         public IActionResult ManageRooms()
         {
-            //***********************************************//
+            //*******//
             RepositoryTypeRoom repositoryTyperoom = new RepositoryTypeRoom(connectionString);
             IList<TypeRoom> typeRoom = repositoryTyperoom.GetAllTypeRoom();
             List<TypeRoomModel> typeroomModel = new List<TypeRoomModel>();
 
+
             for (int i = 0; i < typeRoom.Count; i++)
             {
                 TypeRoomModel typeRoomNew = new TypeRoomModel();
-                typeRoomNew.description = typeRoom[i].description;                
+                typeRoomNew.description = typeRoom[i].description;
                 typeroomModel.Add(typeRoomNew);
             }
             return View(typeroomModel);
+        }//
+
+        public JsonResult GetManageRooms(string description)
+        {
+            RepositoryTypeRoom repositoryTyperoom = new RepositoryTypeRoom(connectionString);
+            List<TypeRoom> typeRoom = repositoryTyperoom.GetAllTypeRoom();            
+
+            TypeRoom typeRoomNew = new TypeRoom();
+            typeRoomNew = typeRoom.Find(r=>r.description==description);
+
+            return Json(typeRoomNew);
+        }
+
+        [HttpPost]
+        public ActionResult Actualizar(string file, string description, string amount)
+        {
+
+            string destinationFile = "/images/TipoHabitacion/" + file;
+            Console.WriteLine(destinationFile);
+            ViewBag.ruta = "/images/TipoHabitacion/ " + file;
+            String b = counter;
+
+            RepositoryTypeRoom repositoryTyperoom = new RepositoryTypeRoom(connectionString);
+            IList<TypeRoom> typeRoom = repositoryTyperoom.GetAllTypeRoom();
+            List<TypeRoomModel> typeroomModel = new List<TypeRoomModel>();
+
+
+            for (int i = 0; i < typeRoom.Count; i++)
+            {
+                TypeRoomModel typeRoomNew = new TypeRoomModel();
+                typeRoomNew.description = typeRoom[i].description;
+                typeroomModel.Add(typeRoomNew);
+            }
+
+            return View("ManageRooms", typeroomModel);
+
         }
 
 
         [HttpPost]
-        public IActionResult ManageRooms(string description)
+        public ActionResult ManageRooms(string description)
         {
             RepositoryTypeRoom repositoryTyperoom = new RepositoryTypeRoom(connectionString);
             IList<TypeRoom> typeRoom = repositoryTyperoom.GetAllTypeRoom();
             List<TypeRoomModel> typeroomModel = new List<TypeRoomModel>();
 
             for (int i = 0; i < typeRoom.Count; i++)
-            {
-                if (typeRoom[i].description.Equals(description))
-                {
-                    ViewBag.description = typeRoom[i].description;
-                    ViewBag.urlimage = typeRoom[i].urlimage;
-                    ViewBag.descriptiontyperoom = typeRoom[i].descriptiontyperoom;
-                    ViewBag.amount = typeRoom[i].amount;
-                }
+            {                
                 TypeRoomModel typeRoomNew = new TypeRoomModel();
                 typeRoomNew.description = typeRoom[i].description;
                 typeroomModel.Add(typeRoomNew);
             }
             return View(typeroomModel);
         }
+
+
     }
 
-    public abstract class HttpPostedFileBase
-    {
-    }
 }
