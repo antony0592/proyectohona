@@ -28,14 +28,13 @@
                             }
                         </select>
                     </div>
-                    <button id="descriptionB" name="descriptionB" type="submit" class="btn-group">Obtener</button>
                 </form>
                 <br />
 
             </div>
         </div>
 
-        <form action="/AdministratorManageRooms/Actualizar" method="post">
+        <form action="/AdministratorManageRooms/Update" method="post">
             <input type="text" id="amount" name="amount" ><br><br>
             
 
@@ -44,7 +43,6 @@
             $("#summernote").summernote("editor.pasteHTML", "<p>@descriptionType</p>");
             var hola = summernote.activeEditor.selection.getContent();
         </script>*@
-
             <textarea id="descriptionArea" name="descriptionArea" rows="8" cols="50"></textarea>
 
             <div class="col-12">

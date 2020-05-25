@@ -49,34 +49,44 @@ namespace Presentation.Controllers.Administrator
         {
             RepositoryTypeRoom repositoryTyperoom = new RepositoryTypeRoom(connectionString);
             List<TypeRoom> typeRoom = repositoryTyperoom.GetAllTypeRoom();            
-
+         
             TypeRoom typeRoomNew = new TypeRoom();
             typeRoomNew = typeRoom.Find(r=>r.description==description);
-
+            counter = description;
             return Json(typeRoomNew);
         }
 
         [HttpPost]
-        public ActionResult Actualizar(string file, string description, string amount)
+        public ActionResult Update(string file, string descriptionArea, string amount)
         {
 
             string destinationFile = "/images/TipoHabitacion/" + file;
             Console.WriteLine(destinationFile);
-            ViewBag.ruta = "/images/TipoHabitacion/ " + file;
-            String b = counter;
+            String urlimage = "/images/TipoHabitacion/ " + file;
+            String descriptionType = counter;
 
             RepositoryTypeRoom repositoryTyperoom = new RepositoryTypeRoom(connectionString);
             IList<TypeRoom> typeRoom = repositoryTyperoom.GetAllTypeRoom();
             List<TypeRoomModel> typeroomModel = new List<TypeRoomModel>();
 
+            int idTypeRoom = 0;
 
             for (int i = 0; i < typeRoom.Count; i++)
             {
+                if (typeRoom[i].description==descriptionType) {
+                    idTypeRoom = typeRoom[i].id;
+                }
+                if (file==null || file=="")
+                {
+                    urlimage = typeRoom[i].urlimage;
+                    
+                }
                 TypeRoomModel typeRoomNew = new TypeRoomModel();
                 typeRoomNew.description = typeRoom[i].description;
                 typeroomModel.Add(typeRoomNew);
             }
-
+           
+            repositoryTyperoom.UpdateTypeRoom(descriptionArea, amount, urlimage, idTypeRoom);
             return View("ManageRooms", typeroomModel);
 
         }

@@ -26,7 +26,10 @@ namespace Business
             return this.typeRoom.Getroom(description);
         }
 
-
+        public void UpdateTypeRoom(string description, string amount, string urlimage, int descriptionType)
+        {
+             this.typeRoom.UpdateTypeRoom(description, amount, urlimage, descriptionType);
+        }
 
 
     }

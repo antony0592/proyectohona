@@ -24,5 +24,10 @@ namespace Presentation.Models
         {
             return typeRoomBusiness.Getroom(description);
         }
+
+        public void UpdateTypeRoom(string description, string amount, string urlimage, int descriptionType)
+        {
+            typeRoomBusiness.UpdateTypeRoom(description, amount, urlimage, descriptionType);
+        }
     }
 }
