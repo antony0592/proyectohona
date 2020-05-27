@@ -10,7 +10,7 @@ namespace Domain
         {
         }
 
-        public Room(int id, int idtyperoom, int state, int number, string typeroom, int quantityperson, int quantitybed, int amount)
+        public Room(int id, int idtyperoom, int state, int number, string typeroom, int quantityperson, int quantitybed, int amount, string urlimage, string descriptiontyperoom)
         {
             this.id = id;
             this.idtyperoom = idtyperoom;
@@ -20,6 +20,8 @@ namespace Domain
             this.quantityperson = quantityperson;
             this.quantitybed = quantitybed;
             this.amount = amount;
+            this.urlimage = urlimage;
+            this.descriptiontyperoom = descriptiontyperoom;
         }
 
         public int id { get; set; }
@@ -30,5 +32,7 @@ namespace Domain
         public int quantityperson { get; set; }
         public int quantitybed { get; set; }
         public int amount { get; set; }
-    }            
+        public string urlimage { get; set; }
+        public string descriptiontyperoom { get; set; }
+    }
 }

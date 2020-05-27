@@ -53,3 +53,14 @@ C:\Users\danie\Documents\GitHub\proyectohona\Data\obj\Debug\netstandard2.0\Data.
 C:\Users\danie\Documents\GitHub\proyectohona\Data\obj\Debug\netstandard2.0\Data.csproj.CopyComplete
 C:\Users\danie\Documents\GitHub\proyectohona\Data\obj\Debug\netstandard2.0\Data.dll
 C:\Users\danie\Documents\GitHub\proyectohona\Data\obj\Debug\netstandard2.0\Data.pdb
+E:\Documentos\GitHub\proyectohona\Client\Data\bin\Debug\netstandard2.0\Data.deps.json
+E:\Documentos\GitHub\proyectohona\Client\Data\bin\Debug\netstandard2.0\Data.dll
+E:\Documentos\GitHub\proyectohona\Client\Data\bin\Debug\netstandard2.0\Data.pdb
+E:\Documentos\GitHub\proyectohona\Client\Data\bin\Debug\netstandard2.0\Domain.dll
+E:\Documentos\GitHub\proyectohona\Client\Data\bin\Debug\netstandard2.0\Domain.pdb
+E:\Documentos\GitHub\proyectohona\Client\Data\obj\Debug\netstandard2.0\Data.csprojAssemblyReference.cache
+E:\Documentos\GitHub\proyectohona\Client\Data\obj\Debug\netstandard2.0\Data.AssemblyInfoInputs.cache
+E:\Documentos\GitHub\proyectohona\Client\Data\obj\Debug\netstandard2.0\Data.AssemblyInfo.cs
+E:\Documentos\GitHub\proyectohona\Client\Data\obj\Debug\netstandard2.0\Data.csproj.CopyComplete
+E:\Documentos\GitHub\proyectohona\Client\Data\obj\Debug\netstandard2.0\Data.dll
+E:\Documentos\GitHub\proyectohona\Client\Data\obj\Debug\netstandard2.0\Data.pdb

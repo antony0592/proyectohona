@@ -16,7 +16,7 @@ $(document).ready(function () {
                     $("#clientlastname").val(result.lastname);
                     $("#clientemail").val(result.email);
                     $("#paypalemail").val(result.email);
-                    $("#welcomeback").html("Gracias por reservar nuevamente con nosotros: <br/> <small> " + result.name + " " + result.lastname +"</small> <br/>");
+                    $("#welcomeback").html("Gracias por reservar nuevamente con nosotros: <br/> <small> " + result.name + " " + result.lastname + "</small> <br/>");
                 },
 
                 error: function (errorMessage) {
@@ -40,7 +40,7 @@ $(document).ready(function () {
         if (inWhite.length == 0) {
             e.preventDefault();
             $('#paymentModal').modal("show");
-          
+
         } else {
             $("#errorpayment").val("Datos invalidos");
 
@@ -56,7 +56,7 @@ $(document).ready(function () {
         var email = $("#paypalemail").val();
         var password = $("#paypalpassword").val();
 
-        if (email.trim() == "" || password.trim() == "" ) {
+        if (email.trim() == "" || password.trim() == "") {
             $("#paypalerror").html("Datos inválido");
         } else {
             $("#formpaypal").hide();
@@ -65,9 +65,9 @@ $(document).ready(function () {
                 opacity: 0.5
             }, 2000, function () {
                 $(this).closest(".modal-body").find("img#loader").hide();
-                    $("#formpay").show();
-                    $("#clientemailinpaypal").html($("#clientemail").val());
-                    $("#clientnameinpaypal").html($("#clientename").val());
+                $("#formpay").show();
+                $("#clientemailinpaypal").html($("#clientemail").val());
+                $("#clientnameinpaypal").html($("#clientename").val());
             });
         }
     });
@@ -95,45 +95,53 @@ $(document).ready(function () {
     $("#searchroom").on("click", function (e) {
         e.preventDefault();
 
-        var dataObject = JSON.stringify({
-            'input': $('#arrivaldate').val(),
-            'input': $('#departuredate').val(),
-            'input': $('#typeroom').val(),
-        });
-
         $.ajax({
             url: "/Reservation/Getsearchroom/",
             type: "GET",
             data: { 'date1': $('#arrivaldate').val(), 'date2': $('#departuredate').val(), 'typeroom': $('#typeroomcb').val() },
             contentType: "application/json;charset=utf-8",
             dataType: "json",
-            //data: dataObject,
             success: function (result) {
-
+                $("#bodytable").html("");//limpia tabla
                 if (result) {
-                    $("#typeroom").html(" " + result.typeroom + " ");
-                    $("#number").html(" " + result.number + " ");
-                    $("#quantityperson").html(" " + result.quantityperson + " ");
-                    $("#quantitybed").html(" " + result.quantitybed + " ");
-                    $("#amount").html(" " + result.amount + " ");
-                    $("#amountsumit").val(result.amount);
-                    $("#alert").html("Hemos encontrado esta habitación para ti:");
+                    for (var i = 0; i < result.length; i++) {
+                        $("#amountsumit").val(result[i].amount);
+                        $("#roomsumit").val(result[i].typeroom);
+                        $("#roomdescriptionsumit").val(result[i].descriptiontyperoom);
+                        $("#urlimagesumit").val(result[i].urlimage);
+                        var tr = "<tr>" +
+                            "<td>" + result[i].typeroom + "</td>" +
+                            "<td>" + result[i].number + "</td>" +
+                            "<td>" + result[i].quantityperson + "</td>" +
+                            "<td>" + result[i].quantitybed + "</td>" +
+                            "<td>" + result[i].amount + "</td>" +
+                            "<td><button class='btn btn-success btn - lg' type='submit'>Reservar</button></td>" +
+                            "<tr>" +
+                            $("#bodytable").append(tr);
+                        if (result[i].idtyperoom == $('#typeroomcb').val()) {
+                            $("#alert").html("Hemos encontrado esta habitación para ti:");
+                        } else { $("#alert").html("NO HEMOS ENCONTRADO TU HABITACIÓN PERO ENCONTRAMOS ESTA OTRA DISPONIBLE:"); }
+                    }
                 }
-                if (!result) {  
-                    $("#typeroom").html("---");
-                    $("#number").html("---");
-                    $("#quantityperson").html("---");
-                    $("#quantitybed").html("---");
-                    $("#amount").html("---");
-                    $("#alert").html("NO HEMOS ENCONTRADO TU HABITACIÓN PERO ENCONTRAMOS ESTAS OTRAS:");
+                if (!result) {
+                    $("#alert").html("SIN RESULTADOS");
+                    var tr = "<tr>" +
+                        "<td>--</td>" +
+                        "<td>--</td>" +
+                        "<td>--</td>" +
+                        "<td>--</td>" +
+                        "<td>--</td>" +
+                        "<td><button class='btn btn-success btn - lg' type='submit'>Reservar</button></td>" +
+                        "<tr>" +
+                        $("#bodytable").append(tr);
                 }
-               
+
             },
 
-                error: function (errorMessage) {
-                    alert(errorMessage.responseText);
-                }
-            });
+            error: function (errorMessage) {
+                alert(errorMessage.responseText);
+            }
+        });
     });
 });
 
@@ -149,7 +157,7 @@ $(document).ready(function () {
             contentType: "application/json;charset=utf-8",
             dataType: "json",
             //data: dataObject,
-            success: function (result) {},
+            success: function (result) { },
             error: function (errorMessage) {
                 alert(errorMessage.responseText);
             }
