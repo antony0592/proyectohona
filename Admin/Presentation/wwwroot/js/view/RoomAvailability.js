@@ -39,5 +39,4 @@ function SearchRoomAvailability() {
             alert(errorMessage.responseText);
         }
     });
-
 }

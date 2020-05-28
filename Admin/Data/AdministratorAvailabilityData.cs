@@ -6,6 +6,7 @@ using System.IO;
 using System.Text;
 using Domain;
 
+
 namespace Data
 {
     public class AdministratorAvailabilityData
@@ -46,5 +47,6 @@ namespace Data
             }
             return room;
         }
+
     }
 }

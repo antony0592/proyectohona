@@ -17,7 +17,6 @@ namespace Business
             this.administratorAvailabilityData = new AdministratorAvailabilityData(connString);
         }//Fin del constructor.
 
-
         public List<SearchAvailabilityResult> Getsearchroom(string date1, string date2, int typeroom)
         {
 

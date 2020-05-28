@@ -9,6 +9,7 @@ namespace Presentation.Models
 {
     public class RepositoryTypeRoom
     {
+
         TypeRoomBusiness typeRoomBusiness;
         public RepositoryTypeRoom(string connectionString)
         {

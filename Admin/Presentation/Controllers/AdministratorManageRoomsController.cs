@@ -25,6 +25,7 @@ namespace Presentation.Controllers.Administrator
         {
             _configuration = configuration;
             connectionString = _configuration.GetConnectionString("DefaultConnection");
+            
         }
 
         // GET: /<controller>/
@@ -33,12 +34,13 @@ namespace Presentation.Controllers.Administrator
             //*******//
             RepositoryTypeRoom repositoryTyperoom = new RepositoryTypeRoom(connectionString);
             IList<TypeRoom> typeRoom = repositoryTyperoom.GetAllTypeRoom();
+            TypeRoomModel typeRoomModel = new TypeRoomModel(connectionString);
             List<TypeRoomModel> typeroomModel = new List<TypeRoomModel>();
 
 
             for (int i = 0; i < typeRoom.Count; i++)
             {
-                TypeRoomModel typeRoomNew = new TypeRoomModel();
+                TypeRoomModel typeRoomNew = new TypeRoomModel(connectionString);
                 typeRoomNew.description = typeRoom[i].description;
                 typeroomModel.Add(typeRoomNew);
             }
@@ -81,7 +83,7 @@ namespace Presentation.Controllers.Administrator
                     urlimage = typeRoom[i].urlimage;
                     
                 }
-                TypeRoomModel typeRoomNew = new TypeRoomModel();
+                TypeRoomModel typeRoomNew = new TypeRoomModel(connectionString);
                 typeRoomNew.description = typeRoom[i].description;
                 typeroomModel.Add(typeRoomNew);
             }
@@ -100,12 +102,12 @@ namespace Presentation.Controllers.Administrator
             List<TypeRoomModel> typeroomModel = new List<TypeRoomModel>();
 
             for (int i = 0; i < typeRoom.Count; i++)
-            {                
-                TypeRoomModel typeRoomNew = new TypeRoomModel();
+            {
+                TypeRoomModel typeRoomNew = new TypeRoomModel(connectionString);
                 typeRoomNew.description = typeRoom[i].description;
                 typeroomModel.Add(typeRoomNew);
             }
-            return View(typeroomModel);
+            return View(typeRoom);
         }
 
 
