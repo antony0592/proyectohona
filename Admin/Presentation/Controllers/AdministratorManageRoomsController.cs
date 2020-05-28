@@ -20,11 +20,13 @@ namespace Presentation.Controllers.Administrator
         public static string counter;
         private readonly IConfiguration _configuration;
         string connectionString = "";
+        TypeRoomModel typeRoomModel;
 
         public AdministratorManageRoomsController(IConfiguration configuration)
         {
             _configuration = configuration;
             connectionString = _configuration.GetConnectionString("DefaultConnection");
+            typeRoomModel = new TypeRoomModel(connectionString);
         }
 
         // GET: /<controller>/
@@ -38,9 +40,8 @@ namespace Presentation.Controllers.Administrator
 
             for (int i = 0; i < typeRoom.Count; i++)
             {
-                TypeRoomModel typeRoomNew = new TypeRoomModel();
-                typeRoomNew.description = typeRoom[i].description;
-                typeroomModel.Add(typeRoomNew);
+                typeRoomModel.description = typeRoom[i].description;
+                typeroomModel.Add(typeRoomModel);
             }
             return View(typeroomModel);
         }//
@@ -81,7 +82,7 @@ namespace Presentation.Controllers.Administrator
                     urlimage = typeRoom[i].urlimage;
                     
                 }
-                TypeRoomModel typeRoomNew = new TypeRoomModel();
+                TypeRoomModel typeRoomNew = new TypeRoomModel(connectionString);
                 typeRoomNew.description = typeRoom[i].description;
                 typeroomModel.Add(typeRoomNew);
             }
@@ -101,7 +102,7 @@ namespace Presentation.Controllers.Administrator
 
             for (int i = 0; i < typeRoom.Count; i++)
             {                
-                TypeRoomModel typeRoomNew = new TypeRoomModel();
+                TypeRoomModel typeRoomNew = new TypeRoomModel(connectionString);
                 typeRoomNew.description = typeRoom[i].description;
                 typeroomModel.Add(typeRoomNew);
             }
