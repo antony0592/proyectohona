@@ -1,14 +1,108 @@
-﻿
-@{
-    ViewData["Title"] = "Availability";
+﻿@{
+    var typeRoomList = ViewBag.TypeRoom;
 }
 <div class="container">
-    <div class="row">
+    <br />
+    <h5> Disponibilidad de habitaciones </h5>
+    <div class="row w-75">
         <div class="col-12">
-            <div>
-                <br />
-                <h5> Disponibilidad de habitaciones </h5>
+            <div class="form-row">
+                <div class="col-6">
+                    <label for="arrivaldate">Fecha de llegada </label>
+                    <input type="date" class="form-control" id="arrivaldateA" onchange="datechange()" required>
+                    <div class="valid-feedback">
+                        Fecha selecionada
+                    </div>
+                </div>
+                <div class="col-6">
+                    <label for="departuredate">Fecha de salida </label>
+                    <input type="date" class="form-control" id="departuredateA" required>
+                    <div class="valid-feedback">
+                        Fecha selecionada
+                    </div>
+                </div>
             </div>
+            <br />
+            <div class="form-group">
+                <label for="typeroomcb">Tipo de habitación </label>
+                <select class="form-control" id="typeroomcbA" name="typeroomcb">
+                    @foreach (var room in typeRoomList)
+                    {
+                        <option value="@room.id">@room.description</option>
+                    }
+                </select>
+            </div>
+            <br />
+            <button id="searchroomavailability" onclick="SearchRoomAvailability()" class="btn btn-primary" type="button">Buscar Resultados</button>
         </div>
+        <form action="/Reservation/Data" method="POST">
+            <h2 id="alert" style="color:darkred"></h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Tipo Habitación</th>
+                        <th scope="col">Número Habitación</th>
+                        <th scope="col">Capacidad Personas</th>
+                        <th scope="col">Cantidad Camas</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody id="bodytable">
+                </tbody>
+            </table>
+            <input type="text" name="amountsumit" id="amountsumit" style="visibility:hidden" readonly>
+            <input type="text" name="roomsumit" id="roomsumit" style="visibility:hidden" readonly>
+            <textarea name="roomdescriptionsumit" id="roomdescriptionsumit" style="visibility:hidden" rows="4" cols="50"></textarea>
+            <input type="text" name="urlimagesumit" id="urlimagesumit" style="visibility:hidden" readonly>
+        </form>
     </div>
 </div>
+<script>
+    // Function which returns a minimum of two digits in case the value is less than 10
+    const getTwoDigits = (value) => value < 10 ? `0${value}` : value;
+
+    const formatDate = (date) => {
+        const day = getTwoDigits(date.getDate());
+        const month = getTwoDigits(date.getMonth() + 1); // add 1 since getMonth returns 0-11 for the months
+        const year = date.getFullYear();
+
+        return `${year}-${month}-${day}`;
+    }
+
+    const formatDate2 = (date) => {
+        const day = getTwoDigits(date.getDate() + 2);
+        const month = getTwoDigits(date.getMonth() + 1); // add 1 since getMonth returns 0-11 for the months
+        const year = date.getFullYear();
+
+        return `${year}-${month}-${day}`;
+    }
+
+    const formatDate3 = (date) => {
+        const day = getTwoDigits(date.getDate() + 1);
+        const month = getTwoDigits(date.getMonth() + 1); // add 1 since getMonth returns 0-11 for the months
+        const year = date.getFullYear();
+
+        return `${year}-${month}-${day}`;
+    }
+
+    const formatTime = (date) => {
+        const hours = getTwoDigits(date.getHours());
+        const mins = getTwoDigits(date.getMinutes());
+
+        return `${hours}:${mins}`;
+    }
+
+    const date = new Date();
+    /*define valores por defecto y minimos en el selector de fecha*/
+    document.getElementById('arrivaldateA').value = formatDate(date);
+    document.getElementById('arrivaldateA').min = formatDate(date);
+    /*define valores por defecto y minimos en el selector de fecha*/
+    document.getElementById('departuredateA').value = formatDate2(date);
+    document.getElementById('departuredateA').min = formatDate3(date);
+
+    /*Cambia automáticamente el límite del siguiente selector de fecha*/
+    function datechange() {
+        document.getElementById('departuredateA').min = document.getElementById('arrivaldateA').value;
+    }
+</script>

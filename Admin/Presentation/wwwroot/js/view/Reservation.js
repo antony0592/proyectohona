@@ -137,8 +137,6 @@ $(document).ready(function () {
     });
 });
 
-
-
 $(document).ready(function () {
     $("#gopay").on("click", function (e) {
         e.preventDefault();
