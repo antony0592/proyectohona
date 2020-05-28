@@ -14,5 +14,7 @@ namespace Data
         {
             this.connString = connString;
         }//Fin del constructor.
+
+       // public List<SearchAvailabilityResult> SearchAvailability
     }
 }

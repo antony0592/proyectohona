@@ -20,13 +20,12 @@ namespace Presentation.Controllers.Administrator
         public static string counter;
         private readonly IConfiguration _configuration;
         string connectionString = "";
-        TypeRoomModel typeRoomModel;
 
         public AdministratorManageRoomsController(IConfiguration configuration)
         {
             _configuration = configuration;
             connectionString = _configuration.GetConnectionString("DefaultConnection");
-            typeRoomModel = new TypeRoomModel(connectionString);
+            
         }
 
         // GET: /<controller>/
@@ -35,13 +34,15 @@ namespace Presentation.Controllers.Administrator
             //*******//
             RepositoryTypeRoom repositoryTyperoom = new RepositoryTypeRoom(connectionString);
             IList<TypeRoom> typeRoom = repositoryTyperoom.GetAllTypeRoom();
+            TypeRoomModel typeRoomModel = new TypeRoomModel(connectionString);
             List<TypeRoomModel> typeroomModel = new List<TypeRoomModel>();
 
 
             for (int i = 0; i < typeRoom.Count; i++)
             {
-                typeRoomModel.description = typeRoom[i].description;
-                typeroomModel.Add(typeRoomModel);
+                TypeRoomModel typeRoomNew = new TypeRoomModel(connectionString);
+                typeRoomNew.description = typeRoom[i].description;
+                typeroomModel.Add(typeRoomNew);
             }
             return View(typeroomModel);
         }//
@@ -101,12 +102,12 @@ namespace Presentation.Controllers.Administrator
             List<TypeRoomModel> typeroomModel = new List<TypeRoomModel>();
 
             for (int i = 0; i < typeRoom.Count; i++)
-            {                
+            {
                 TypeRoomModel typeRoomNew = new TypeRoomModel(connectionString);
                 typeRoomNew.description = typeRoom[i].description;
                 typeroomModel.Add(typeRoomNew);
             }
-            return View(typeroomModel);
+            return View(typeRoom);
         }
 
 
