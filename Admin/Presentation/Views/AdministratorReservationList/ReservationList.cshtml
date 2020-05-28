@@ -1,4 +1,4 @@
-﻿
+﻿@model List<Presentation.Models.ReservationModel>
 @{
     ViewData["Title"] = "ReservationList";
 }
@@ -9,6 +9,33 @@
                 <br />
                 <h5> Lista de reservaciones </h5>
             </div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Identificación</th>
+                        <th>Habitación</th>
+                        <th>Cliente</th>
+                        <th>Monto</th>
+                        <th>Fecha llegada</th>
+                        <th>Fecha de salida</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var reservation in Model)
+                    {
+                        <tr>
+                            <td>@reservation.id</td>
+                            <td>@reservation.idroom</td>
+                            <td>@reservation.idclient</td>
+                            <td>@reservation.amount</td>
+                            <td>@reservation.arrivaldate</td>
+                            <td>@reservation.departuredate</td>
+                            <td><input type="button" class="consult" value="Ver" /></td>
+                            <td><input type="button" class="delete" value="Eliminar" /></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
