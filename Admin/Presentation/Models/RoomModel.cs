@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Presentation.Models
 {
-    public class RoomModel:Room
+    public class RoomModel
     {
 
     }

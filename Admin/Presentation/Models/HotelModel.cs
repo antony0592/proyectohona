@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Presentation.Models
 {
-    public class HotelModel:Hotel
+    public class HotelModel
     {
         
 
