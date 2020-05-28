@@ -16,8 +16,8 @@ namespace Data
             this.connString = connString;
         }//Fin del constructor.
 
-        
-       public List<TypeRoom> GetAllTypeRoom()
+
+        public List<TypeRoom> GetAllTypeRoom()
         {
 
             List<TypeRoom> typeRoom = new List<TypeRoom>();
@@ -78,7 +78,7 @@ namespace Data
             return typeRoom;
         }
 
-       
+
 
         public void UpdateTypeRoom(string description, string amount, string urlimage, int descriptionType)
         {
