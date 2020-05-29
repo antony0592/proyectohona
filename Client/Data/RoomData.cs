@@ -54,6 +54,12 @@ namespace Data
             return room;
         }
 
+        public List<Room> GetAllRoom()
+        {
+            List<Room> rooms = new List<Room>();
+            return rooms;
+        }
+
         public List<Room> GetsearchroomRecomendation(string date1, string date2, int typeroomparameter)
         {
             List<Room> room = new List<Room>();

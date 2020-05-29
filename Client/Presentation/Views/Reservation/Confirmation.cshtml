@@ -1,6 +1,9 @@
 ﻿
 @{
     ViewData["Title"] = "Confirmacion";
+    var reservation = ViewBag.Reservation;
+    var client = ViewBag.Client;
+    var sendMail = ViewBag.Email;
 }
 
     <div class="container">
@@ -8,8 +11,12 @@
         <h5 class="titulopagina">Reserva en linea</h5>
         <div class="row w-75">
             <div class="col-12">
-                <p>Reservación realizada</p>
-                <p>Gracias</p>
+                <h2>Reservación realizada</h2>
+                <h3>Gracias @client.name</h3>
+                <h4>Datos reservación:</h4>
+                <h5>
+                    @sendMail.action;
+                </h5>
             </div>
         </div>
     </div>

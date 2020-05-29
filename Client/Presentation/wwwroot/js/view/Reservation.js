@@ -67,7 +67,10 @@ $(document).ready(function () {
                 $(this).closest(".modal-body").find("img#loader").hide();
                 $("#formpay").show();
                 $("#clientemailinpaypal").html($("#clientemail").val());
-                $("#clientnameinpaypal").html($("#clientename").val());
+                $("#clientnameinpaypal").html($("#clientname").val());
+                $("#totalfinalpaypal").html($("#totalamount").val());
+                //$("#totalfinalpaypal").html('000');
+
             });
         }
     });
@@ -89,7 +92,6 @@ function isNull(object) {
     }
     return inWhite;
 }
-
 
 $(document).ready(function () {
     $("#searchroom").on("click", function (e) {
@@ -115,7 +117,7 @@ $(document).ready(function () {
                             "<td>" + result[i].quantityperson + "</td>" +
                             "<td>" + result[i].quantitybed + "</td>" +
                             "<td>" + result[i].amount + "</td>" +
-                            "<td><button class='btn btn-success btn - lg' type='submit'>Reservar</button></td>" +
+                            '<td><button class="btn btn-success btn-lg" type="button" onclick="return GetById(\'' + result[i].id + '\')">Reservar</button></td>' +
                             "<tr>" +
                             $("#bodytable").append(tr);
                         if (result[i].idtyperoom == $('#typeroomcb').val()) {
@@ -145,8 +147,6 @@ $(document).ready(function () {
     });
 });
 
-
-
 $(document).ready(function () {
     $("#gopay").on("click", function (e) {
         e.preventDefault();
@@ -159,8 +159,93 @@ $(document).ready(function () {
             //data: dataObject,
             success: function (result) { },
             error: function (errorMessage) {
-                alert(errorMessage.responseText);
+               // alert(errorMessage.responseText);
             }
         });
     });
 });
+
+function GetById(id)     {
+
+    var arrivaldate = document.getElementById("arrivaldate").value;
+    var departuredate = document.getElementById("departuredate").value;
+
+    localStorage.clear();
+    localStorage.setItem("arrivaldate", arrivaldate);
+    localStorage.setItem("departuredate", departuredate);
+    localStorage.setItem("idroom", id);
+
+    $.ajax({
+        url: "/Reservation/GetRoomById",
+        type: "GET",
+        data: { 'id': id },
+        contentType: "application/json;charset=utf-8",
+        dataType: "json",
+        //data: dataObject,
+        success: function (result) {
+
+            var url = 'Data/'+result;
+            window.location.href = url;
+
+            
+        
+        },
+        error: function (errorMessage) {
+            //alert(errorMessage.responseText);
+        }
+    });
+}
+
+$(document).ready(function () {
+
+    if (localStorage.getItem("arrivaldate") && localStorage.getItem("departuredate"))
+    {
+        var arrivaldate = localStorage.getItem("arrivaldate");
+        var departuredate = localStorage.getItem("departuredate");
+        var datequantity = new Date(departuredate).getDate() - new Date(arrivaldate).getDate();
+        $("#arrivaldateF").val(arrivaldate);
+        $("#departuredateF").val(departuredate);
+        $("#days").val(datequantity);        
+        $("#totalamount").val($("#dayamount").val() * datequantity );
+        $("#idroomF").val(localStorage.getItem("idroom") );
+    }
+
+    
+
+});
+
+$(document).ready(function () {
+
+    $('form').on('click', '#PayConfirmation', function (e) {
+        e.preventDefault();
+        var cvv = $("#cvv").val();
+
+        if (cvv.trim() == "") {
+            $("#paypalerror2").html("Debe de llenar todos los datos");
+        } else {
+            $("#formpay").hide();
+            $(this).closest(".modal-body").append("<img id='loader' src='/images/loader.gif' />");
+            $(this).animate({
+                opacity: 0.5
+            }, 2000, function () {
+                $(this).closest(".modal-body").find("img#loader").hide();
+                    $("#message").html("Pago Realizado con exito");
+                    $("#payment").hide();
+                    
+                    $("#paymentModal").modal("hide");
+                    $("#paymentConfirmation").show();
+            });
+           
+        }
+    });
+});
+
+$(document).ready(function () { $("#paymentConfirmation").hide(); });
+
+
+
+
+
+
+
+

@@ -8,19 +8,23 @@ namespace Business
 {
     public class TypeRoomBusiness
     {
-        private TypeRoomData typeRoom;
+        private TypeRoomData typeRoomData;
 
         public TypeRoomBusiness(String connString)
         {
-            this.typeRoom = new TypeRoomData(connString);
+            this.typeRoomData = new TypeRoomData(connString);
         }//Fin del constructor.
 
 
         public List<TypeRoom> GetAllTypeRoom()
         {
-            return this.typeRoom.GetAllTypeRoom();
+            return this.typeRoomData.GetAllTypeRoom();
         }
 
+        public TypeRoom GetTypeRoomByIdRoom(int id)
+        {
+            return typeRoomData.GetTypeRoomByIdRoom(id);
+        }
     }
 }
 

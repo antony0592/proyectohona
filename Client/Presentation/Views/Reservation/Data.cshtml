@@ -1,10 +1,6 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Datos";
-    var reservationCost = ViewBag.ReservationCost;
-    var reservationtyperoom = ViewBag.ReservationTypeRoom;
-    var roomdescription = ViewBag.Reservationroomdescription;
-    var urlimages = ViewBag.Reservationurlimage;
+    var typeRoom = ViewBag.TypeRoom;
 }
 
 <div class="container">
@@ -13,54 +9,94 @@
     <br />
     <div class="row w-75">
         <div class="col-4">
-            <h6>Habitacion @reservationtyperoom disponible</h6>
+            <h6>Habitacion <small>@typeRoom.description</small>  </h6>
             <div class="img">
-                <img src="@urlimages" class="img-fluid">
+                <img src="@typeRoom.urlimage" class="img-fluid">
             </div>
         </div>
         <div class="col-8">
-            <br />
-            <p>
-                @roomdescription
-            </p>
+            <div class="row">
+                <div class="col-12">
+                    <p>
+                        @typeRoom.descriptiontyperoom
+                    </p>
+                </div>
+                <div class="col-6"><h6> <small>Cantidad de camas: @typeRoom.quantitybed</small></h6></div>
+                <div class="col-6"><h6> <small>Capacidad para @typeRoom.quantityperson persona(s)</small> </h6></div>
+                <div class="col-12"><h5 style="color:red">Monto de su reservación por día:  <i class="fas fa-dollar-sign">@typeRoom.amount</i>  </h5></div>
+            </div>
         </div>
+
         <div class="col-12">
             <div>
-                <br />
-                <h5 style="color:red">Monto de su reservación:  <i class="fas fa-dollar-sign">@reservationCost</i>  </h5>
+                    <h3 id="welcomeback" style="color:blue"></h3>
+                    <div class="row">
+                        <div class="col-12">
+                            <form autocomplete="false" action="/Reservation/Confirmation">
+                                
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h5>Datos personales</h5>
+                                    </div>
+                                    <div class="col-6">
+                                        <label for="idnumber" class="col-form-label">Identificación:</label>
+                                        <input type="number" pattern="/[^0-9]" maxlength="9" minlength="9" min="100000000" placeholder="123456789" class="form-control" name="identification" id="idnumber" required>
+                                    </div>
+                                    <div class="col-6">
+                                        <label for="email" class="col-form-label">Correo:</label>
+                                        <input type="email" class="form-control" id="clientemail" name="email" required>
+                                    </div>
+                                    <div class="col-6">
+                                        <label for="name" class="col-form-label">Nombre:</label>
+                                        <input type="text" class="form-control" id="clientname" name="name" required>
+                                    </div>
+                                    <div class="col-6">
+                                        <label for="lastname" class="col-form-label">Apellidos:</label>
+                                        <input type="text" class="form-control" id="clientlastname" name="lastname" required>
+                                    </div>
 
-                <h3 id="welcomeback" style="color:blue"></h3>
-                <form>
-                    <div class="form-group row">
-                        <label for="idnumber" class="col-sm-2 col-form-label">Identificación:</label>
-                        <div class="col-sm-10">
-                            <input type="number" pattern="/[^0-9]" maxlength="9" minlength="9" min="100000000" placeholder="123456789" class="form-control" id="idnumber" required>
+                                    <div class="col-12">
+                                        <h5>Datos de reservación</h5>
+                                    </div>
+                                    <div class="col-6">
+                                        <label for="idroom">Id </label>
+                                        <input type="number" class="form-control" id="idroomF" name="idroom" value="" readonly required hidden>
+                                    </div>
+                                    <div class="col-6">
+                                        <label for="arrivaldate">Fecha de llegada </label>
+                                        <input type="date" class="form-control" id="arrivaldateF" name="arrivaldate" readonly required>
+                                    </div>
+                                    <div class="col-6">
+                                        <label for="departuredate">Fecha de salida </label>
+                                        <input type="date" class="form-control" id="departuredateF" name="departuredate" readonly required>
+                                    </div>
+                                    <div class="col-4">
+                                        <label for="days" class="col-form-label">Cantidad de dias:</label>
+                                        <input type="number" class="form-control" id="days" readonly required>
+                                    </div>
+                                    <div class="col-4">
+                                        <label for="dayamount" class="col-form-label">Monto diario:</label>
+                                        <input type="number" class="form-control" id="dayamount" value="@typeRoom.amount" readonly required>
+                                    </div>
+                                    <div class="col-4">
+                                        <label for="totalamount" class="col-form-label">Monto total:</label>
+                                        <input type="number" class="form-control" id="totalamount" name="amount" readonly required>
+                                    </div>
+                                    <div class="col-4">
+                                        <label for="" class="col-form-label">Pago con Paypal:</label>
+                                        <br />
+                                        <button id="payment" data-toggle="modal" class="btn btn-primary" type="submit">Procesar pago</button>
+                                        <button id="paymentConfirmation" class="btn btn-warning" type="submit">Finalizar Compra</button>
+                                        <p id="message" style="color:red"></p>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label for="name" class="col-sm-2 col-form-label">Nombre</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="clientname" required>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="lastname" class="col-sm-2 col-form-label">Apellidos</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="clientlastname" required>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="email" class="col-sm-2 col-form-label">Correo</label>
-                        <div class="col-sm-10">
-                            <input type="email" class="form-control" id="clientemail" required>
-                        </div>
-                    </div>
-
-                    <button id="payment" data-toggle="modal" class="btn btn-primary" type="submit">Procesar pago</button>
-                    <a href="/Reservation/Home" class="btn btn-danger" type="button">Cancelar</a>
-                    <br />
+                    <br /><br />    
+                <a href="/Reservation/Home" class="btn btn-danger" type="button">Cancelar</a>
+                    
                     <label id="paymenterror"></label>
-                </form>
             </div>
         </div>
     </div>
@@ -106,7 +142,7 @@
                     </div>
                 </form>
 
-                <form id="formpay" style="display:none" action="/Reservation/Confirmation">
+                <form id="formpay" style="display:none">
                     <div class="row">
                         <div class="col-12">
                             <h3> Hotel Patito</h3>
@@ -116,7 +152,7 @@
                             <h4><img src="~/images/PayPal-Logo.png" id="paypallogo" /></h4>
                         </div>
                         <div class="col-6 text-right">
-                            <h4><i class="fas fa-dollar-sign">@reservationCost</i></h4>
+                            <h4><i id="totalfinalpaypal" class="fas fa-dollar-sign"></i></h4>
                         </div>
                         <div class="col-12 separatorline2"></div>
                         <div class="col-12 text-left">
@@ -159,14 +195,14 @@
                             <input type="number" maxlength="4" min="0000" placeholder="MM/AA" required />
                         </div>
                         <div class="col-6 text-right">
-                            <input type="number" maxlength="4" min="0000" placeholder="CVV" required />
+                            <input id="cvv" type="number" maxlength="4" min="0000" placeholder="CVV" required />
                             <i class="far fa-credit-card"></i>
                         </div>
                     </div>
                     <br />
                     <br />
-
-                    <button type="submit" class="btn btn-primary">Pagar ahora</button>
+                    <label id="paypalerror2" style="color:red"></label>
+                    <button id="PayConfirmation" type="submit" class="btn btn-primary">Pagar ahora</button>
                 </form>
             </div>
             <div class="modal-footer">

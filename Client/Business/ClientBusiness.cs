@@ -24,7 +24,18 @@ namespace Business
 
         public Client GetClientById(int id)
         {
-            return this.clientData.GetAllClients().Find(c=>c.identification.Equals(id));
+            return this.clientData.GetAllClients().Find(c=>c.id.Equals(id));
         }
+
+        public Client GetClientByidentification(int identification)
+        {
+            return this.clientData.GetAllClients().Find(c => c.identification.Equals(identification));
+        }
+        public Client AddClient(Client client)
+        {
+            return this.clientData.AddClient(client);
+        }
+        
+
     }
 }

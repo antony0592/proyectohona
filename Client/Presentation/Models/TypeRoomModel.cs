@@ -29,6 +29,11 @@ namespace Presentation.Models
         {
             return typeroombusiness.GetAllTypeRoom();
         }
+
+        internal TypeRoom GetTypeRoomByIdRoom(int id)
+        {
+            return typeroombusiness.GetTypeRoomByIdRoom(id);
+        }
     }
 
 }
