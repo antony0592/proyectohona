@@ -3,9 +3,7 @@
     $("#wrapper").toggleClass("toggled");
 });
 
-$(document).ready(function () {
-    $('#summernote').summernote();
-});
+
 
 /*Efecto Titulo*/
 $(function () {

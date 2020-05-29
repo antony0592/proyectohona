@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -15,6 +16,9 @@ namespace Data
             this.connString = connString;
         }//Fin del constructor.
 
-       // public List<SearchAvailabilityResult> SearchAvailability
+        //public List<SearchAvailabilityResult> SearchAvailability() 
+        //{
+
+        }
     }
 }

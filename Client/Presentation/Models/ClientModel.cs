@@ -24,5 +24,15 @@ namespace Presentation.Models
         {
             return clientBusiness.GetClientById(id);
         }
+        public Client GetClientByidentification(int identification)
+        {
+            return clientBusiness.GetClientByidentification(identification);
+        }
+        public Client AddClient(Client client)
+        {
+            return clientBusiness.AddClient(client);
+        }
+        
+
     }
 }
