@@ -91,7 +91,7 @@ namespace Presentation.Controllers
                     name = clientResult.name,
                     lastname = clientResult.lastname,
                     identification = clientResult.identification,
-                    action =    "Su reserva ha sido exitosa, para el día "+reservation.arrivaldate +
+                    action =    ".Su reserva ha sido exitosa, para el día "+reservation.arrivaldate +
                                 " y hasta "+reservation.departuredate+
                                 " por un monto total de " + reservation.amount +" dolares."
                  };
