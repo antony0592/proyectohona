@@ -20,8 +20,7 @@ namespace Presentation.Models
                 mail.From = new MailAddress("proyectolkn2020@gmail.com");//correo que envia el mensaje
                 mail.To.Add(email);
                 mail.Subject = "RESERVAS HOTEL PATITO";
-                mail.Body = "Señor/a " + name + " " + lastname + " identidad: " + identification +
-                " su solicitud " + action;
+                mail.Body = "Señor/a " + name + " " + lastname + " identidad: " + identification + action;
                 mail.IsBodyHtml = true;
                 mail.Priority = MailPriority.Normal;
 
