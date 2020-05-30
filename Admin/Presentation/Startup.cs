@@ -31,6 +31,10 @@ namespace Presentation
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+           
+
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -55,7 +59,22 @@ namespace Presentation
            .AddEntityFrameworkStores<ApplicationDbContext>()
            .AddDefaultTokenProviders();
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+        .AddRazorPagesOptions(options =>
+        {
+            options.AllowAreas = true;
+            options.Conventions.AuthorizeAreaFolder("Identity", "/Account/Manage");
+            options.Conventions.AuthorizeAreaPage("Identity", "/Account/Logout");
+        });
+
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = $"/Identity/Account/Login";
+                options.LogoutPath = $"/Identity/Account/Logout";
+                options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
+            });
+
+           // services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             /*services.AddMvc().AddRazorPagesOptions(options => {
                 options.Conventions.AddAreaPageRoute("Identity", "/Account/Login", "");
@@ -68,6 +87,7 @@ namespace Presentation
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider)
         {
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -92,6 +112,8 @@ namespace Presentation
             });
             // Identity / Account / Login
              //CreateRoles(serviceProvider).Wait();
+
+
         }
 
         private async Task CreateRoles(IServiceProvider serviceProvider)

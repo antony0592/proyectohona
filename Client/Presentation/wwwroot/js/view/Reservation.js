@@ -202,7 +202,9 @@ $(document).ready(function () {
     {
         var arrivaldate = localStorage.getItem("arrivaldate");
         var departuredate = localStorage.getItem("departuredate");
-        var datequantity = new Date(departuredate).getDate() - new Date(arrivaldate).getDate();
+        var resta = new Date(departuredate).getTime() - new Date(arrivaldate).getTime();
+        var datequantity = Math.round(resta / (1000 * 60 * 60 * 24));
+
         $("#arrivaldateF").val(arrivaldate);
         $("#departuredateF").val(departuredate);
         $("#days").val(datequantity);        
