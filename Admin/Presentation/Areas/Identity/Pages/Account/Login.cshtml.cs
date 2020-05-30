@@ -64,7 +64,7 @@ namespace Presentation.Areas.Identity.Pages.Account
 
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
 
-            ReturnUrl = returnUrl;
+            ReturnUrl = "Identity/"+returnUrl;
         }
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)

@@ -58,10 +58,7 @@
                                     <div class="col-12">
                                         <h5>Datos de reservación</h5>
                                     </div>
-                                    <div class="col-6">
-                                        <label for="idroom">Id </label>
-                                        <input type="number" class="form-control" id="idroomF" name="idroom" value="" readonly required hidden>
-                                    </div>
+
                                     <div class="col-6">
                                         <label for="arrivaldate">Fecha de llegada </label>
                                         <input type="date" class="form-control" id="arrivaldateF" name="arrivaldate" readonly required>
@@ -88,6 +85,10 @@
                                         <button id="payment" data-toggle="modal" class="btn btn-primary" type="submit">Procesar pago</button>
                                         <button id="paymentConfirmation" class="btn btn-warning" type="submit">Finalizar Compra</button>
                                         <p id="message" style="color:red"></p>
+                                    </div>
+                                    <div class="col-6">
+                                        @*<label for="idroom">Id </label>*@
+                                        <input type="number" class="form-control" id="idroomF" name="idroom" value="" readonly required hidden>
                                     </div>
                                 </div>
                             </form>

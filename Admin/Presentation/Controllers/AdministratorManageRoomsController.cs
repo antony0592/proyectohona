@@ -44,6 +44,7 @@ namespace Presentation.Controllers.Administrator
                 typeRoomNew.description = typeRoom[i].description;
                 typeroomModel.Add(typeRoomNew);
             }
+
             return View(typeroomModel);
         }//
 
