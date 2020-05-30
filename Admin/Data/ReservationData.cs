@@ -37,7 +37,8 @@ namespace Data
                         idclient = Convert.ToInt32(sqlDataReader["idclient"]),
                         amount = Convert.ToInt32(sqlDataReader["amount"]),
                         arrivaldate = Convert.ToDateTime(sqlDataReader["arrivaldate"]),
-                        departuredate = Convert.ToDateTime(sqlDataReader["departuredate"])
+                        departuredate = Convert.ToDateTime(sqlDataReader["departuredate"]),
+                        creationdate= Convert.ToDateTime(sqlDataReader["creationdate"])
                     });
                 }
                 connection.Close();
