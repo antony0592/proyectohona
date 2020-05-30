@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Domain;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -35,9 +36,16 @@ namespace Presentation.Controllers.Administrator
             return View();
         }
 
-        public JsonResult SearchRoomAvailability(string date1,string date2,int typeRoom) 
+        public JsonResult SearchRoomAvailability(string date1,string date2,int typeroom) 
         {
-            return Json("");
+            AdministratorAvailabilityModel availabilitymodel = new AdministratorAvailabilityModel(connectionString);
+            IList<SearchAvailabilityResult> searchAvailability = availabilitymodel.Getsearchroom(date1, date2, typeroom);
+            return Json(searchAvailability);
         }
+
+
+
+
+
     }
 }
