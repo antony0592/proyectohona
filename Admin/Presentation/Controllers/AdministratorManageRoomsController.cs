@@ -50,7 +50,7 @@ namespace Presentation.Controllers.Administrator
         public JsonResult GetManageRooms(string description)
         {
             RepositoryTypeRoom repositoryTyperoom = new RepositoryTypeRoom(connectionString);
-            List<TypeRoom> typeRoom = repositoryTyperoom.GetAllTypeRoom();            
+            List<TypeRoom> typeRoom = repositoryTyperoom.GetAllTypeRoom();           
          
             TypeRoom typeRoomNew = new TypeRoom();
             typeRoomNew = typeRoom.Find(r=>r.description==description);
@@ -61,7 +61,6 @@ namespace Presentation.Controllers.Administrator
         [HttpPost]
         public ActionResult Update(string file, string descriptionArea, string amount)
         {
-
             string destinationFile = "/images/TipoHabitacion/" + file;
             Console.WriteLine(destinationFile);
             String urlimage = "/images/TipoHabitacion/ " + file;
@@ -80,17 +79,14 @@ namespace Presentation.Controllers.Administrator
                 }
                 if (file==null || file=="")
                 {
-                    urlimage = typeRoom[i].urlimage;
-                    
+                    urlimage = typeRoom[i].urlimage;                    
                 }
                 TypeRoomModel typeRoomNew = new TypeRoomModel(connectionString);
                 typeRoomNew.description = typeRoom[i].description;
                 typeroomModel.Add(typeRoomNew);
-            }
-           
+            }           
             repositoryTyperoom.UpdateTypeRoom(descriptionArea, amount, urlimage, idTypeRoom);
             return View("ManageRooms", typeroomModel);
-
         }
 
 

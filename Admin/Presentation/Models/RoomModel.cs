@@ -8,8 +8,19 @@ using System.Threading.Tasks;
 
 namespace Presentation.Models
 {
-    public class RoomModel
+    public class RoomModel:Room
     {
+        RoomBusiness roomBusiness;
+
+        public RoomModel(string connectionString)
+        {
+            this.roomBusiness = new RoomBusiness(connectionString);
+        }
+
+        public List<Room> GetAllRoom()
+        {
+            return roomBusiness.GetAllRoom();
+        }
 
     }
 }

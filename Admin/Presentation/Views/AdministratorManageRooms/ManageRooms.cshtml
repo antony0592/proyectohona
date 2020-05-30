@@ -35,14 +35,14 @@
         </div>
 
         <form action="/AdministratorManageRooms/Update" method="post">
-            <input type="text" id="amount" name="amount" ><br><br>
-            
+            <input type="text" id="amount" name="amount"><br><br>
+
 
             @*<div id="summernote" name="summernote"></div>
-        <script>
-            $("#summernote").summernote("editor.pasteHTML", "<p>@descriptionType</p>");
-            var hola = summernote.activeEditor.selection.getContent();
-        </script>*@
+                <script>
+                    $("#summernote").summernote("editor.pasteHTML", "<p>@descriptionType</p>");
+                    var hola = summernote.activeEditor.selection.getContent();
+                </script>*@
             <textarea id="descriptionArea" name="descriptionArea" rows="8" cols="50"></textarea>
 
             <div class="col-12">
@@ -52,7 +52,7 @@
                         <img src="~/images/Hotel_Patito-02.svg" id="image" name="image" alt="imagenHotelPatito" class="d-block w-100 img" />
 
                         <h6>Imagen Actual</h6>
-                        
+
                     </div>
                     <div class="custom-file">
                         <input type="file" class="custom-file-input" name="file" id="file">
@@ -60,13 +60,14 @@
                         <label class="custom-file-label" for="customFile">Choose file</label>
                     </div>
                     <button id="descriptionB" type="submit" class="btn-group">Guardar</button>
+                </div>
+            </div>
         </form>
         <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="/Home/Index" method="post" id="logoutForm" class="navbar-right">
             <span class="navbar-text" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"></span>
             <button type="submit" class="btn navbar-btn navbar-link">Cancelar</button>
         </form>
     </div>
-
 
 </div>
 
@@ -75,44 +76,44 @@
 <script language="javascript" type="text/javascript">
 
     $(document).ready(function () {
-    $("#description").on("click", function (e) {
-        e.preventDefault();
+        $("#description").on("click", function (e) {
+            e.preventDefault();
 
-      var dataObject = JSON.stringify({
+            var dataObject = JSON.stringify({
                 'input': $('#description').val()
             });
 
-        $.ajax({
-            url: "/AdministratorManageRooms/GetManageRooms",
-            type: "GET",
-            data: { 'description': $('#description').val()},
-            contentType: "application/json;charset=utf-8",
-            dataType: "json",
-            //data: dataObject,
-            success: function (result) {
-               console.log(result);
-               if (result) {
-                   $("#amount").val(result.amount);
-                   $("#descriptionArea").html(" " + result.descriptiontyperoom + " ");
-                   $("#image").attr("src",result.urlimage);
-                   $("#alert").html("Hemos encontrado esta habitación para ti:");
-                }
+            $.ajax({
+                url: "/AdministratorManageRooms/GetManageRooms",
+                type: "GET",
+                data: { 'description': $('#description').val() },
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                //data: dataObject,
+                success: function (result) {
+                    console.log(result);
+                    if (result) {
+                        $("#amount").val(result.amount);
+                        $("#descriptionArea").html(" " + result.descriptiontyperoom + " ");
+                        $("#image").attr("src", result.urlimage);
+                        $("#alert").html("Hemos encontrado esta habitación para ti:");
+                    }
 
-               if (!result) {
+                    if (!result) {
                         $("#amount").html("-----");
                         $("#descriptionArea").html("-----");
                         $("#image").html("-----");
                         $("#alert").html("NO HEMOS ENCONTRADO TU HABITACIÓN PERO ENCONTRAMOS ESTAS OTRAS:");
                     }
 
-            },
+                },
 
                 error: function (errorMessage) {
                     alert(errorMessage.responseText);
                 }
             });
+        });
     });
-});
 
 
 </script>
