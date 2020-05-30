@@ -17,7 +17,6 @@ namespace Data
 
         public Hotel GetAllHotel()
         {
-
             Hotel hotel = new Hotel();
 
             using (SqlConnection connection = new SqlConnection(connString))
@@ -45,6 +44,7 @@ namespace Data
             }
             return hotel;
         }
-    }
-}
+
+    }//class
+}//namespace
 
