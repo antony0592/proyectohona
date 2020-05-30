@@ -1,6 +1,14 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "State";
+
+    List<TypeRoomModel> typeroomlist = ViewBag.typeroom;
+    List<RoomModel> roomlist = ViewBag.room;
+    List<ReservationModel> reservationlist = ViewBag.reservation;
+
+    List<TypeRoomModel> typeroomlistfree = ViewBag.typeroomfree;
+    List<RoomModel> roomlistfree = ViewBag.roomfree;
+    List<ReservationModel> reservationlistfree = ViewBag.reservationfree;
+
 }
 <div class="container">
     <div class="row">
@@ -8,7 +16,79 @@
             <div>
                 <br />
                 <h5> Estado del hotel </h5>
+                <div>
+                    <input class="btn btn-primary" value="Export" onclick="fnExcelReport();" />
+                    <iframe id="txtArea1" style="display:none"></iframe>
+                </div>
+                <table class="table" id="headerTable">
+                    <thead>
+                        <tr>
+                            <th>Numero de Habitación</th>
+                            <th>Tipo de Habitación</th>
+                            <th>Hoy está ocupada la habitación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < reservationlist.Count(); i++)
+                        {
+                            <tr>
+                                <td class="id">@roomlist[i].number</td>
+                                <td class="id">@typeroomlist[i].description</td>
+                                <td class="id">@reservationlist[i].arrivaldate</td>
+                            </tr>
+
+                        }
+
+                        @for (int j = 0; j < reservationlistfree.Count(); j++)
+                        {
+                            <tr>
+                                <td class="id">@roomlistfree[j].number</td>
+                                <td class="id">@typeroomlistfree[j].description</td>
+                                
+                            </tr>
+
+                        }
+
+
+                    </tbody>
+                </table>
+
+
             </div>
         </div>
     </div>
 </div>
+@section scripts{
+    <script>
+        function fnExcelReport() {
+            var tab_text = "<table border='2px'><tr bgcolor='#87AFC6'>";
+            var textRange; var j = 0;
+            tab = document.getElementById('headerTable'); // id of table
+
+            for (j = 0; j < tab.rows.length; j++) {
+                tab_text = tab_text + tab.rows[j].innerHTML + "</tr>";
+            }
+
+            tab_text = tab_text + "</table>";
+            tab_text = tab_text.replace(/<A[^>]*>|<\/A>/g, "");//remove if u want links in your table
+            tab_text = tab_text.replace(/<img[^>]*>/gi, ""); // remove if u want images in your table
+            tab_text = tab_text.replace(/<input[^>]*>|<\/input>/gi, ""); // reomves input params
+
+            var ua = window.navigator.userAgent;
+            var msie = ua.indexOf("MSIE ");
+
+            if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./))      // If Internet Explorer
+            {
+                txtArea1.document.open("txt/html", "replace");
+                txtArea1.document.write(tab_text);
+                txtArea1.document.close();
+                txtArea1.focus();
+                sa = txtArea1.document.execCommand("SaveAs", true, "Say Thanks to Sumit.xls");
+            }
+            else                 //other browser not tested on IE 11
+                sa = window.open('data:application/vnd.ms-excel,' + encodeURIComponent(tab_text));
+
+            return (sa);
+        }
+    </script>
+}

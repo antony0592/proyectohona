@@ -20,5 +20,8 @@ namespace Business
         {
             return this.hotelData.GetAllHotel();
         }
+
+       
+
     }
 }
