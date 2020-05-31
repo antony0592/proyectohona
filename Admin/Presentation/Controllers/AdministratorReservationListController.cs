@@ -93,8 +93,7 @@ namespace Presentation.Controllers.Administrator
                         }                            
                     }
                 }
-            }
-            
+            }            
             ViewBag.paymentcard = paymentcardModel;
             ViewBag.reservation = reservationModel;
             ViewBag.typeroom = typeRoomModel;
@@ -102,7 +101,14 @@ namespace Presentation.Controllers.Administrator
             return View();
         }
 
-       
+     
+        public ActionResult DeleteReservationList(int id)
+        {
+            ReservationModel repositoryReservation = new ReservationModel(connectionString);
+            Console.WriteLine(id);
+            repositoryReservation.DeleteReservationList(id);
+            return View();
+        }
         
     }
 }

@@ -30,19 +30,19 @@
                     <tbody>
                         @for (int i = 0; i < reservation.Count(); i++)
                         {
-                            <tr>
-                                <td class="creationdate">@reservation[i].creationdate</td>
-                                <td class="id">@reservation[i].id</td>
-                                <td class="name">@client[i].name</td>
-                                <td class="lastname">@client[i].lastname</td>
-                                <td class="email">@client[i].email</td>
-                                <td class="number">@paymentcard[i].number</td>
-                                <td class="arrivaldate">@reservation[i].arrivaldate</td>
-                                <td class="departuredate">@reservation[i].departuredate</td>
-                                <td class="description">@typeroom[i].description</td>
-                                <td id="consult" class="consult" onclick="cambiaVisibilidad()">Ver</td>
-                            </tr>
-
+                        <tr>
+                            <td class="creationdate">@reservation[i].creationdate</td>
+                            <td class="id">@reservation[i].id</td>
+                            <td class="name">@client[i].name</td>
+                            <td class="lastname">@client[i].lastname</td>
+                            <td class="email">@client[i].email</td>
+                            <td class="number">@paymentcard[i].number</td>
+                            <td class="arrivaldate">@reservation[i].arrivaldate</td>
+                            <td class="departuredate">@reservation[i].departuredate</td>
+                            <td class="description">@typeroom[i].description</td>
+                            <td id="consult" class="consult" onclick="cambiaVisibilidad()">Ver</td>
+                            <td href="#" id="delete" class="delete">Eliminar</td>
+                        </tr>
                         }
                     </tbody>
                 </table>
@@ -64,91 +64,3 @@
     </div>
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-<script>
-    window.onload = function () {
-        // creamos los eventos para cada elemento con la clase "boton"
-        let elementos = document.getElementsByClassName("consult");
-        for (let i = 0; i < elementos.length; i++) {
-            // cada vez que se haga clic sobre cualquier de los elementos,
-            // ejecutamos la función obtenerValores()
-            elementos[i].addEventListener("click", obtenerValores);
-        }
-
-    }
-
-    // funcion que se ejecuta cada vez que se hace clic
-    function obtenerValores(e) {
-        var creationdate = "";
-        var id = "";
-        var name = "";
-        var lastname = "";
-        var email = "";
-        var number = "";
-        var arrivaldate = "";
-        var departuredate = "";
-        var description = "";
-
-    // vamos al elemento padre (<tr>) y buscamos todos los elementos < td >
-        // que contenga el elemento padre
-        var elementosTD = e.srcElement.parentElement.getElementsByTagName("td");
-        // obtenemos cada uno de los valores y los ponemos en la variable "valores"
-        creationdate = elementosTD[0].innerHTML;
-        id = elementosTD[1].innerHTML;
-        name = elementosTD[2].innerHTML;
-        lastname = elementosTD[3].innerHTML;
-        email = elementosTD[4].innerHTML;
-        number = elementosTD[5].innerHTML;
-        arrivaldate = elementosTD[6].innerHTML;
-        departuredate = elementosTD[7].innerHTML;
-        description = elementosTD[8].innerHTML;
-        document.getElementById("creationdate").innerHTML += creationdate;
-        document.getElementById("id").innerHTML += id;
-        document.getElementById("name").innerHTML += name;
-        document.getElementById("lastname").innerHTML += lastname;
-        document.getElementById("email").innerHTML += email;
-        document.getElementById("number").innerHTML += number;
-        document.getElementById("arrivaldate").innerHTML += arrivaldate;
-        document.getElementById("departuredate").innerHTML += departuredate;
-        document.getElementById("description").innerHTML += description;
-        var params = {
-            creationdate: creationdate,
-            id: id,
-            arrivaldate: arrivaldate,
-            departuredate: departuredate
-        };
-        $.ajax({
-            url: "/AdministratorReservationList/GetManageReservation",
-            data: params,
-            type: 'GET',
-
-        });
-    }
-
-    function cambiaVisibilidad() {
-        var div1 = document.getElementById('principal');
-        var div2 = document.getElementById('getreservation');
-        if (div2.style.display == 'block') {
-            div2.style.display = 'none';
-            div1.style.display = 'block';
-
-        } else {
-            div2.style.display = 'block';
-            div1.style.display = 'none';
-        }
-    }
-
-    </script>
