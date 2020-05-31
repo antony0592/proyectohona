@@ -30,5 +30,12 @@ namespace Presentation.Models
             return this.reservationBusiness.GetAllReservationToday();
         }
 
+        public void DeleteReservationList(int id)
+        {
+           this.reservationBusiness.DeleteReservationList(id);
+        }
+
+        
+
     }
 }

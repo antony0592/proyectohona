@@ -75,5 +75,23 @@ namespace Data
             return reservation;
         }
 
+        public int DeleteReservationList(int id)
+        {
+            int resultToReturn;
+            using (SqlConnection connection = new SqlConnection(connString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand("DeleteReservation", connection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@id", id);
+
+                resultToReturn = command.ExecuteNonQuery();
+
+                //connection.Close();
+
+            }
+            return resultToReturn;
+        }
+
     }
 }
