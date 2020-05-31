@@ -64,7 +64,7 @@ namespace Presentation.Controllers.Administrator
         {
             string destinationFile = "/images/TipoHabitacion/" + file;
             Console.WriteLine(destinationFile);
-            String urlimage = "/images/TipoHabitacion/ " + file;
+            String urlimage = "/images/TipoHabitacion/" + file;
             String descriptionType = counter;
 
             RepositoryTypeRoom repositoryTyperoom = new RepositoryTypeRoom(connectionString);
