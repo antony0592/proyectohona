@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Actualizar";
+    List<RoomModel> room = (List<RoomModel>)ViewBag.room;
 }
 
 <!-- include summernote css/js -->
@@ -10,7 +11,7 @@
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote-lite.min.js"></script>
 
 <div class="container">
-    <div class="row">
+    <div style="display:none;" class="row" id="manageroom">
         <div class="col-12">
             <div>
                 <br />
@@ -68,52 +69,106 @@
             <button type="submit" class="btn navbar-btn navbar-link">Cancelar</button>
         </form>
     </div>
-
+    @* //////////////////////////////////////////////////////// *@
+    <div id="principal">
+        <div>
+            <br />
+            <h5> Administrar Habitaciones</h5>
+            <button id="updateRoom" type="submit" class="btn-group" >Modificar Habitación</button>
+        </div>
+        <div>
+            <br />
+            <h5>Standard</h5>
+        </div>
+        <table class="table table-striped table-bordered table-sm" id="tableTypeRoom">
+            <thead>
+                <tr>
+                    <th>Número de Habitación</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < room.Count(); i++)
+                {
+                    if (room[i].idtyperoom.Equals(2))
+                    {
+                <tr>
+                    <td class="creationdate">@room[i].number</td>
+                    @if (@room[i].state.Equals(1))
+                    {
+                        <td><input type="checkbox"></td>
+                    }
+                    else
+                    {
+                        <td><input type="checkbox" checked></td>
+                    }
+                </tr>
+                    }
+                }
+            </tbody>
+        </table>
+        <div>
+            <br />
+            <h5>Junior</h5>
+        </div>
+        <table class="table table-striped table-bordered table-sm" id="tableTypeRoom">
+            <thead>
+                <tr>
+                    <th>Número de Habitación</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < room.Count(); i++)
+                {
+                    if (room[i].idtyperoom.Equals(3))
+                    {
+                <tr>
+                    <td class="creationdate">@room[i].number</td>
+                    @if (@room[i].state.Equals(1))
+                    {
+                        <td><input type="checkbox"></td>
+                    }
+                    else
+                    {
+                        <td><input type="checkbox" checked></td>
+                    }
+                </tr>
+                    }
+                }
+            </tbody>
+        </table>
+        <div>
+            <br />
+            <h5>VIP</h5>
+        </div>
+        <table class="table table-striped table-bordered table-sm" id="tableTypeRoom">
+            <thead>
+                <tr>
+                    <th>Número de Habitación</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < room.Count(); i++)
+                {
+                    if (room[i].idtyperoom.Equals(4))
+                    {
+                <tr>
+                    <td class="creationdate">@room[i].number</td>
+                    @if (@room[i].state.Equals(1))
+                    {
+                        <td><input type="checkbox" ></td>
+                    }
+                    else
+                    {
+                        <td><input type="checkbox" checked></td>
+                    }
+                </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
 </div>
 
-
-
-<script language="javascript" type="text/javascript">
-
-    $(document).ready(function () {
-        $("#description").on("click", function (e) {
-            e.preventDefault();
-
-            var dataObject = JSON.stringify({
-                'input': $('#description').val()
-            });
-
-            $.ajax({
-                url: "/AdministratorManageRooms/GetManageRooms",
-                type: "GET",
-                data: { 'description': $('#description').val() },
-                contentType: "application/json;charset=utf-8",
-                dataType: "json",
-                //data: dataObject,
-                success: function (result) {
-                    console.log(result);
-                    if (result) {
-                        $("#amount").val(result.amount);
-                        $("#descriptionArea").html(" " + result.descriptiontyperoom + " ");
-                        $("#image").attr("src", result.urlimage);
-                        $("#alert").html("Hemos encontrado esta habitación para ti:");
-                    }
-
-                    if (!result) {
-                        $("#amount").html("-----");
-                        $("#descriptionArea").html("-----");
-                        $("#image").html("-----");
-                        $("#alert").html("NO HEMOS ENCONTRADO TU HABITACIÓN PERO ENCONTRAMOS ESTAS OTRAS:");
-                    }
-
-                },
-
-                error: function (errorMessage) {
-                    alert(errorMessage.responseText);
-                }
-            });
-        });
-    });
-
-
-</script>
