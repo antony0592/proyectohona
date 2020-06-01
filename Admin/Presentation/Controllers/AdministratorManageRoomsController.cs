@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using Domain;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -37,14 +34,27 @@ namespace Presentation.Controllers.Administrator
             TypeRoomModel typeRoomModel = new TypeRoomModel(connectionString);
             List<TypeRoomModel> typeroomModel = new List<TypeRoomModel>();
 
+            RoomModel room = new RoomModel(connectionString);
+            IList<Room> listRoom = room.GetAllRoom();
+            List<RoomModel> roomModel = new List<RoomModel>();
 
-            for (int i = 0; i < typeRoom.Count; i++)
+            for (int i = 0; i < listRoom.Count; i++)
             {
-                TypeRoomModel typeRoomNew = new TypeRoomModel(connectionString);
-                typeRoomNew.description = typeRoom[i].description;
-                typeroomModel.Add(typeRoomNew);
+                RoomModel roomNew = new RoomModel(connectionString);
+                roomNew.state = listRoom[i].state;
+                roomNew.number = listRoom[i].number;
+                roomNew.idtyperoom = listRoom[i].idtyperoom;
+                roomModel.Add(roomNew);  
             }
 
+            for (int j = 0; j < typeRoom.Count; j++)
+            {
+                TypeRoomModel typeRoomNew = new TypeRoomModel(connectionString);
+                typeRoomNew.description = typeRoom[j].description;
+                typeRoomNew.id = typeRoom[j].id;
+                typeroomModel.Add(typeRoomNew);
+            }
+            ViewBag.room = roomModel;
             return View(typeroomModel);
         }//
 
