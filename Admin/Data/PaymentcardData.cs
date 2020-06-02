@@ -34,7 +34,7 @@ namespace Data
                         id = Convert.ToInt32(sqlDataReader["id"]),
                         number = Convert.ToInt32(sqlDataReader["number"]),
                         idclient = Convert.ToInt32(sqlDataReader["idclient"]),
-                        date = Convert.ToDateTime(sqlDataReader["date"]),
+                        //date = Convert.ToDateTime(sqlDataReader["date"]),
                         cvv = Convert.ToInt32(sqlDataReader["cvv"]),
                         type = sqlDataReader["type"].ToString()
                     });

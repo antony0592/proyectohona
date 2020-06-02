@@ -38,6 +38,10 @@ namespace Presentation.Controllers.Administrator
             IList<Room> listRoom = room.GetAllRoom();
             List<RoomModel> roomModel = new List<RoomModel>();
 
+            ReservationModel reservation = new ReservationModel(connectionString);
+            IList<Reservation> listReservation = reservation.GetAllReservation();
+            List<ReservationModel> reservationModel = new List<ReservationModel>();
+
             for (int i = 0; i < listRoom.Count; i++)
             {
                 RoomModel roomNew = new RoomModel(connectionString);
@@ -46,7 +50,6 @@ namespace Presentation.Controllers.Administrator
                 roomNew.idtyperoom = listRoom[i].idtyperoom;
                 roomModel.Add(roomNew);
             }
-
             for (int j = 0; j < typeRoom.Count; j++)
             {
                 TypeRoomModel typeRoomNew = new TypeRoomModel(connectionString);
@@ -54,8 +57,15 @@ namespace Presentation.Controllers.Administrator
                 typeRoomNew.id = typeRoom[j].id;
                 typeroomModel.Add(typeRoomNew);
             }
-            ViewBag.room = roomModel;
-            return View(typeroomModel);
+            for (int j = 0; j < listReservation.Count; j++)
+            {
+                ReservationModel reservationNew = new ReservationModel(connectionString);
+                reservationNew.idroom = listReservation[j].idroom;
+                reservationModel.Add(reservationNew);
+            }
+            ViewBag.reservation = reservationModel;
+                ViewBag.room = roomModel;
+                return View(typeroomModel);
         }//
 
         public JsonResult GetManageRooms(string description)
