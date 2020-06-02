@@ -22,7 +22,7 @@ namespace Presentation.Controllers.Administrator
         {
             _configuration = configuration;
             connectionString = _configuration.GetConnectionString("DefaultConnection");
-            
+
         }
 
         // GET: /<controller>/
@@ -44,7 +44,7 @@ namespace Presentation.Controllers.Administrator
                 roomNew.state = listRoom[i].state;
                 roomNew.number = listRoom[i].number;
                 roomNew.idtyperoom = listRoom[i].idtyperoom;
-                roomModel.Add(roomNew);  
+                roomModel.Add(roomNew);
             }
 
             for (int j = 0; j < typeRoom.Count; j++)
@@ -61,10 +61,10 @@ namespace Presentation.Controllers.Administrator
         public JsonResult GetManageRooms(string description)
         {
             RepositoryTypeRoom repositoryTyperoom = new RepositoryTypeRoom(connectionString);
-            List<TypeRoom> typeRoom = repositoryTyperoom.GetAllTypeRoom();           
-         
+            List<TypeRoom> typeRoom = repositoryTyperoom.GetAllTypeRoom();
+
             TypeRoom typeRoomNew = new TypeRoom();
-            typeRoomNew = typeRoom.Find(r=>r.description==description);
+            typeRoomNew = typeRoom.Find(r => r.description == description);
             counter = description;
             return Json(typeRoomNew);
         }
@@ -85,38 +85,34 @@ namespace Presentation.Controllers.Administrator
 
             for (int i = 0; i < typeRoom.Count; i++)
             {
-                if (typeRoom[i].description==descriptionType) {
+                if (typeRoom[i].description == descriptionType) {
                     idTypeRoom = typeRoom[i].id;
                 }
-                if (file==null || file=="")
+                if (file == null || file == "")
                 {
-                    urlimage = typeRoom[i].urlimage;                    
+                    urlimage = typeRoom[i].urlimage;
                 }
-                TypeRoomModel typeRoomNew = new TypeRoomModel(connectionString);
-                typeRoomNew.description = typeRoom[i].description;
-                typeroomModel.Add(typeRoomNew);
-            }           
-            repositoryTyperoom.UpdateTypeRoom(descriptionArea, amount, urlimage, idTypeRoom);
-            return View("ManageRooms", typeroomModel);
-        }
-
-
-        [HttpPost]
-        public ActionResult ManageRooms(string description)
-        {
-            RepositoryTypeRoom repositoryTyperoom = new RepositoryTypeRoom(connectionString);
-            IList<TypeRoom> typeRoom = repositoryTyperoom.GetAllTypeRoom();
-            List<TypeRoomModel> typeroomModel = new List<TypeRoomModel>();
-
-            for (int i = 0; i < typeRoom.Count; i++)
-            {
                 TypeRoomModel typeRoomNew = new TypeRoomModel(connectionString);
                 typeRoomNew.description = typeRoom[i].description;
                 typeroomModel.Add(typeRoomNew);
             }
-            return View(typeRoom);
-        }
+            repositoryTyperoom.UpdateTypeRoom(descriptionArea, amount, urlimage, idTypeRoom);
 
+            RoomModel room = new RoomModel(connectionString);
+            IList<Room> listRoom = room.GetAllRoom();
+            List<RoomModel> roomModel = new List<RoomModel>();
+
+            for (int i = 0; i < listRoom.Count; i++)
+            {
+                RoomModel roomNew = new RoomModel(connectionString);
+                roomNew.state = listRoom[i].state;
+                roomNew.number = listRoom[i].number;
+                roomNew.idtyperoom = listRoom[i].idtyperoom;
+                roomModel.Add(roomNew);
+            }
+            ViewBag.room = roomModel;
+            return View("ManageRooms", typeroomModel);
+        }
 
     }
 
