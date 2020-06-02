@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Actualizar";
     List<RoomModel> room = (List<RoomModel>)ViewBag.room;
+    List<ReservationModel> reservation = (List<ReservationModel>)ViewBag.reservation;
 }
 
 <!-- include summernote css/js -->
@@ -74,7 +75,7 @@
     <div>
         <br />
         <h5> Administrar Habitaciones</h5>
-            <button id="updateRoom" type="submit" class="btn-group">Modificar Habitación</button>
+        <button id="updateRoom" type="submit" class="btn-group">Modificar Habitación</button>
     </div>
     <div>
         <br />
@@ -96,11 +97,11 @@
                         <td class="creationdate">@room[i].number</td>
                         @if (@room[i].state.Equals(1))
                         {
-                            <td><input type="checkbox" checked></td>
+                            <td><input type="checkbox" ></td>
                         }
                         else
                         {
-                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox" checked></td>
                         }
                     </tr>
                 }
@@ -127,11 +128,11 @@
                         <td class="creationdate">@room[i].number</td>
                         @if (@room[i].state.Equals(1))
                         {
-                            <td><input type="checkbox" checked></td>
+                            <td><input type="checkbox" ></td>
                         }
                         else
                         {
-                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox" checked></td>
                         }
                     </tr>
                 }
@@ -152,17 +153,17 @@
         <tbody>
             @for (int i = 0; i < room.Count(); i++)
             {
-                if (room[i].idtyperoom.Equals(4))
+                if (room[i].idtyperoom.Equals(1))
                 {
                     <tr>
                         <td class="creationdate">@room[i].number</td>
                         @if (@room[i].state.Equals(1))
                         {
-                            <td><input type="checkbox" checked></td>
+                            <td><input type="checkbox"></td>
                         }
                         else
                         {
-                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox" checked></td>
                         }
                     </tr>
                 }

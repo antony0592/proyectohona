@@ -51,7 +51,6 @@ function obtainValues(e) {
     document.getElementById("arrivaldate").innerHTML += arrivaldate;
     document.getElementById("departuredate").innerHTML += departuredate;
     document.getElementById("description").innerHTML += description;
-
 }
 
 function deleteValues(e) {
