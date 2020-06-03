@@ -23,11 +23,14 @@ namespace Presentation.Models
         {
             this.typeRoomBusiness = new TypeRoomBusiness(connectionString);
         }
+        public TypeRoomModel()
+        {            
+        }
         public List<TypeRoom> GetAllTypeRooms()
         {
             return typeRoomBusiness.GetAllTypeRoom();
         }
 
 
-    }
+    }//class
 }

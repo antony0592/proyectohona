@@ -1,50 +1,48 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Text;
 using Domain;
 
 namespace Data
 {
-    public class HotelData
+    public class PaymentcardData
     {
         private String connString;
 
-        public HotelData(String connString)
+        public PaymentcardData(String connString)
         {
             this.connString = connString;
         }//Fin del constructor.
 
-        public Hotel GetAllHotel()
+
+        public List<Paymentcard> GetAllPaymentcard()
         {
-            Hotel hotel = new Hotel();
+            List<Paymentcard> paymentcard = new List<Paymentcard>();
 
             using (SqlConnection connection = new SqlConnection(connString))
             {
                 connection.Open();
-                SqlCommand command = new SqlCommand("SelectHotel", connection);
+                SqlCommand command = new SqlCommand("SelectPaymentcard", connection);
                 command.CommandType = System.Data.CommandType.StoredProcedure;
 
                 SqlDataReader sqlDataReader = command.ExecuteReader();
                 //this reads all the rows coming from DB
                 while (sqlDataReader.Read())
                 {
-                    hotel= new Hotel
+                    paymentcard.Add(new Paymentcard
                     {
                         id = Convert.ToInt32(sqlDataReader["id"]),
-                        name = sqlDataReader["name"].ToString(),
-                        description = sqlDataReader["description"].ToString(),
-                        aboutus = sqlDataReader["aboutus"].ToString(),
-                        address = sqlDataReader["address"].ToString(),
-                        pobox = sqlDataReader["pobox"].ToString(),
-                        email = sqlDataReader["email"].ToString()
-                    };
+                        number = Convert.ToInt32(sqlDataReader["number"]),
+                        idclient = Convert.ToInt32(sqlDataReader["idclient"]),
+                        //date = Convert.ToDateTime(sqlDataReader["date"]),
+                        cvv = Convert.ToInt32(sqlDataReader["cvv"]),
+                        type = sqlDataReader["type"].ToString()
+                    });
                 }
                 connection.Close();
             }
-            return hotel;
+            return paymentcard;
         }
 
-    }//class
-}//namespace
-
+    }
+}

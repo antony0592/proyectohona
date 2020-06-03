@@ -7,12 +7,16 @@ using System.Threading.Tasks;
 
 namespace Presentation.Models
 {
-    public class ClientModel
+    public class ClientModel:Client
     {
         ClientBusiness clientBusiness;
         public ClientModel(string connectionString)
         {
             this.clientBusiness = new ClientBusiness(connectionString);
+        }
+
+        public ClientModel()
+        {
         }
 
         public IList<Client> GetAllClients()

@@ -10,7 +10,7 @@ namespace Domain
         {
         }
 
-        public Reservation(int id, int idroom, int idclient, int amount, DateTime arrivaldate, DateTime departuredate)
+        public Reservation(int id, int idroom, int idclient, int amount, DateTime arrivaldate, DateTime departuredate, DateTime creationdate)
         {
             this.id = id;
             this.idroom = idroom;
@@ -18,6 +18,7 @@ namespace Domain
             this.amount = amount;
             this.arrivaldate = arrivaldate;
             this.departuredate = departuredate;
+            this.creationdate = creationdate;
         }
 
         public int id { get; set; }
@@ -26,6 +27,7 @@ namespace Domain
         public int amount { get; set; }
         public DateTime arrivaldate { get; set; }
         public DateTime departuredate { get; set; }
+        public DateTime creationdate { get; set; }
 
     }
 }

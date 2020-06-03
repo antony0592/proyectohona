@@ -19,10 +19,23 @@ namespace Presentation.Models
         {
 
         }
+
         public List<Reservation> GetAllReservation()
         {
             return this.reservationBusiness.GetAllReservation();
         }
+
+        public List<Reservation> GetAllReservationToday()
+        {
+            return this.reservationBusiness.GetAllReservationToday();
+        }
+
+        public void DeleteReservationList(int id)
+        {
+           this.reservationBusiness.DeleteReservationList(id);
+        }
+
+        
 
     }
 }

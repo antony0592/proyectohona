@@ -20,5 +20,16 @@ namespace Business
         {
             return this.reservationData.GetAllReservation();
         }
+
+        public List<Reservation> GetAllReservationToday()
+        {
+            return this.reservationData.GetAllReservationToday();
+        }
+
+        public void DeleteReservationList(int id)
+        {
+            this.reservationData.DeleteReservationList(id);
+        }
+        
     }
 }
