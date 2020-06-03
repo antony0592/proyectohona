@@ -37,5 +37,35 @@ namespace Data
             command.Connection.Close();
             return result;
         }
+
+        public List<PaymentCard> GetPaymentCard() 
+        {
+            List<PaymentCard> paymentCards = new List<PaymentCard>();
+
+            using (SqlConnection connection = new SqlConnection(connString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand("SelectPaymentcard", connection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+
+                SqlDataReader sqlDataReader = command.ExecuteReader();
+                //this reads all the rows coming from DB
+                while (sqlDataReader.Read())
+                {
+                    paymentCards.Add(new PaymentCard
+                    {
+                        Id = Convert.ToInt32(sqlDataReader["id"]),
+                        IdClient = Convert.ToInt32(sqlDataReader["idclient"]),
+                        Date = sqlDataReader["date"].ToString(),
+                        Cvv = Convert.ToInt32(sqlDataReader["cvv"]),
+                        Type = sqlDataReader["type"].ToString(),
+                        Number = Convert.ToInt64(sqlDataReader["number"])
+                    }
+                    );
+                }
+                connection.Close();
+            }
+            return paymentCards;
+        }
     }
 }

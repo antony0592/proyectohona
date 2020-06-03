@@ -20,17 +20,6 @@ namespace Data
         {
             Client newClient = new Client();
 
-            //SqlConnection connection = new SqlConnection(this.connString);
-            //String sqlStoredProcedure = "AddClient";
-            //SqlCommand command = new SqlCommand(sqlStoredProcedure, connection);
-            //command.Parameters.Add(new SqlParameter("@identification", client.identification));
-            //command.Parameters.Add(new SqlParameter("@name", client.name));
-            //command.Parameters.Add(new SqlParameter("@lastname", client.lastname));
-            //command.Parameters.Add(new SqlParameter("@email", client.email));
-            //command.Connection.Open();
-            //int result = command.ExecuteNonQuery();
-            //command.Connection.Close();
-
             SqlConnection connection = new SqlConnection(this.connString);
             String sqlSelect = "AddClient";
             SqlDataAdapter sqlDataAdapterClient = new SqlDataAdapter();
