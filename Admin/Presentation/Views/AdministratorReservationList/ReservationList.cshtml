@@ -30,22 +30,23 @@
                     <tbody>
                         @for (int i = 0; i < reservation.Count(); i++)
                         {
-                        <tr>
-                            <td class="creationdate">@reservation[i].creationdate</td>
-                            <td class="id">@reservation[i].id</td>
-                            <td class="name">@client[i].name</td>
-                            <td class="lastname">@client[i].lastname</td>
-                            <td class="email">@client[i].email</td>
-                            @*<td class="number">@paymentcard[i].number</td>*@
-                            <td class="arrivaldate">@reservation[i].arrivaldate</td>
-                            <td class="departuredate">@reservation[i].departuredate</td>
-                            <td class="description">@typeroom[i].description</td>
-                            <td id="consult" class="consult" onclick="cambiaVisibilidad()">Ver</td>
-                            <td href="#" id="delete" class="delete">Eliminar</td>
-                        </tr>
+                            <tr>
+                                <td class="creationdate">@reservation[i].creationdate</td>
+                                <td class="id">@reservation[i].id</td>
+                                <td class="name">@client[i].name</td>
+                                <td class="lastname">@client[i].lastname</td>
+                                <td class="email">@client[i].email</td>
+                                <td class="number">@paymentcard[i].number</td>
+                                <td class="arrivaldate">@reservation[i].arrivaldate</td>
+                                <td class="departuredate">@reservation[i].departuredate</td>
+                                <td class="description">@typeroom[i].description</td>
+                                <td id="consult" class="consult" onclick="cambiaVisibilidad()">Ver</td>
+                                <td href="#" id="delete" class="delete">Eliminar</td>
+                            </tr>
                         }
                     </tbody>
                 </table>
+                
             </div>
         </div>
     </div>
