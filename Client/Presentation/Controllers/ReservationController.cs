@@ -124,12 +124,5 @@ namespace Presentation.Controllers
             var search = RoomModel.Getsearchroom(date1, date2, typeroom);
             return Json(search);
         }
-
-        public JsonResult AddPaymentCard(PaymentCard paymentCard) 
-        {
-            PaymentCardModel paymentCardModel = new PaymentCardModel(connectionString);
-            var result=paymentCardModel.AddPaymentCard(paymentCard);
-            return Json(result);
-        }
     }
 }

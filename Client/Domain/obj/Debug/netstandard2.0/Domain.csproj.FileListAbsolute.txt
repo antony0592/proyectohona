@@ -55,3 +55,11 @@ C:\Users\Néstor\Documents\GitHub\proyectohona\Client\Domain\obj\Debug\netstanda
 C:\Users\Néstor\Documents\GitHub\proyectohona\Client\Domain\obj\Debug\netstandard2.0\Domain.AssemblyInfo.cs
 C:\Users\Néstor\Documents\GitHub\proyectohona\Client\Domain\obj\Debug\netstandard2.0\Domain.dll
 C:\Users\Néstor\Documents\GitHub\proyectohona\Client\Domain\obj\Debug\netstandard2.0\Domain.pdb
+C:\Users\Néstor\source\repos\ProyectoIngenieria\17_proyectohona-master\Client\Domain\bin\Debug\netstandard2.0\Domain.deps.json
+C:\Users\Néstor\source\repos\ProyectoIngenieria\17_proyectohona-master\Client\Domain\bin\Debug\netstandard2.0\Domain.dll
+C:\Users\Néstor\source\repos\ProyectoIngenieria\17_proyectohona-master\Client\Domain\bin\Debug\netstandard2.0\Domain.pdb
+C:\Users\Néstor\source\repos\ProyectoIngenieria\17_proyectohona-master\Client\Domain\obj\Debug\netstandard2.0\Domain.csproj.CoreCompileInputs.cache
+C:\Users\Néstor\source\repos\ProyectoIngenieria\17_proyectohona-master\Client\Domain\obj\Debug\netstandard2.0\Domain.AssemblyInfoInputs.cache
+C:\Users\Néstor\source\repos\ProyectoIngenieria\17_proyectohona-master\Client\Domain\obj\Debug\netstandard2.0\Domain.AssemblyInfo.cs
+C:\Users\Néstor\source\repos\ProyectoIngenieria\17_proyectohona-master\Client\Domain\obj\Debug\netstandard2.0\Domain.dll
+C:\Users\Néstor\source\repos\ProyectoIngenieria\17_proyectohona-master\Client\Domain\obj\Debug\netstandard2.0\Domain.pdb

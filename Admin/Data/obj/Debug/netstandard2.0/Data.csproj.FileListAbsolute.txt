@@ -99,3 +99,15 @@ C:\Users\Néstor\Documents\GitHub\proyectohona\Admin\Data\obj\Debug\netstandard2
 C:\Users\Néstor\Documents\GitHub\proyectohona\Admin\Data\obj\Debug\netstandard2.0\Data.csproj.CopyComplete
 C:\Users\Néstor\Documents\GitHub\proyectohona\Admin\Data\obj\Debug\netstandard2.0\Data.dll
 C:\Users\Néstor\Documents\GitHub\proyectohona\Admin\Data\obj\Debug\netstandard2.0\Data.pdb
+C:\Users\Néstor\source\repos\ProyectoIngenieria\17_proyectohona-master\Admin\Data\bin\Debug\netstandard2.0\Data.deps.json
+C:\Users\Néstor\source\repos\ProyectoIngenieria\17_proyectohona-master\Admin\Data\bin\Debug\netstandard2.0\Data.dll
+C:\Users\Néstor\source\repos\ProyectoIngenieria\17_proyectohona-master\Admin\Data\bin\Debug\netstandard2.0\Data.pdb
+C:\Users\Néstor\source\repos\ProyectoIngenieria\17_proyectohona-master\Admin\Data\bin\Debug\netstandard2.0\Domain.dll
+C:\Users\Néstor\source\repos\ProyectoIngenieria\17_proyectohona-master\Admin\Data\bin\Debug\netstandard2.0\Domain.pdb
+C:\Users\Néstor\source\repos\ProyectoIngenieria\17_proyectohona-master\Admin\Data\obj\Debug\netstandard2.0\Data.csprojAssemblyReference.cache
+C:\Users\Néstor\source\repos\ProyectoIngenieria\17_proyectohona-master\Admin\Data\obj\Debug\netstandard2.0\Data.csproj.CoreCompileInputs.cache
+C:\Users\Néstor\source\repos\ProyectoIngenieria\17_proyectohona-master\Admin\Data\obj\Debug\netstandard2.0\Data.AssemblyInfoInputs.cache
+C:\Users\Néstor\source\repos\ProyectoIngenieria\17_proyectohona-master\Admin\Data\obj\Debug\netstandard2.0\Data.AssemblyInfo.cs
+C:\Users\Néstor\source\repos\ProyectoIngenieria\17_proyectohona-master\Admin\Data\obj\Debug\netstandard2.0\Data.csproj.CopyComplete
+C:\Users\Néstor\source\repos\ProyectoIngenieria\17_proyectohona-master\Admin\Data\obj\Debug\netstandard2.0\Data.dll
+C:\Users\Néstor\source\repos\ProyectoIngenieria\17_proyectohona-master\Admin\Data\obj\Debug\netstandard2.0\Data.pdb
