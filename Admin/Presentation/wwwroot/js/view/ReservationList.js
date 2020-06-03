@@ -16,6 +16,7 @@
             elementsDelete[i].addEventListener("click", deleteValues);
         }
     }
+    
 }
 // funcion que se ejecuta cada vez que se hace clic
 function obtainValues(e) {
@@ -89,3 +90,8 @@ $(document).on("click", ".delete", function () {
         $(this).closest('#tbl tr').remove();
     }
 });
+
+$(document).ready(function () {
+    $('#tbl').DataTable();
+});
+
