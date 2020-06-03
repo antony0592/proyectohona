@@ -220,47 +220,24 @@ $(document).ready(function () {
 
     $('form').on('click', '#PayConfirmation', function (e) {
         e.preventDefault();
-
-        PaymentCard = {
-            Id: '0',
-            Number: $("#numerotarjeta").val(),
-            IdClient: $("#idnumber").val(),
-            Date: $("#cardnumberpaypal").val(),
-            Cvv: $("#cvv").val(),
-            Type: 'PayPal'
-        };
-
         var cvv = $("#cvv").val();
 
         if (cvv.trim() == "") {
             $("#paypalerror2").html("Debe de llenar todos los datos");
         } else {
-
-            $.ajax({
-                url: "/Reservation/AddPaymentCard",
-                type: "GET",
-                data: PaymentCard,
-                contentType: "application/json;charset=utf-8",
-                dataType: "json",
-                success: function (result) {
-                    if (result > 0) {
-                        $("#formpay").hide();
-                        $(this).closest(".modal-body").append("<img id='loader' src='/images/loader.gif' />");
-                        $(this).animate({
-                            opacity: 0.5
-                        }, 2000, function () {
-                            $(this).closest(".modal-body").find("img#loader").hide();
-                            $("#message").html("Pago Realizado con exito");
-                            $("#payment").hide();
-                            $("#paymentModal").modal("hide");
-                            $("#paymentConfirmation").show();
-                        });
-                    } else { alert("Error.Por favor intente de nuevo");}
-                },
-                error: function (errorMessage) {
-                    alert("Error.Por favor intente de nuevo");
-                }
+            $("#formpay").hide();
+            $(this).closest(".modal-body").append("<img id='loader' src='/images/loader.gif' />");
+            $(this).animate({
+                opacity: 0.5
+            }, 2000, function () {
+                $(this).closest(".modal-body").find("img#loader").hide();
+                    $("#message").html("Pago Realizado con exito");
+                    $("#payment").hide();
+                    
+                    $("#paymentModal").modal("hide");
+                    $("#paymentConfirmation").show();
             });
+           
         }
     });
 });

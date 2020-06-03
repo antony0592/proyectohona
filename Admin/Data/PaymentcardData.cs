@@ -32,9 +32,9 @@ namespace Data
                     paymentcard.Add(new Paymentcard
                     {
                         id = Convert.ToInt32(sqlDataReader["id"]),
-                        number = Convert.ToInt32(sqlDataReader["number"]),
+                        number = Convert.ToInt64(sqlDataReader["number"]),
                         idclient = Convert.ToInt32(sqlDataReader["idclient"]),
-                        //date = Convert.ToDateTime(sqlDataReader["date"]),
+                        //date = sqlDataReader["date"].ToString(),
                         cvv = Convert.ToInt32(sqlDataReader["cvv"]),
                         type = sqlDataReader["type"].ToString()
                     });
