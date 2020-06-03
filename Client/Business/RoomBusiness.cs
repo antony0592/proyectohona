@@ -39,5 +39,9 @@ namespace Business
             }
 
         }
+        public Room GetRoomById(int idroom)
+        {
+            return roomData.GetAllRoom().Find(r => r.id == idroom);
+        }
     }
 }
