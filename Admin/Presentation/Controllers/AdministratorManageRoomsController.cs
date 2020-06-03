@@ -64,7 +64,7 @@ namespace Presentation.Controllers.Administrator
                 reservationModel.Add(reservationNew);
             }
             ViewBag.reservation = reservationModel;
-                ViewBag.room = roomModel;
+            ViewBag.room = roomModel;
                 return View(typeroomModel);
         }//
 

@@ -57,7 +57,7 @@ namespace Presentation.Controllers.Administrator
                 reservationNew.departuredate = reservation[i].departuredate;
                 reservationNew.creationdate = reservation[i].creationdate;
                 reservationModel.Add(reservationNew);
-                for(int j = 0; j < listclient.Count; j++)
+                for (int j = 0; j < listclient.Count; j++)
                 {
                     if (reservation[i].idclient.Equals(listclient[j].id))
                     {
@@ -68,16 +68,9 @@ namespace Presentation.Controllers.Administrator
                         clientNew.email = listclient[j].email;
                         clientModel.Add(clientNew);
                     }
+                    
                 }
-                for (int j = 0; j < listPaymentcard.Count; j++)
-                {
-                    if (reservation[i].idclient.Equals(listPaymentcard[j].idclient))
-                    {
-                        PaymentcardModel paymentcardNew = new PaymentcardModel();
-                        paymentcardNew.number = listPaymentcard[j].number;                        
-                        paymentcardModel.Add(paymentcardNew);
-                    }
-                }
+
                 for (int j = 0; j < listRoom.Count; j++)
                 {
                     if (reservation[i].idroom.Equals(listRoom[j].id))
@@ -90,10 +83,22 @@ namespace Presentation.Controllers.Administrator
                                 typeRoomNew.description = listTyperoom[f].description;
                                 typeRoomModel.Add(typeRoomNew);
                             }
-                        }                            
+                        }
                     }
                 }
-            }            
+                for (int k = 0; k < listPaymentcard.Count; k++)
+                {
+                    if (reservation[i].idclient.Equals(listPaymentcard[k].idclient) || clientModel[i].identification.Equals(listPaymentcard[k].idclient))
+                    {
+                        PaymentcardModel paymentcardNew = new PaymentcardModel();
+                        paymentcardNew.number = listPaymentcard[k].number;
+                        paymentcardModel.Add(paymentcardNew);
+                    }
+
+                }
+
+
+            }
             ViewBag.paymentcard = paymentcardModel;
             ViewBag.reservation = reservationModel;
             ViewBag.typeroom = typeRoomModel;
