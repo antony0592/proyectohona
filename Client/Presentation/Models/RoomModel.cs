@@ -26,5 +26,10 @@ namespace Presentation.Models
         {
             return roomBusiness.Getsearchroom2(date1, date2, typeroom);
         }
+
+        public Room GetRoomById(int idroom)
+        {
+            return roomBusiness.GetRoomById(idroom);
+        }
     }
 }

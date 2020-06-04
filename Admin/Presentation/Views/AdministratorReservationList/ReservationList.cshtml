@@ -5,62 +5,66 @@
     List<PaymentcardModel> paymentcard = (List<PaymentcardModel>)ViewBag.paymentcard;
     List<TypeRoomModel> typeroom = (List<TypeRoomModel>)ViewBag.typeroom;
 }
-<div class="container">
-    <div id="principal" class="show">
-        <div class="col-12">
-            <div>
-                <br />
-                <h5> Lista de reservaciones </h5>
-            </div>
-            <div style="overflow-x:auto;">
-                <table class="table table-striped table-bordered table-sm" id="tbl">
-                    <thead>
-                        <tr>
-                            <th>Fecha</th>
-                            <th>Id Reserva</th>
-                            <th>Nombre</th>
-                            <th>Apellidos</th>
-                            <th>Email</th>
-                            <th># Tarjeta</th>
-                            <th>Fecha llegada</th>
-                            <th>Fecha de salida</th>
-                            <th>Tipo Habitación</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @for (int i = 0; i < reservation.Count(); i++)
-                        {
-                        <tr>
-                            <td class="creationdate">@reservation[i].creationdate</td>
-                            <td class="id">@reservation[i].id</td>
-                            <td class="name">@client[i].name</td>
-                            <td class="lastname">@client[i].lastname</td>
-                            <td class="email">@client[i].email</td>
-                            @*<td class="number">@paymentcard[i].number</td>*@
-                            <td class="arrivaldate">@reservation[i].arrivaldate</td>
-                            <td class="departuredate">@reservation[i].departuredate</td>
-                            <td class="description">@typeroom[i].description</td>
-                            <td id="consult" class="consult" onclick="cambiaVisibilidad()">Ver</td>
-                            <td href="#" id="delete" class="delete">Eliminar</td>
-                        </tr>
-                        }
-                    </tbody>
-                </table>
+    <div class="container">
+        <div id="principal" class="show">
+            <div class="col-12">
+                <div>
+                    <br />
+                    <h5> Lista de reservaciones </h5>
+                </div>
+                <div style="overflow-x:auto;">
+                    <table class="table table-striped table-bordered table-sm display" id="tbl"  style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Id Reserva</th>
+                                <th>Nombre</th>
+                                <th>Apellidos</th>
+                                <th>Email</th>
+                                <th># Tarjeta</th>
+                                <th>Fecha llegada</th>
+                                <th>Fecha de salida</th>
+                                <th>Tipo Habitación</th>
+                                <th>Ver</th>
+                                <th>Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (int i = 0; i < reservation.Count(); i++)
+                            {
+                                <tr>
+                                    <td class="creationdate">@reservation[i].creationdate</td>
+                                    <td class="id">@reservation[i].id</td>
+                                    <td class="name">@client[i].name</td>
+                                    <td class="lastname">@client[i].lastname</td>
+                                    <td class="email">@client[i].email</td>
+                                    <td class="number">@paymentcard[i].number</td>
+                                    <td class="arrivaldate">@reservation[i].arrivaldate</td>
+                                    <td class="departuredate">@reservation[i].departuredate</td>
+                                    <td class="description">@typeroom[i].description</td>
+                                    <td id="consult" class="consult" onclick="cambiaVisibilidad()">Ver</td>
+                                    <td href="#" id="delete" class="delete">Eliminar</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
             </div>
         </div>
+        <div style="display:none;" id="getreservation">
+            <h2>Lista de reservaciones-Ver Reserva</h2>
+            <br />
+            <h5 id="creationdate" name="creationdate">Fecha:</h5>
+            <h5 id="id" name="id">ID Reserva:</h5>
+            <h5 id="name" name="name">Nombre: </h5>
+            <h5 id="lastname" name="lastname">Apellidos: </h5>
+            <h5 id="email" name="email">Email: </h5>
+            <h5 id="number" name="number">Tarjeta:** </h5>
+            <h5 id="arrivaldate" name="arrivaldate">Fecha Llegada: </h5>
+            <h5 id="departuredate" name="departuredate">Fecha Salida: </h5>
+            <h5 id="description" name="description">Tipo Habitación: </h5>
+        </div>
+        
     </div>
-    <div style="display:none;" id="getreservation">
-        <h2>Lista de reservaciones-Ver Reserva</h2>
-        <br />
-        <h5 id="creationdate" name="creationdate">Fecha:</h5>
-        <h5 id="id" name="id">ID Reserva:</h5>
-        <h5 id="name" name="name">Nombre: </h5>
-        <h5 id="lastname" name="lastname">Apellidos: </h5>
-        <h5 id="email" name="email">Email: </h5>
-        <h5 id="number" name="number">Tarjeta:** </h5>
-        <h5 id="arrivaldate" name="arrivaldate">Fecha Llegada: </h5>
-        <h5 id="departuredate" name="departuredate">Fecha Salida: </h5>
-        <h5 id="description" name="description">Tipo Habitación: </h5>
-    </div>
-</div>
 

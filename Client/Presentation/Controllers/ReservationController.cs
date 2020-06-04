@@ -56,6 +56,10 @@ namespace Presentation.Controllers
             ReservationModel reservationModel = new ReservationModel(connectionString);
             Client clientResult = clientModel.GetClientByidentification(identification);
             SendMail sendMail = null;
+            RoomModel roomModel = new RoomModel(connectionString);
+            Room newRoom = roomModel.GetRoomById(idroom);
+            TypeRoomModel typeRoomModel = new TypeRoomModel(connectionString);
+            TypeRoom newTypeRoom = typeRoomModel.GetTypeRoomByIdRoom(newRoom.id);
 
             if (clientResult == null)
             {
@@ -91,10 +95,10 @@ namespace Presentation.Controllers
                     name = clientResult.name,
                     lastname = clientResult.lastname,
                     identification = clientResult.identification,
-                    action =    "Su reserva ha sido exitosa, para el día "+reservation.arrivaldate +
-                                " y hasta "+reservation.departuredate+
-                                " por un monto total de " + reservation.amount +" dolares."
-                 };
+                    action = "Su reserva en la habitacion" + newTypeRoom.description + " número " + newRoom.number + " ha sido exitosa, para el día " + reservation.arrivaldate +
+                                " y hasta " + reservation.departuredate +
+                                " por un monto total de " + reservation.amount + " dolares."
+                };
 
                 sendMail.SendMailAction();
             }
