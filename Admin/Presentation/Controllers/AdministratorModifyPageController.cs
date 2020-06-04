@@ -77,8 +77,14 @@ namespace Presentation.Controllers.Administrator
 
 
         [Authorize]
-        public IActionResult Locate()
+        public IActionResult ModifyLocate()
         {
+            HotelModel hotelModel = new HotelModel(connectionString);
+            Hotel hotels = hotelModel.GetAllHotel();
+            HotelModel hotel = new HotelModel();
+            hotel.id = hotels.id;
+            hotel.address = hotels.address;
+            ViewBag.hotel = hotel;
             return View();
         }
 
@@ -121,7 +127,15 @@ namespace Presentation.Controllers.Administrator
             hotelModel.UpdateAboutUs(aboutus);
             return View("ModifyPage", "ModifyPage");
         }
+        
+        [HttpPost]
+        public ActionResult UpdateLocate(string address)
+        {
+            HotelModel hotelModel = new HotelModel(connectionString);
 
+            hotelModel.UpdateLocate(address);
+            return View("ModifyPage", "ModifyPage");
+        }
     }
 
 }

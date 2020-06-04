@@ -1,16 +1,33 @@
-﻿<div class="container">
+﻿@{
+    List<ContentPageModel> contentPage = (List<ContentPageModel>)ViewBag.contentPage;
+    HotelModel hotel = (HotelModel)ViewBag.hotel;
+}
+<div class="container">
     <div class="row">
-        <div class="col-12">
-            <div>
-                <br />
-                <h5> Modificar Páginas </h5>
-                <br />
-                <h6> ¿Como llegar? </h6>
-
-
+        <form action="/AdministratorModifyPage/UpdateLocate" method="post">
+            <div class="col-12">
+                <div>
+                    <br />
+                    <h5> Modificar Páginas </h5>
+                    <br />
+                    <h6> ¿Como llegar? </h6>
+                    <textarea id="address" name="address" rows="10" cols="300">@hotel.address</textarea>
+                </div>
             </div>
+            <div class="col-12">
+                <div class="row w-75">
+                    <div class="col-4 text-center">
+                        <br />
+                        <input id="update" type="submit" class="btn-group" value="Guardar">
 
-        </div>
-
+                    </div>
+                    <div class="col-9">
+                     
+                        <a href="ModifyPage"><input type="button" class="btn-group" value="Cancelar"></a>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
+

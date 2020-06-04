@@ -30,7 +30,11 @@ namespace Presentation.Models
         public void UpdateAboutUs(string aboutus)
         {
             this.hotelBusiness.UpdateAboutUs(aboutus);
-        }        
-
+        }
+                
+        public void UpdateLocate(string address)
+        {
+            this.hotelBusiness.UpdateLocate(address);
+        }
     }//class
 }//
