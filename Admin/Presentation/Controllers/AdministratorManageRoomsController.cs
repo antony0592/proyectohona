@@ -65,7 +65,7 @@ namespace Presentation.Controllers.Administrator
             }
             ViewBag.reservation = reservationModel;
             ViewBag.room = roomModel;
-                return View(typeroomModel);
+            return View(typeroomModel);
         }//
 
         public JsonResult GetManageRooms(string description)
