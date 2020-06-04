@@ -24,6 +24,9 @@ namespace Business
         {
             this.seasonData.InsertSeason(id, idtyperoom, dateinputseason, dateoutputseason, description, state, percentation);
         }
-
+        public void DeleteSeason(int id)
+        {
+            this.seasonData.DeleteSeason(id);
+        }
     }//
 }

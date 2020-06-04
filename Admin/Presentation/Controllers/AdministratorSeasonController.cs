@@ -85,10 +85,35 @@ namespace Presentation.Controllers.Administrator
                 }
                 typeroomModel.Add(typeRoomNew);
             }
+          
             seasonModel.InsertSeason(idtyperoom, idtyperoom, dateinputseason, dateoutputseason, descriptionText, 1, percentation);
+            
             Season();
+           
             return View("Season", typeroomModel);
           
+        }
+
+       
+        public ActionResult DeleteSeason(int id)
+        {
+            RepositoryTypeRoom repositoryTyperoom = new RepositoryTypeRoom(connectionString);
+            SeasonModel seasonModel = new SeasonModel(connectionString);
+            List<TypeRoomModel> typeroomModel = new List<TypeRoomModel>();
+            IList<TypeRoom> typeRoom = repositoryTyperoom.GetAllTypeRoom();
+            for (int j = 0; j < typeRoom.Count; j++)
+            {
+                TypeRoomModel typeRoomNew = new TypeRoomModel(connectionString);
+                typeRoomNew.description = typeRoom[j].description;
+                typeRoomNew.id = typeRoom[j].id;
+                typeroomModel.Add(typeRoomNew);
+            }
+
+            seasonModel.DeleteSeason(id);
+            Season();
+
+            return View("Season", typeroomModel);
+
         }
 
     }
