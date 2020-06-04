@@ -63,8 +63,7 @@ namespace Presentation.Controllers.Administrator
                 reservationNew.idroom = listReservation[j].idroom;
                 reservationModel.Add(reservationNew);
             }
-                ViewBag.reservation = reservationModel;
-                ViewBag.room = roomModel;
+              
                 return View(typeroomModel);
         }//
 
