@@ -90,10 +90,11 @@ namespace Presentation.Controllers.Administrator
 
                 ReservationModel reservationNew = new ReservationModel();
                 reservationNew.idroom = reservation[i].idroom;
-              
+                string strDate = reservation[i].arrivaldate.ToString("yyyy-MM-dd");
+
                 for (int j = 0; j < room.Count; j++)
                 {
-                    if (reservationNew.idroom.Equals(room[j].id))
+                    if (reservationNew.idroom.Equals(room[j].id) && !strDate.Equals(date))
                     {
                         RoomModel RoomNew = new RoomModel(connectionString);
                         RoomNew.id = room[j].id;

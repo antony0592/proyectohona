@@ -1,0 +1,107 @@
+﻿@model List<Presentation.Models.TypeRoomModel>
+@{
+    List<SeasonModel> seasonlist = ViewBag.season;
+    List<TypeRoomModel> typeroomlist = ViewBag.type;
+}
+<div class="container">
+    <br />
+
+    <div class="row">
+        <form action="/AdministratorSeason/insert" method="post">
+            <div class="col-6">
+                <div>
+                    <h5 class="text-center"> Temporadas y Ofertas Especiales </h5>
+                    <div>
+                        <div>
+                            <br />
+
+                            <div class="form-group ">
+                                <label for="typeroomS">Tipo de habitación:</label>
+                                <select class="form-control" id="description" name="description">
+                                    <option value="0">-Seleccione una opción-</option>
+                                    @foreach (var typeroom in Model)
+                                    {
+                                        <option value="@typeroom.description">@typeroom.description</option>
+                                    }
+                                </select>
+                            </div>
+
+                            <br />
+
+                        </div>
+                    </div>
+                    <div>
+                        <label for="arrivaldate">Fecha de Inicio</label>
+                        <input type="date" class="form-control" id="dateinputseason" name="dateinputseason" onchange="datechange()" required>
+                        <div class="valid-feedback">
+                            Fecha selecionada
+                        </div>
+                    </div>
+                    <div>
+                        <label for="departuredate">Fecha Fin </label>
+                        <input type="date" class="form-control" id="dateoutputseason" name="dateoutputseason" required>
+                        <div class="valid-feedback">
+                            Fecha selecionada
+                        </div>
+                    </div>
+                    <div>
+                        <h5 class="text-center">Porcentaje de la Temporada o Oferta </h5>
+                        <input type="text" id="percentation" name="percentation"><br><br>
+                    </div>
+                    <div>
+                        <h5 class="text-center">Descripción de la Temporada o Oferta </h5>
+                        <textarea id="descriptionText" name="descriptionText" rows="8" cols="50"></textarea>
+                    </div>
+                    <div>
+                        <br />
+                        <button id="descriptionB" type="submit" class="btn-group">Guardar</button>
+
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="col-6">
+            <table class="table table-striped table-bordered table-sm" id="tableTypeRoom" name="tableTypeRoom">
+                <thead>
+                    <tr>
+                        <th>Tipo de Habitación</th>
+                        <th>Fecha de Inicion</th>
+                        <th>Fecha fin</th>
+                        <th>Descripción</th>
+                        <th>Porcentaje</th>
+                        <th>Estado</th>
+                        <th>Acción</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < seasonlist.Count(); i++)
+                    {
+                    <tr>
+                        @for (int j = 0; j < typeroomlist.Count(); j++)
+                        {
+                            if(@seasonlist[i].idtyperoom==@typeroomlist[j].id){ 
+                            <td class="id">@typeroomlist[j].description</td>
+                            <td class="id">@seasonlist[i].dateinputseason</td>
+                            <td class="id">@seasonlist[i].dateoutputseason</td>
+                            <td class="id">@seasonlist[i].description</td>
+                            <td class="id">@seasonlist[i].percentation</td>
+                            @if (@seasonlist[i].state == 1)
+                            {
+                                <td><input type="checkbox" checked></td>
+                            }
+                            else
+                            {
+                                <td><input type="checkbox"></td>
+                            }
+                          }
+                        }
+
+                    </tr>
+
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
