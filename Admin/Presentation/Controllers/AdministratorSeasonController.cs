@@ -85,7 +85,6 @@ namespace Presentation.Controllers.Administrator
                 }
                 typeroomModel.Add(typeRoomNew);
             }
-
             seasonModel.InsertSeason(idtyperoom, idtyperoom, dateinputseason, dateoutputseason, descriptionText, 1, percentation);
             Season();
             return View("Season", typeroomModel);
