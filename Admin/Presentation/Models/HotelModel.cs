@@ -1,17 +1,14 @@
 ﻿using Business;
 using Domain;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Presentation.Models
 {
-    public class HotelModel
+    public class HotelModel:Hotel
     {
-
         HotelBusiness hotelBusiness;
-        public HotelModel(string connectionString)
+
+        public HotelModel(String connectionString)
         {
             this.hotelBusiness = new HotelBusiness(connectionString);
         }
@@ -19,9 +16,21 @@ namespace Presentation.Models
         public HotelModel()
         {
             
+        }   
+        public Hotel GetAllHotel()
+        {
+            return hotelBusiness.GetAllHotel();
         }
 
+        public void UpdateHome(string description)
+        {
+            this.hotelBusiness.UpdateHome(description);
+        }
 
+        public void UpdateAboutUs(string aboutus)
+        {
+            this.hotelBusiness.UpdateAboutUs(aboutus);
+        }        
 
     }//class
 }//

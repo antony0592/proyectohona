@@ -20,5 +20,11 @@ namespace Business
         {
             return this.contentPageData.GetAllContentPage();
         }
+
+        public void UpdateContentPageHotel(string referentpage, string urlimage)
+        {
+            this.contentPageData.UpdateContentPageHotel(referentpage,urlimage);
+        }
+        
     }
 }

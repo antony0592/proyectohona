@@ -1,16 +1,45 @@
-﻿<div class="container">
+﻿@{
+    List<ContentPageModel> contentPage = (List<ContentPageModel>)ViewBag.contentPage;
+    HotelModel hotel = (HotelModel)ViewBag.hotel;
+}
+
+<div class="container">
     <div class="row">
-        <div class="col-12">
-            <div>
-                <br />
-                <h5> Modificar Páginas </h5>
-                <br />
-                <h6>Sobre nosotros </h6>
-
-
+        <form action="/AdministratorModifyPage/UpdateAboutUs" method="post">
+            <div class="col-12">
+                <div>
+                    <br />
+                    <h5> Modificar Páginas </h5>
+                    <br />
+                    <h6>Sobre nosotros </h6>
+                    <textarea id="aboutus" name="aboutus" rows="10" cols="300">@hotel.aboutus</textarea>
+                </div>
             </div>
-
-        </div>
-
+            <div class="col-12">
+                <div class="row w-75">
+                    <div class="col-4 text-center">
+                        <br />
+                        <h6>Imagen Actual</h6>
+                        @*@foreach (ContentPageModel content in contentPage)
+                        {
+                            <img src="@content.urlimage" class="d-block w-100 img">
+                        }*@
+                    </div>
+                    <div class="col-8">
+                        <br />
+                        <br />
+                        <br />
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" name="file" id="file">
+                            <label class="custom-file-label" for="customFile">Choose file</label>
+                        </div>
+                        <br />
+                        <br />
+                        <button id="update" type="submit" class="btn-group">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
+
