@@ -91,6 +91,7 @@ $(document).on("click", ".delete", function () {
     }
 });
 
+
 $(document).ready(function () {
     $('#tbl').DataTable();
 });

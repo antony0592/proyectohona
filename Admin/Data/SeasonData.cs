@@ -67,5 +67,19 @@ namespace Data
             cmdInsertar.Connection.Close();
 
         }
+
+        public void DeleteSeason(int id)
+        {
+            SqlConnection connection = new SqlConnection(this.connString);
+            String sqlStoredProcedure = "DeleteSeason";
+            SqlCommand cmdInsertar = new SqlCommand(sqlStoredProcedure, connection);
+            cmdInsertar.CommandType = System.Data.CommandType.StoredProcedure;
+            cmdInsertar.Parameters.Add(new SqlParameter("@id", id));
+            cmdInsertar.Connection.Open();
+            cmdInsertar.ExecuteNonQuery();
+            cmdInsertar.Parameters.Clear();
+
+            cmdInsertar.Connection.Close();
+        }
     }
 }

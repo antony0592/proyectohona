@@ -61,9 +61,10 @@
             </div>
         </form>
         <div class="col-6">
-            <table class="table table-striped table-bordered table-sm" id="tableTypeRoom" name="tableTypeRoom">
+            <table class="table table-striped table-bordered table-sm" id="tableSeason" name="tableSeason">
                 <thead>
                     <tr>
+                        <th>ID</th>
                         <th>Tipo de Habitación</th>
                         <th>Fecha de Inicion</th>
                         <th>Fecha fin</th>
@@ -77,30 +78,80 @@
                 <tbody>
                     @for (int i = 0; i < seasonlist.Count(); i++)
                     {
-                    <tr>
-                        @for (int j = 0; j < typeroomlist.Count(); j++)
-                        {
-                            if(@seasonlist[i].idtyperoom==@typeroomlist[j].id){ 
-                            <td class="id">@typeroomlist[j].description</td>
-                            <td class="id">@seasonlist[i].dateinputseason</td>
-                            <td class="id">@seasonlist[i].dateoutputseason</td>
-                            <td class="id">@seasonlist[i].description</td>
-                            <td class="id">@seasonlist[i].percentation</td>
-                            @if (@seasonlist[i].state == 1)
+                        <tr>
+                            @for (int j = 0; j < typeroomlist.Count(); j++)
                             {
-                                <td><input type="checkbox" checked></td>
-                            }
-                            else
-                            {
-                                <td><input type="checkbox"></td>
-                            }
-                          }
-                        }
+                                if (@seasonlist[i].idtyperoom == @typeroomlist[j].id)
+                                {
+                                    <td class="id">@seasonlist[i].id</td>
+                                    <td class="desc">@typeroomlist[j].description</td>
+                                    <td class="datein">@seasonlist[i].dateinputseason</td>
+                                    <td class="dateout">@seasonlist[i].dateoutputseason</td>
+                                    <td class="descrip">@seasonlist[i].description</td>
+                                    <td class="percer">@seasonlist[i].percentation</td>
+                                    @if (@seasonlist[i].state == 1)
+                                    {
+                                        <td><input type="checkbox" checked></td>
+                                    }
+                                    else
+                                    {
+                                        <td><input type="checkbox"></td>
+                                    }
+                                    <td href="#" id="deleteSeason" class="deleteSeason">Eliminar</td>
 
-                    </tr>
+
+                                }
+                            }
+
+                        </tr>
                     }
                 </tbody>
             </table>
         </div>
     </div>
 </div>
+@section scripts{
+    <script>
+        window.onload = function () {
+            // creamos los eventos para cada elemento con la clase "boton"
+            let elementsDelete = document.getElementsByClassName("deleteSeason");
+            if (elementsDelete != null) {
+                for (let i = 0; i < elementsDelete.length; i++) {
+                    // cada vez que se haga clic sobre cualquier de los elementos,
+                    // ejecutamos la función obtenerValores()
+                    elementsDelete[i].addEventListener("click", deleteValues);
+                }
+            }
+
+        }
+        function deleteValues(e) {
+            var id = "";
+
+            // vamos al elemento padre (<tr>) y buscamos todos los elementos < td >
+            // que contenga el elemento padre
+            var elementosTD = e.srcElement.parentElement.getElementsByTagName("td");
+            // obtenemos cada uno de los valores y los ponemos en la variable "valores"
+            id = elementosTD[0].innerHTML;
+
+            $.ajax({
+                url: "/AdministratorSeason/DeleteSeason",
+                data: { 'id': id },
+                type: 'GET',
+
+            });
+
+        }
+
+        $(document).on("click", ".deleteSeason", function () {
+            event.preventDefault();
+            if (window.confirm("¿Desea eliminar?")) {
+                $(this).closest('#tableSeason tr').remove();
+            }
+        });
+        $(document).ready(function () {
+            $('#tableSeason').DataTable();
+        });
+
+
+    </script>
+}
