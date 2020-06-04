@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using Data;
 using Domain;
 
@@ -15,13 +13,20 @@ namespace Business
             this.hotelData = new HotelData(connString);
         }//Fin del constructor.
 
-
         public Hotel GetAllHotel()
         {
             return this.hotelData.GetAllHotel();
         }
 
-       
+        public void UpdateHome(string description)
+        {
+            this.hotelData.UpdateHome(description);
+        }
+
+        public void UpdateAboutUs(string aboutus)
+        {
+            this.hotelData.UpdateAboutUs(aboutus);
+        }
 
     }
 }

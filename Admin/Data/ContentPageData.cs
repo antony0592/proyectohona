@@ -44,6 +44,21 @@ namespace Data
             }
             return contentPage;
         }
+
+        
+        public void UpdateContentPageHotel(string urlimage, string referentpage )
+        {
+            SqlConnection connection = new SqlConnection(this.connString);
+            String sqlStoredProcedure = "UpdateContentPageHotel";
+            SqlCommand cmdInsertar = new SqlCommand(sqlStoredProcedure, connection);
+            cmdInsertar.CommandType = System.Data.CommandType.StoredProcedure;
+            cmdInsertar.Parameters.Add(new SqlParameter("@urlimage", urlimage));
+            cmdInsertar.Parameters.Add(new SqlParameter("@referentpage", referentpage));
+            cmdInsertar.Connection.Open();
+            cmdInsertar.ExecuteNonQuery();
+            cmdInsertar.Connection.Close();
+        }
+
     }
 }
 

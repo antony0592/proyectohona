@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Text;
+﻿
 using Domain;
+using System;
+using System.Data.SqlClient;
 
 namespace Data
 {
@@ -29,7 +28,7 @@ namespace Data
                 //this reads all the rows coming from DB
                 while (sqlDataReader.Read())
                 {
-                    hotel= new Hotel
+                    hotel = new Hotel
                     {
                         id = Convert.ToInt32(sqlDataReader["id"]),
                         name = sqlDataReader["name"].ToString(),
@@ -43,6 +42,33 @@ namespace Data
                 connection.Close();
             }
             return hotel;
+        }
+
+        
+        public void UpdateHome(string description)
+        {
+            SqlConnection connection = new SqlConnection(this.connString);
+            String sqlStoredProcedure = "UpdateHotel";
+            SqlCommand cmdInsertar = new SqlCommand(sqlStoredProcedure, connection);
+            cmdInsertar.CommandType = System.Data.CommandType.StoredProcedure;
+            cmdInsertar.Parameters.Add(new SqlParameter("@description", description));            
+            cmdInsertar.Connection.Open();
+            cmdInsertar.ExecuteNonQuery();
+
+            cmdInsertar.Connection.Close();
+        }        
+
+        public void UpdateAboutUs(string aboutus)
+        {
+            SqlConnection connection = new SqlConnection(this.connString);
+            String sqlStoredProcedure = "UpdateAboutus";
+            SqlCommand cmdInsertar = new SqlCommand(sqlStoredProcedure, connection);
+            cmdInsertar.CommandType = System.Data.CommandType.StoredProcedure;
+            cmdInsertar.Parameters.Add(new SqlParameter("@aboutus", aboutus));
+            cmdInsertar.Connection.Open();
+            cmdInsertar.ExecuteNonQuery();
+
+            cmdInsertar.Connection.Close();
         }
 
     }//class
