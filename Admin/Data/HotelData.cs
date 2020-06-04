@@ -71,6 +71,18 @@ namespace Data
             cmdInsertar.Connection.Close();
         }
 
+        public void UpdateLocate(string address)
+        {
+            SqlConnection connection = new SqlConnection(this.connString);
+            String sqlStoredProcedure = "UpdateLocate";
+            SqlCommand cmdInsertar = new SqlCommand(sqlStoredProcedure, connection);
+            cmdInsertar.CommandType = System.Data.CommandType.StoredProcedure;
+            cmdInsertar.Parameters.Add(new SqlParameter("@address", address));
+            cmdInsertar.Connection.Open();
+            cmdInsertar.ExecuteNonQuery();
+
+            cmdInsertar.Connection.Close();
+        }
     }//class
 }//namespace
 

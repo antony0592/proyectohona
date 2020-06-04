@@ -27,6 +27,11 @@ namespace Business
         {
             this.hotelData.UpdateAboutUs(aboutus);
         }
+        
+        public void UpdateLocate(string address)
+        {
+            this.hotelData.UpdateLocate(address);
+        }
 
     }
 }
