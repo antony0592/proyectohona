@@ -220,24 +220,55 @@ $(document).ready(function () {
 
     $('form').on('click', '#PayConfirmation', function (e) {
         e.preventDefault();
-        var cvv = $("#cvv").val();
 
-        if (cvv.trim() == "") {
+       
+            var PaymentCard = {
+                Id: "0",
+                IdClient: $("#idnumber").val(),
+                Cvv: $("#PaymentCardCvv").val(),
+                Type: "PayPal",
+                Number: $("#PaymentCardNumber").val(),
+                Date: $("#PaymentCardDate").val()
+        };
+
+        
+
+
+        if (PaymentCard.Cvv.trim() == "" || PaymentCard.Number.trim() == "" || PaymentCard.Date.trim() == "") {
             $("#paypalerror2").html("Debe de llenar todos los datos");
         } else {
-            $("#formpay").hide();
-            $(this).closest(".modal-body").append("<img id='loader' src='/images/loader.gif' />");
-            $(this).animate({
-                opacity: 0.5
-            }, 2000, function () {
-                $(this).closest(".modal-body").find("img#loader").hide();
-                    $("#message").html("Pago Realizado con exito");
-                    $("#payment").hide();
-                    
-                    $("#paymentModal").modal("hide");
-                    $("#paymentConfirmation").show();
+
+            $.ajax({
+                url: "/PaymentCard/AddPaymentCard",
+                data: PaymentCard,
+               // data: JSON.stringify(data),
+                type: "POST",
+                //contentType: "application/json;charset=utf-8",
+               // dataType: "json",
+                success: function (result) {
+                    if (result > 0) {
+
+                        $("#formpay").hide();
+                        $(this).closest(".modal-body").append("<img id='loader' src='/images/loader.gif' />");
+                        $(this).animate({
+                            opacity: 0.5
+                        }, 2000, function () {
+                            $(this).closest(".modal-body").find("img#loader").hide();
+                            $("#message").html("Pago Realizado con exito");
+                            $("#payment").hide();
+
+                            $("#paymentModal").modal("hide");
+                            $("#paymentConfirmation").show();
+                        });
+
+                    } else {
+                        alert("Error.Por favor intente de nuevo");
+                    }
+                },
+                error: function (errorMessage) {
+                    alert("Error.Por favor intente de nuevo");
+                }
             });
-           
         }
     });
 });

@@ -110,12 +110,7 @@ namespace Presentation.Controllers
             return View();
         }
 
-        public ActionResult Payment()
-        {
-            return View();
-        }
-
-        public JsonResult GetClientById(int id)
+       public JsonResult GetClientById(int id)
         {
             ClientModel clientModel = new ClientModel(connectionString);
             var cliente = clientModel.GetClientByidentification(id);

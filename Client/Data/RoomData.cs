@@ -56,7 +56,31 @@ namespace Data
 
         public List<Room> GetAllRoom()
         {
+
             List<Room> rooms = new List<Room>();
+
+            using (SqlConnection connection = new SqlConnection(connString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(" SelectRoom", connection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+
+                SqlDataReader sqlDataReader = command.ExecuteReader();
+                //this reads all the rows coming from DB
+                while (sqlDataReader.Read())
+                {
+                    rooms.Add(new Room
+                    {
+                        id = Convert.ToInt32(sqlDataReader["id"]),
+                        idtyperoom = Convert.ToInt32(sqlDataReader["idtyperoom"]),
+                        typeroom = sqlDataReader["typeroom"].ToString(),
+                        state = Convert.ToInt32(sqlDataReader["state"]),
+                        number = Convert.ToInt32(sqlDataReader["number"])
+                    }
+                    );
+                }
+                connection.Close();
+            }
             return rooms;
         }
 
