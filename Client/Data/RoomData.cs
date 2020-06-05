@@ -17,7 +17,6 @@ namespace Data
             this.connString = connString;
         }//Fin del constructor.
 
-
         public List<Room> Getsearchroom1(string date1, string date2, int typeroomparameter)
         {
             List<Room> room = new List<Room>();
