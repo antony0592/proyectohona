@@ -25,6 +25,14 @@ namespace Business
         {
             this.contentPageData.UpdateContentPageHotel(referentpage,urlimage);
         }
-        
+
+        public List<ContentPage> GetContentPagePublicity(string reference)
+        {
+            List<ContentPage> publicity = new List<ContentPage>();
+            publicity = this.contentPageData.GetAllContentPage().FindAll(cp => cp.referentpage == reference);
+
+            return publicity;
+        }
+
     }
 }

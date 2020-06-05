@@ -28,5 +28,11 @@ namespace Presentation.Models
             this.contentepageBusiness.UpdateContentPageHotel(referentpage, urlimage);
         }
 
+        public List<ContentPage> GetContentPagePublicity(string reference)
+        {
+            return contentepageBusiness.GetContentPagePublicity(reference);
+        }
+
+
     }
 }
