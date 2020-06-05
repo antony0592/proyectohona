@@ -67,7 +67,8 @@ namespace Data
                 SqlDataReader sqlDataReader = command.ExecuteReader();
                 //this reads all the rows coming from DB
                 while (sqlDataReader.Read())
-                {
+                { 
+
                     rooms.Add(new Room
                     {
                         id = Convert.ToInt32(sqlDataReader["id"]),
