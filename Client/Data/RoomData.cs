@@ -62,7 +62,7 @@ namespace Data
             using (SqlConnection connection = new SqlConnection(connString))
             {
                 connection.Open();
-                SqlCommand command = new SqlCommand(" SelectRoom", connection);
+                SqlCommand command = new SqlCommand("SelectRoom", connection);
                 command.CommandType = System.Data.CommandType.StoredProcedure;
 
                 SqlDataReader sqlDataReader = command.ExecuteReader();
@@ -73,7 +73,6 @@ namespace Data
                     {
                         id = Convert.ToInt32(sqlDataReader["id"]),
                         idtyperoom = Convert.ToInt32(sqlDataReader["idtyperoom"]),
-                        typeroom = sqlDataReader["typeroom"].ToString(),
                         state = Convert.ToInt32(sqlDataReader["state"]),
                         number = Convert.ToInt32(sqlDataReader["number"])
                     }
