@@ -58,5 +58,12 @@ namespace Presentation.Controllers.Administrator
             return Json(filestt);
         }
 
+        [HttpPost]
+        public JsonResult Delete(int id)
+        {
+            ContentPageModel cp = new ContentPageModel(connectionString);
+            return Json(cp.DeletePublicity(id));
+        }
+
     }
 }

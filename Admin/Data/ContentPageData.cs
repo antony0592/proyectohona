@@ -71,6 +71,14 @@ namespace Data
         }
         public int DeletePublicity(int id)
         {
+            SqlConnection connection = new SqlConnection(this.connString);
+            String sqlStoredProcedure = "DeletePublicity";
+            SqlCommand cmdInsertar = new SqlCommand(sqlStoredProcedure, connection);
+            cmdInsertar.CommandType = System.Data.CommandType.StoredProcedure;
+            cmdInsertar.Parameters.Add(new SqlParameter("@Id", id));
+            cmdInsertar.Connection.Open();
+            cmdInsertar.ExecuteNonQuery();
+            cmdInsertar.Connection.Close();
             return 0;
         }
 

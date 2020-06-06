@@ -28,13 +28,10 @@
                         <th>ID</th>
                         <th>content</th>
                         <th>Imagen</th>
-                        <th style="text-align: center;"><a href="#" title="Haga clic sobre el icono del lapiz para editar la publicidad."><i class='fa fa-info'></i></a></th>
-                        <!--<th style="text-align: center;"><a href="#" title="Haga clic sobre el icono del borrador para eliminar la publicidad."><i class='fa fa-info'></i></a></th>   -->
+                        <th style="text-align: center;"><a href="#" title="Haga clic sobre el icono del lapiz para editar o eliminar la publicidad."><i class='fa fa-info'></i></a></th>
                     </tr>
                 </thead>
-                <tbody class="tbody">
-                    
-                </tbody>
+                <tbody class="tbody"></tbody>
             </table>
     </div>
 </div>
@@ -101,6 +98,7 @@
                 <h4 style="color:red">¿Seguro que deseas borrar esta publicidad?</h4>
             </div>
             <div class="modal-footer">
+                <input type="text" id="idpublicity" name="idpublicity" class="invisible" readonly>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                 <button type="button" id="btndeletepublicity" class="btn btn-success">Confirmar Eliminación</button>
             </div>

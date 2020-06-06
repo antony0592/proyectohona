@@ -3,8 +3,9 @@
         loadData();       
     });
 
-    function Delete(id) {
-        $(".modal").on("click", "button#btndeletepublicity", function () {
+    
+function deletecontentpage(id) {
+    $(".modal").on("click", "button#btndeletepublicity", function () {
             $.ajax({
                 url: "/AdministratorPublicity/Delete/" + id,
                 type: "POST",
@@ -12,8 +13,7 @@
                 dataType: "json",
                 success: function (result) {
                     loadData();
-                    $('#DeleteModalPublicity').modal('hide');
-
+                    $("#DeleteModalPublicity .close").click();
                 },
                 error: function (errormessage) {
                     alert("Error, por favor intentelo de nuevo");

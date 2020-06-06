@@ -47,7 +47,7 @@ namespace Business
         }
         public int DeletePublicity(int id)
         {
-            return 0;
+            return this.contentPageData.DeletePublicity(id); 
         }
 
 
