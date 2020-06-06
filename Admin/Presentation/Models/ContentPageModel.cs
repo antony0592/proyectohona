@@ -46,7 +46,7 @@ namespace Presentation.Models
         }
         public int DeletePublicity(int id)
         {
-            return 0;
+            return contentepageBusiness.DeletePublicity(id);
         }
 
 
