@@ -154,3 +154,13 @@ $(document).ready(function () {
         });
     });
 });
+
+
+////Tarjetas de crédito VISA
+//VISA = /^4[0-9]{3}-?[0-9]{4}-?[0-9]{4}-?[0-9]{4}$/;
+
+////Tarjetas de crédito MASTERCARD
+//MASTERCARD = /^5[1-5][0-9]{2}-?[0-9]{4}-?[0-9]{4}-?[0-9]{4}$/;
+
+
+

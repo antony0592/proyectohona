@@ -1,8 +1,7 @@
 ﻿//Document ready
     $(document).ready(function () {
-        loadData();
+        loadData();       
     });
-
 
     function Delete(id) {
         $(".modal").on("click", "button#btndeletepublicity", function () {
@@ -23,87 +22,78 @@
         });
     }
 
+function GetById(id) {
 
 
-    function GetById(studentId) {
-        $.ajax({
-            url: "/Student/GetByIdSp/" + studentId,
-            type: "GET",
-            contentType: "application/json;charset=utf-8",
-            dataType: "json",
-            success: function (result) {
-
-                $('#StudentId').val(result.StudentId);
-                $('#Name').val(result.Name);
-                $('#Age').val(result.Age);
-
-                $("select#NationalitiesDropdown").val(result.NationalityId);
-
-                $("#MajorsDropdown").val(result.MajorId);
-
-                $('#myModal').modal('show');
-                $('#btnUpdate').show();
-                $('#btnAdd').hide();
-            },
-
-            error: function (errorMessage) {
-                alert(errorMessage.responseText);
-            }
-        });
+       
     }
 
+function updatecontentpage(id) {
 
+    //get seleted publicity by id
+    $.ajax({
+        url: "/AdministratorPublicity/GetPublicityById/" + id,
+        type: "GET",
+        contentType: "application/json;charset=utf-8",
+        dataType: "json",
+        success: function (result) {
 
-    function Update(student) {
+            $("#imgPublicity").attr("src", result.urlimage);
+            $("#contentPublicity").val(result.content);
 
-        var inWhite = isNull(student);
-        if (inWhite.length == 0) { }
+        },
 
-
-        var nationality = {
-            NationalityId: $("#NationalitiesDropdown option:selected").val()
-        };
-        var major = {
-            MajorId: $("#MajorsDropdown option:selected").val()
+        error: function (errorMessage) {
+            alert("Error al cargar los datos");
         }
-        var student = {
-            StudentId: $('#StudentId').val(),
-            Name: $('#Name').val(),
-            Age: $('#Age').val(),
-            StudentNationality: nationality,
-            StudentMajor: major
-        };
+    });
 
-        var inWhite = isNull(student);
-        var errorMessage = "";
+    
 
-        if (inWhite.length == 0) {
+   
+
+    $(".modal").on("click", "button#probar", function () {
+
+        var formData = new FormData();
+        var selectFile = ($("#filePublicity"))[0].files[0];
+        var content = $("#contentPublicity").val();
+        formData.append("files", selectFile);
+        formData.append("content", content);
+
+        if (content.trim() == "") {
+            alert("Por favor ingrese un texto");
+        } else if (selectFile == null) {
+            alert("Por favor ingrese una imagen");
+        }
+
+        if ($("#contentPublicity").val().match(/^(ht|f)tps?:\/\/\w+([\.\-\w]+)?\.([a-z]{2,6})?([\.\-\w\/_]+)$/i)) {
 
             $.ajax({
-                url: "/Student/UpdateSp",
-                data: JSON.stringify(student),
+                url: "/AdministratorPublicity/Add",
                 type: "POST",
-                contentType: "application/json;charset=utf-8",
-                dataType: "json",
+                data: formData,
+                contentType: false,
+                processData: false,
+                async: false,
                 success: function (result) {
-                    loadData();
-                    $('#myModal').modal('hide');
+                    if (result) {
+                        $('output').find('span').remove();
+                        $("#filePublicity").val("");
+                        alert("Publicidad actualizada");
+                        $('#UpdateModalPublicity').modal('hide');
+                        loadData();
+                    } else { alert("Error.Por favor intente de nuevo"); }
                 },
                 error: function (errorMessage) {
-                    console.log(errorMessage.responseText);
-                    alert(errorMessage.responseText);
+                    alert("Error.Por favor intente de nuevo");
                 }
-            })
-        } else {
-            for (i = 0; i < inWhite.length; i++) {
-                errorMessage += inWhite[i] + ",";
-            }
-            $('#error').text("Empty spaces:" + errorMessage);
-            errorMessage = "";
+            });
         }
-
-    }
-
+        else {
+            alert("Dirección web no válida");
+        }
+    });
+}
 
     function isNull(object) {
 
@@ -121,7 +111,6 @@
         }
         return inWhite;
     }   
-
 
     function loadData() {
 
@@ -163,4 +152,37 @@
             }
         })
     }
+
+function handleFileSelect(evt) {
+    var files = evt.target.files; // FileList object
+
+    // Loop through the FileList and render image files as thumbnails.
+    for (var i = 0, f; f = files[i]; i++) {
+
+        // Only process image files.
+        if (!f.type.match('image.*')) {
+            continue;
+        }
+        var reader = new FileReader();
+        // Closure to capture the file information.
+        reader.onload = (function (theFile) {
+            return function (e) {
+                // Render thumbnail.
+                var span = document.createElement('span');
+                span.innerHTML = ['<img class="thumb" style="height:100px" src="', e.target.result,
+                    '" title="', escape(theFile.name), '"/>'
+                ].join('');
+
+                document.getElementById('list').insertBefore(span, null);
+            };
+        })(f);
+        // Read in the image file as a data URL.
+        reader.readAsDataURL(f);
+    }
+    
+}
+
+document.getElementById('filePublicity').addEventListener('change', handleFileSelect, false);
+
+
 

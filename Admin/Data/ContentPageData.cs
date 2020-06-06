@@ -59,6 +59,21 @@ namespace Data
             cmdInsertar.Connection.Close();
         }
 
+        //PUBLICITY
+        public int AddPublicity(ContentPage contentPage)
+        {
+            return 0;
+        }
+
+        public int UpdatePublicity(ContentPage contentPage)
+        {
+            return 0;
+        }
+        public int DeletePublicity(int id)
+        {
+            return 0;
+        }
+
     }
 }
 

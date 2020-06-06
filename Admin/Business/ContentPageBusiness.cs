@@ -26,6 +26,8 @@ namespace Business
             this.contentPageData.UpdateContentPageHotel(referentpage,urlimage);
         }
 
+
+        //PUBLICITY
         public List<ContentPage> GetContentPagePublicity(string reference)
         {
             List<ContentPage> publicity = new List<ContentPage>();
@@ -33,6 +35,22 @@ namespace Business
 
             return publicity;
         }
+
+        public int AddPublicity(ContentPage contentPage)
+        {
+            return 0;
+        }
+
+        public int UpdatePublicity(ContentPage contentPage )
+        {
+            return 0;
+        }
+        public int DeletePublicity(int id)
+        {
+            return 0;
+        }
+
+
 
     }
 }

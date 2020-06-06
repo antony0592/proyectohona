@@ -49,5 +49,14 @@ namespace Presentation.Controllers.Administrator
             return Json(cp.GetContentPagePublicity("publicity"));
 
         }
+
+        [HttpPost]
+        public JsonResult Add(string content, IFormFile files)
+        {
+            var filestt = files.FileName;
+
+            return Json(filestt);
+        }
+
     }
 }
