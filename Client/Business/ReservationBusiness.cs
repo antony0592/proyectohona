@@ -15,11 +15,11 @@ namespace Business
             this.reservationData = new ReservationData(connString);
         }//Fin del constructor.
 
-        public int AddReservation(Reservation reservation)
+        public Reservation AddReservation(Reservation reservation)
         {
             return this.reservationData.AddReservation(reservation);
         }
 
-        
+
     }
 }

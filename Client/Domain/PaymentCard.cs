@@ -6,11 +6,11 @@ namespace Domain
 {
     public class PaymentCard
     {
-        public int Id { get; set; }
-        public int IdClient { get; set; }
-        public int Cvv { get; set; }
-        public string Type { get; set; }
-        public long Number { get; set; }
-        public string Date { get; set; }
+        public int id { get; set; }
+        public string cardname { get; set; }
+        public string cvv { get; set; }
+        public string cardtype { get; set; }
+        public string cardnumber { get; set; }
+        public string expirationdate { get; set; }
     }
 }

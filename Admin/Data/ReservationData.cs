@@ -15,7 +15,6 @@ namespace Data
             this.connString = connString;
         }//Fin del constructor.
 
-
         public List<Reservation> GetAllReservation()
         {
             List<Reservation> reservation = new List<Reservation>();

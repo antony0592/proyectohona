@@ -60,18 +60,48 @@ namespace Data
         }
 
         //PUBLICITY
-        public int AddPublicity(ContentPage contentPage)
-        {
-            return 0;
-        }
-
         public int UpdatePublicity(ContentPage contentPage)
         {
-            return 0;
+            SqlConnection connection = new SqlConnection(this.connString);
+            String sqlStoredProcedure = "InsertUpdatePublicity";
+            SqlCommand command = new SqlCommand(sqlStoredProcedure, connection);
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+            command.Parameters.Add(new SqlParameter("@id", contentPage.id));
+            command.Parameters.Add(new SqlParameter("@urlimage", contentPage.urlimage));
+            command.Parameters.Add(new SqlParameter("@content", contentPage.content));
+            command.Parameters.Add(new SqlParameter("@action", "Update"));
+            command.Connection.Open();
+            int result = command.ExecuteNonQuery();
+            command.Connection.Close();
+            return result;
         }
+        public int AddPublicity(ContentPage contentPage)
+        {
+            SqlConnection connection = new SqlConnection(this.connString);
+            String sqlStoredProcedure = "InsertUpdatePublicity";
+            SqlCommand command = new SqlCommand(sqlStoredProcedure, connection);
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+            command.Parameters.Add(new SqlParameter("@id", contentPage.id));
+            command.Parameters.Add(new SqlParameter("@urlimage", contentPage.urlimage));
+            command.Parameters.Add(new SqlParameter("@content", contentPage.content));
+            command.Parameters.Add(new SqlParameter("@action", "Insert"));
+            command.Connection.Open();
+            int result = command.ExecuteNonQuery();
+            command.Connection.Close();
+            return result;
+        }
+        
         public int DeletePublicity(int id)
         {
-            return 0;
+            SqlConnection connection = new SqlConnection(this.connString);
+            String sqlStoredProcedure = "DeletePublicity";
+            SqlCommand command = new SqlCommand(sqlStoredProcedure, connection);
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+            command.Parameters.Add(new SqlParameter("@Id", id));
+            command.Connection.Open();
+            int result = command.ExecuteNonQuery();
+            command.Connection.Close();
+            return result;
         }
 
     }

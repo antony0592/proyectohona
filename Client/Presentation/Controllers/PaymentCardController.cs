@@ -19,22 +19,18 @@ namespace Presentation.Controllers
             _configuration = configuration;
             connectionString = _configuration.GetConnectionString("DefaultConnection");
         }
+
         [HttpPost]
-        public JsonResult AddPaymentCard(PaymentCard paymentCard) 
+        public JsonResult AddPaymentCard(PaymentCard paymentCard)
         {
             PaymentCardModel paymentCardModel = new PaymentCardModel(connectionString);
-            PaymentCard newPaymentCard = paymentCardModel.GetPaymentCardByNumber(paymentCard.Number);
-            var result=0;
+            PaymentCard newPaymentCard = paymentCardModel.GetPaymentCardByNumber(paymentCard.cardnumber);
 
             if (newPaymentCard == null)
             {
-                result = paymentCardModel.AddPaymentCard(paymentCard);
+                return Json(paymentCardModel.AddPaymentCard(paymentCard));
             }
-            else
-            {
-                result = 1;
-            }
-            return Json(result);
+            return Json(newPaymentCard);
         }
     }
 }

@@ -15,7 +15,7 @@ namespace Presentation.Models
             this.paymentCardBusiness = new PaymentCardBusiness(connectionString);
         }
 
-        public int AddPaymentCard(PaymentCard paymentCard)
+        public PaymentCard AddPaymentCard(PaymentCard paymentCard)
         {
             return paymentCardBusiness.AddPaymentCard(paymentCard);
         }
@@ -25,10 +25,13 @@ namespace Presentation.Models
             return paymentCardBusiness.SelectPaymentcard();
         }
 
-        public PaymentCard GetPaymentCardByNumber(long number)
+        public PaymentCard GetPaymentCardByNumber(string number)
         {
             return paymentCardBusiness.GetPaymentCardByNumber(number);
         }
-
+        public int AddVoucher(int paymentId, int idreservation)
+        {
+            return paymentCardBusiness.AddVoucher(paymentId, idreservation);
+        }
     }
 }

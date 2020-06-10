@@ -18,25 +18,47 @@ namespace Data
         }//Fin del constructor.
 
 
-        public int AddReservation(Reservation reservation)
+        public Reservation AddReservation(Reservation reservation)
         {
+
+            Reservation resultReservation = new Reservation();
 
             SqlConnection connection = new SqlConnection(this.connString);
             String sqlStoredProcedure = "AddReservation";
-            SqlCommand command = new SqlCommand(sqlStoredProcedure, connection);
-            command.CommandType = System.Data.CommandType.StoredProcedure;
-            command.Parameters.Add(new SqlParameter("@idroom", reservation.idroom));
-            command.Parameters.Add(new SqlParameter("@idclient", reservation.idClient));
-            command.Parameters.Add(new SqlParameter("@amount", reservation.amount));
-            command.Parameters.Add(new SqlParameter("@arrivaldate", DateTime.Parse(reservation.arrivaldate)));
-            command.Parameters.Add(new SqlParameter("@departuredate", DateTime.Parse(reservation.departuredate)));
-            command.Parameters.Add(new SqlParameter("@creationdate", DateTime.Parse(reservation.creationdate)));
-            command.Connection.Open();
-            int result = command.ExecuteNonQuery();
-            command.Connection.Close();
-            return result;
+
+            SqlDataAdapter sqlDataAdapterClient = new SqlDataAdapter();
+
+            sqlDataAdapterClient.SelectCommand = new SqlCommand();
+            sqlDataAdapterClient.SelectCommand.CommandText = sqlStoredProcedure;
+            sqlDataAdapterClient.SelectCommand.Connection = connection;
+            sqlDataAdapterClient.SelectCommand.CommandType = System.Data.CommandType.StoredProcedure;
+
+            sqlDataAdapterClient.SelectCommand.Parameters.Add(new SqlParameter("@idroom", reservation.idroom));
+            sqlDataAdapterClient.SelectCommand.Parameters.Add(new SqlParameter("@idclient", reservation.idClient));
+            sqlDataAdapterClient.SelectCommand.Parameters.Add(new SqlParameter("@amount", reservation.amount));
+            sqlDataAdapterClient.SelectCommand.Parameters.Add(new SqlParameter("@arrivaldate", DateTime.Parse(reservation.arrivaldate)));
+            sqlDataAdapterClient.SelectCommand.Parameters.Add(new SqlParameter("@departuredate", DateTime.Parse(reservation.departuredate)));
+            sqlDataAdapterClient.SelectCommand.Parameters.Add(new SqlParameter("@creationdate", DateTime.Parse(reservation.creationdate)));
+
+            DataSet dataSet = new DataSet();
+            sqlDataAdapterClient.Fill(dataSet, "tbreservation");
+            sqlDataAdapterClient.SelectCommand.Connection.Close();
+            DataRowCollection dataRowCollection = dataSet.Tables["tbreservation"].Rows;
+
+            foreach (DataRow currentRow in dataRowCollection)
+            {
+                resultReservation.id = Int32.Parse(currentRow["id"].ToString());
+                resultReservation.idroom = Int32.Parse(currentRow["idroom"].ToString());
+                resultReservation.idClient = Int32.Parse(currentRow["idclient"].ToString());
+                resultReservation.amount = Int32.Parse(currentRow["amount"].ToString());
+                resultReservation.arrivaldate = currentRow["arrivaldate"].ToString();
+                resultReservation.departuredate = currentRow["departuredate"].ToString();
+                resultReservation.creationdate = currentRow["creationdate"].ToString();
+            }//Fin del foreach.
+
+            return resultReservation;
         }
 
-     
+
     }
 }

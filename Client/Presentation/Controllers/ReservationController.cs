@@ -49,7 +49,8 @@ namespace Presentation.Controllers
                                             int idroom,
                                             int amount,
                                             string arrivaldate,
-                                            string departuredate)
+                                            string departuredate,
+                                            int paymentcardid)
         {
 
             ClientModel clientModel = new ClientModel(connectionString);
@@ -85,9 +86,10 @@ namespace Presentation.Controllers
                 departuredate = departuredate,
                 creationdate = DateTime.Now.ToString("dddd, dd MMMM yyyy HH:mm:ss")
             };
-            var resultReservation = reservationModel.AddReservation(reservation);
 
-            if (resultReservation > 0)
+            Reservation resultReservation = reservationModel.AddReservation(reservation);
+
+            if (resultReservation != null)
             {
                 sendMail = new SendMail()
                 {
@@ -99,8 +101,14 @@ namespace Presentation.Controllers
                                 " y hasta " + reservation.departuredate +
                                 " por un monto total de " + reservation.amount + " dolares."
                 };
-
                 sendMail.SendMailAction();
+
+                PaymentCardModel paymentModel = new PaymentCardModel(connectionString);
+                var result = paymentModel.AddVoucher(paymentcardid, resultReservation.id);
+                if (result < 1)
+                {
+                    return View("Data");
+                }
             }
 
             ViewBag.Reservation = reservation;
@@ -110,7 +118,7 @@ namespace Presentation.Controllers
             return View();
         }
 
-       public JsonResult GetClientById(int id)
+        public JsonResult GetClientById(int id)
         {
             ClientModel clientModel = new ClientModel(connectionString);
             var cliente = clientModel.GetClientByidentification(id);

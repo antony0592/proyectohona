@@ -38,16 +38,16 @@ namespace Business
 
         public int AddPublicity(ContentPage contentPage)
         {
-            return 0;
+            return contentPageData.AddPublicity(contentPage);
         }
 
         public int UpdatePublicity(ContentPage contentPage )
         {
-            return 0;
+            return contentPageData.UpdatePublicity(contentPage);
         }
         public int DeletePublicity(int id)
         {
-            return 0;
+            return contentPageData.DeletePublicity(id);
         }
 
 
