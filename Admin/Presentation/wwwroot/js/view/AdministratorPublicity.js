@@ -1,4 +1,4 @@
-﻿//Document ready
+//Document ready
     $(document).ready(function () {
         loadData();       
     });
@@ -245,6 +245,3 @@ function handleFileSelect(evt) {
 }
 
 document.getElementById('filePublicity').addEventListener('change', handleFileSelect, false);
-
-
-
