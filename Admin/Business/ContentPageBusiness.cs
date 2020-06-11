@@ -50,7 +50,31 @@ namespace Business
             return this.contentPageData.DeletePublicity(id); 
         }
 
+        //FACILITY
+        public List<ContentPage> GetContentPageFacility(string reference)
+        {
+            List<ContentPage> publicity = new List<ContentPage>();
+            publicity = this.contentPageData.GetAllContentPage().FindAll(cp => cp.referentpage == reference);
+
+            return publicity;
+        }
+
+        public int AddFacility(ContentPage contentPage)
+        {
+            return contentPageData.AddFacility(contentPage);
+        }
+
+        public int UpdateFacility(ContentPage contentPage)
+        {
+            return contentPageData.UpdateFacility(contentPage);
+        }
+
+        public int DeleteFacility(int id)
+        {
+            return this.contentPageData.DeleteFacility(id);
+        }
 
 
+
+        }
     }
-}

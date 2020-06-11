@@ -58,6 +58,26 @@ namespace Presentation.Models
             return contentepageBusiness.DeletePublicity(id);
         }
 
+        //FACILITY
+        public List<ContentPage> GetContentPageFacility(string reference)
+        {
+            return contentepageBusiness.GetContentPageFacility(reference);
+        }
+
+        public int AddFacility(ContentPage contentPage)
+        {
+            return contentepageBusiness.AddFacility(contentPage);
+        }
+
+        public int UpdateFacility(ContentPage contentPage)
+        {
+            return contentepageBusiness.UpdateFacility(contentPage);
+        }
+        public int DeleteFacility(int id)
+        {
+            return contentepageBusiness.DeleteFacility(id);
+        }
+
     }
 
     public class PublicityModel : ContentPage
@@ -85,6 +105,35 @@ namespace Presentation.Models
                 return 0;
             }
            
+        }
+    }
+
+    public class FacilityModel : ContentPage
+    {
+        private readonly IHostingEnvironment environment;
+        public FacilityModel(IHostingEnvironment environment)
+        {
+            this.environment = environment;
+        }
+
+        public int SaveImage(IFormFile files, string folderFiles)
+        {
+            var filePath = Path.Combine(folderFiles, files.FileName);
+            if (filePath==null) { return 0; }
+            try
+            {
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    files.CopyTo(fileStream);
+                    fileStream.Close();
+                }
+                return 1;
+            }
+            catch (Exception e)
+            {
+                return 0;
+            }
+
         }
     }
 }
