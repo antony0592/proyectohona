@@ -31,6 +31,19 @@ namespace Presentation.Controllers
 
         public IActionResult Index()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return View("IndexLogin");
+            }
+            else
+            {
+                return View();
+            }
+           
+        }
+
+        public IActionResult IndexLogin()
+        {
             return View();
         }
     }
