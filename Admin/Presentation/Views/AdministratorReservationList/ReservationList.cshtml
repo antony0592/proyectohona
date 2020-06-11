@@ -4,6 +4,7 @@
     List<ClientModel> client = (List<ClientModel>)ViewBag.client;
     List<PaymentcardModel> paymentcard = (List<PaymentcardModel>)ViewBag.paymentcard;
     List<TypeRoomModel> typeroom = (List<TypeRoomModel>)ViewBag.typeroom;
+    List<VoucherModel> voucher = (List<VoucherModel>)ViewBag.voucher;
 }
     <div class="container">
         <div id="principal" class="show">
@@ -30,15 +31,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @for (int i = 0; i < reservation.Count(); i++)
+                            @for (int i = 0; i < voucher.Count(); i++)
                             {
                                 <tr>
-                                    <td class="creationdate">@reservation[i].creationdate</td>
-                                    <td class="id">@reservation[i].id</td>
+                                    <td class="creationdate">@voucher[i].creationdate</td>
+                                    <td class="id">@voucher[i].id</td>
                                     <td class="name">@client[i].name</td>
                                     <td class="lastname">@client[i].lastname</td>
                                     <td class="email">@client[i].email</td>
-                                    <td class="number">@paymentcard[i].number</td>
+                                    <td class="number">@paymentcard[i].cardnumber</td>
                                     <td class="arrivaldate">@reservation[i].arrivaldate</td>
                                     <td class="departuredate">@reservation[i].departuredate</td>
                                     <td class="description">@typeroom[i].description</td>
