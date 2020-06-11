@@ -40,58 +40,71 @@ namespace Presentation.Controllers.Administrator
             IList<Paymentcard> listPaymentcard = paymentcard.GetAllPaymentcard();
             List<PaymentcardModel> paymentcardModel = new List<PaymentcardModel>();
 
+            VoucherModel voucher = new VoucherModel(connectionString);
+            IList<Voucher> listVoucher = voucher.GetAllVoucher();
+            List<VoucherModel> voucherModel = new List<VoucherModel>();
+
             RoomModel room = new RoomModel(connectionString);
             IList<Room> listRoom = room.GetAllRoom();
 
             TypeRoomModel typeroom = new TypeRoomModel(connectionString);
             IList<TypeRoom> listTyperoom = typeroom.GetAllTypeRooms();
             List<TypeRoomModel> typeRoomModel = new List<TypeRoomModel>();
-
-            for (int i = 0; i < reservation.Count; i++)
+            for (int i = 0; i < listVoucher.Count; i++)
             {
-                ReservationModel reservationNew = new ReservationModel();
-                reservationNew.id = reservation[i].id;
-                reservationNew.idroom = reservation[i].idroom;
-                reservationNew.idclient = reservation[i].idclient;
-                reservationNew.arrivaldate = reservation[i].arrivaldate;
-                reservationNew.departuredate = reservation[i].departuredate;
-                reservationNew.creationdate = reservation[i].creationdate;
-                reservationModel.Add(reservationNew);
-                for (int j = 0; j < listclient.Count; j++)
+                VoucherModel voucherNew = new VoucherModel();
+                voucherNew.id = listVoucher[i].id;
+                voucherNew.idpaymentcard = listVoucher[i].idpaymentcard;
+                voucherNew.idreservation = listVoucher[i].idreservation;
+                voucherNew.creationdate = listVoucher[i].creationdate;
+                voucherModel.Add(voucherNew);
+                for (int j = 0; j < reservation.Count; j++)
                 {
-                    if (reservation[i].idclient.Equals(listclient[j].id))
+                    if (listVoucher[i].idreservation.Equals(reservation[j].id))
                     {
-                        ClientModel clientNew = new ClientModel();
-                        clientNew.id = listclient[j].id;
-                        clientNew.name = listclient[j].name;
-                        clientNew.lastname = listclient[j].lastname;
-                        clientNew.email = listclient[j].email;
-                        clientModel.Add(clientNew);
-                    }
-                    
-                }
+                        ReservationModel reservationNew = new ReservationModel();
+                        reservationNew.id = reservation[j].id;
+                        reservationNew.idroom = reservation[j].idroom;
+                        reservationNew.idclient = reservation[j].idclient;
+                        reservationNew.arrivaldate = reservation[j].arrivaldate;
+                        reservationNew.departuredate = reservation[j].departuredate;
+                        reservationModel.Add(reservationNew);
 
-                for (int j = 0; j < listRoom.Count; j++)
-                {
-                    if (reservation[i].idroom.Equals(listRoom[j].id))
-                    {
-                        for (int f = 0; f < listTyperoom.Count; f++)
+                        for (int k = 0; k < listclient.Count; k++)
                         {
-                            if (listRoom[j].idtyperoom.Equals(listTyperoom[f].id))
+                            if (reservation[j].idclient.Equals(listclient[k].id))
                             {
-                                TypeRoomModel typeRoomNew = new TypeRoomModel();
-                                typeRoomNew.description = listTyperoom[f].description;
-                                typeRoomModel.Add(typeRoomNew);
+                                ClientModel clientNew = new ClientModel();
+                                clientNew.id = listclient[k].id;
+                                clientNew.name = listclient[k].name;
+                                clientNew.lastname = listclient[k].lastname;
+                                clientNew.email = listclient[k].email;
+                                clientModel.Add(clientNew);
                             }
                         }
-                    }
+                        for (int k = 0; k < listRoom.Count; k++)
+                        {
+                            if (reservation[j].idroom.Equals(listRoom[k].id))
+                            {
+                                for (int f = 0; f < listTyperoom.Count; f++)
+                                {
+                                    if (listRoom[k].idtyperoom.Equals(listTyperoom[f].id))
+                                    {
+                                        TypeRoomModel typeRoomNew = new TypeRoomModel();
+                                        typeRoomNew.description = listTyperoom[f].description;
+                                        typeRoomModel.Add(typeRoomNew);
+                                    }
+                                }
+                            }
+                        }
+                    }                                    
                 }
                 for (int k = 0; k < listPaymentcard.Count; k++)
                 {
-                    if (reservation[i].idclient.Equals(listPaymentcard[k].idclient) || clientModel[i].identification.Equals(listPaymentcard[k].idclient))
+                    if (listPaymentcard[k].id.Equals(listVoucher[i].idpaymentcard))
                     {
                         PaymentcardModel paymentcardNew = new PaymentcardModel();
-                        paymentcardNew.number = listPaymentcard[k].number;
+                        paymentcardNew.cardnumber = listPaymentcard[k].cardnumber;
                         paymentcardModel.Add(paymentcardNew);
                     }
 
@@ -100,6 +113,7 @@ namespace Presentation.Controllers.Administrator
 
             }
             ViewBag.paymentcard = paymentcardModel;
+            ViewBag.voucher = voucherModel;
             ViewBag.reservation = reservationModel;
             ViewBag.typeroom = typeRoomModel;
             ViewBag.client = clientModel;
