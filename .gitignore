@@ -5,3 +5,14 @@ Admin/Domain/obj/Debug/netstandard2.0/Domain.csproj.FileListAbsolute.txt
 Admin/.vs/HotelSystemHona/DesignTimeBuild/.dtbcache.v2
 Client/.vs/HotelSystemHona/DesignTimeBuild/.dtbcache.v2
 Admin/Presentation/obj/Debug/netcoreapp2.1/Razor/Views/AdministratorSeason/Season.cshtml.g.cs
+Client/Presentation/obj/Debug/netcoreapp2.1/.NETCoreApp,Version=v2.1.AssemblyAttributes.cs
+Client/Domain/obj/Debug/netstandard2.0/.NETStandard,Version=v2.0.AssemblyAttributes.cs
+Client/Data/obj/Debug/netstandard2.0/.NETStandard,Version=v2.0.AssemblyAttributes.cs
+Client/Business/obj/Debug/netstandard2.0/.NETStandard,Version=v2.0.AssemblyAttributes.cs
+Client/.vs/HotelSystemHona/DesignTimeBuild/.dtbcache.v2
+Admin/Domain/obj/Debug/netstandard2.0/.NETStandard,Version=v2.0.AssemblyAttributes.cs
+Admin/Data/obj/Debug/netstandard2.0/.NETStandard,Version=v2.0.AssemblyAttributes.cs
+Admin/Business/obj/Debug/netstandard2.0/.NETStandard,Version=v2.0.AssemblyAttributes.cs
+Admin/.vs/HotelSystemHona/DesignTimeBuild/.dtbcache.v2
+Client/.vs/HotelSystemHona/DesignTimeBuild/.dtbcache.v2
+Admin/.vs/HotelSystemHona/DesignTimeBuild/.dtbcache.v2
