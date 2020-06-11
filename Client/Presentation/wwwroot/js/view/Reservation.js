@@ -120,6 +120,7 @@ $(document).ready(function () {
                             '<td><button class="btn btn-success btn-lg" type="button" onclick="return GetById(\'' + result[i].id + '\')">Reservar</button></td>' +
                             "<tr>" +
                             $("#bodytable").append(tr);
+
                         if (result[i].idtyperoom == $('#typeroomcb').val()) {
                             $("#alert").html("Hemos encontrado esta habitación para ti:");
                         } else { $("#alert").html("NO HEMOS ENCONTRADO TU HABITACIÓN PERO ENCONTRAMOS ESTA OTRA DISPONIBLE:"); }
@@ -159,13 +160,13 @@ $(document).ready(function () {
             //data: dataObject,
             success: function (result) { },
             error: function (errorMessage) {
-               // alert(errorMessage.responseText);
+                // alert(errorMessage.responseText);
             }
         });
     });
 });
 
-function GetById(id)     {
+function GetById(id) {
 
     var arrivaldate = document.getElementById("arrivaldate").value;
     var departuredate = document.getElementById("departuredate").value;
@@ -184,11 +185,11 @@ function GetById(id)     {
         //data: dataObject,
         success: function (result) {
 
-            var url = 'Data/'+result;
+            var url = 'Data/' + result;
             window.location.href = url;
 
-            
-        
+
+
         },
         error: function (errorMessage) {
             //alert(errorMessage.responseText);
@@ -198,8 +199,7 @@ function GetById(id)     {
 
 $(document).ready(function () {
 
-    if (localStorage.getItem("arrivaldate") && localStorage.getItem("departuredate"))
-    {
+    if (localStorage.getItem("arrivaldate") && localStorage.getItem("departuredate")) {
         var arrivaldate = localStorage.getItem("arrivaldate");
         var departuredate = localStorage.getItem("departuredate");
         var resta = new Date(departuredate).getTime() - new Date(arrivaldate).getTime();
@@ -207,12 +207,12 @@ $(document).ready(function () {
 
         $("#arrivaldateF").val(arrivaldate);
         $("#departuredateF").val(departuredate);
-        $("#days").val(datequantity);        
-        $("#totalamount").val($("#dayamount").val() * datequantity );
-        $("#idroomF").val(localStorage.getItem("idroom") );
+        $("#days").val(datequantity);
+        $("#totalamount").val($("#dayamount").val() * datequantity);
+        $("#idroomF").val(localStorage.getItem("idroom"));
     }
 
-    
+
 
 });
 
@@ -221,32 +221,32 @@ $(document).ready(function () {
     $('form').on('click', '#PayConfirmation', function (e) {
         e.preventDefault();
 
-       
-            var PaymentCard = {
-                Id: "0",
-                IdClient: $("#idnumber").val(),
-                Cvv: $("#PaymentCardCvv").val(),
-                Type: "PayPal",
-                Number: $("#PaymentCardNumber").val(),
-                Date: $("#PaymentCardDate").val()
+
+        var PaymentCard = {
+            id: "0",
+            cardname: $("#cardname").val(),
+            cvv: $("#PaymentCardCvv").val(),
+            cardtype: "PayPal",
+            cardnumber: $("#PaymentCardNumber").val(),
+            expirationdate: $("#PaymentCardDate").val()
         };
 
-        
 
 
-        if (PaymentCard.Cvv.trim() == "" || PaymentCard.Number.trim() == "" || PaymentCard.Date.trim() == "") {
+
+        if (PaymentCard.cvv.trim() == "" || PaymentCard.cardnumber.trim() == "" || PaymentCard.expirationdate.trim() == "") {
             $("#paypalerror2").html("Debe de llenar todos los datos");
         } else {
 
             $.ajax({
                 url: "/PaymentCard/AddPaymentCard",
                 data: PaymentCard,
-               // data: JSON.stringify(data),
+                // data: JSON.stringify(data),
                 type: "POST",
                 //contentType: "application/json;charset=utf-8",
-               // dataType: "json",
+                // dataType: "json",
                 success: function (result) {
-                    if (result > 0) {
+                    if (result != null) {
 
                         $("#formpay").hide();
                         $(this).closest(".modal-body").append("<img id='loader' src='/images/loader.gif' />");
@@ -256,6 +256,7 @@ $(document).ready(function () {
                             $(this).closest(".modal-body").find("img#loader").hide();
                             $("#message").html("Pago Realizado con exito");
                             $("#payment").hide();
+                            $("#paymentcardid").val(result.id);
 
                             $("#paymentModal").modal("hide");
                             $("#paymentConfirmation").show();

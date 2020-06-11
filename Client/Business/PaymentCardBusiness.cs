@@ -14,7 +14,7 @@ namespace Business
         {
             this.paymentCardData = new PaymentCardData(connString);
         }//Fin del constructor.
-        public int AddPaymentCard(PaymentCard paymentCard)
+        public PaymentCard AddPaymentCard(PaymentCard paymentCard)
         {
             return paymentCardData.AddPaymentCard(paymentCard);
         }
@@ -24,9 +24,13 @@ namespace Business
             return paymentCardData.SelectPaymentcard();
         }
 
-        public PaymentCard GetPaymentCardByNumber(long number)
+        public PaymentCard GetPaymentCardByNumber(string number)
         {
-            return SelectPaymentcard().Find(p => p.Number == number);
+            return SelectPaymentcard().Find(p => p.cardnumber == number);
+        }
+        public int AddVoucher(int paymentId, int idreservation)
+        {
+            return paymentCardData.AddVoucher(paymentId, idreservation);
         }
     }
 }

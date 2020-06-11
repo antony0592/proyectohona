@@ -15,7 +15,7 @@ namespace Presentation.Models
             this.reservationBusiness = new ReservationBusiness(connectionString);
         }
 
-        public int AddReservation(Reservation reservation)
+        public Reservation AddReservation(Reservation reservation)
         {
             return reservationBusiness.AddReservation(reservation);
         }
