@@ -6,11 +6,11 @@ namespace Domain
 {
     public class Season
     {
-       
-        public Season(int id, int idtyperoom, string dateinputseason, string dateoutputseason, string description, int state, int percentation)
+
+        public Season(int id, string dateinputseason, string dateoutputseason, string description, int state, int percentation)
         {
             this.id = id;
-            this.idtyperoom = idtyperoom;
+
             this.dateinputseason = dateinputseason;
             this.dateoutputseason = dateoutputseason;
             this.description = description;
@@ -21,7 +21,7 @@ namespace Domain
         public Season()
         {
             this.id = 0;
-            this.idtyperoom = 0;
+
             this.dateinputseason = null;
             this.dateoutputseason = null;
             this.description = "";
@@ -30,12 +30,11 @@ namespace Domain
         }
 
         public int id { get; set; }
-        public int idtyperoom { get; set; }
         public string dateinputseason { get; set; }
         public string dateoutputseason { get; set; }
         public string description { get; set; }
         public int state { get; set; }
         public int percentation { get; set; }
     }
-  
+
 }
