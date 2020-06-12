@@ -105,10 +105,6 @@ function updatecontentpage(id) {
         }
     });
 
-    
-
-   
-
     $(".modal").on("click", "button#updatepublicity", function () {
 
         var formData = new FormData();
