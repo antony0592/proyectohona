@@ -244,4 +244,4 @@ function handleFileSelect(evt) {
 
 }
 
-document.getElementById('fileFacility').addEventListener('change', handleFileSelect, false);
+/*document.getElementById('fileFacility').addEventListener('change', handleFileSelect, false);
