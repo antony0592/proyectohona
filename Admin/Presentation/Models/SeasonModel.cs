@@ -25,10 +25,10 @@ namespace Presentation.Models
             return seasonBusiness.GetAllSeason();
         }
 
-        public void InsertSeason(int id, string dateinputseason, string dateoutputseason, string description, int state, int percentation)
+        public void InsertSeason(int id, int idtyperoom, string dateinputseason, string dateoutputseason, string description, int state, int percentation)
 
         {
-            seasonBusiness.InsertSeason(id, dateinputseason, dateoutputseason, description, state, percentation);
+            seasonBusiness.InsertSeason(id, idtyperoom, dateinputseason, dateoutputseason, description, state, percentation);
         }
 
         public void DeleteSeason(int id)

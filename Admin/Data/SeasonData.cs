@@ -33,6 +33,7 @@ namespace Data
                     season.Add(new Season
                     {
                         id = Convert.ToInt32(sqlDataReader["id"]),
+                        idtyperoom = Convert.ToInt32(sqlDataReader["idtyperoom"]),
                         dateinputseason = sqlDataReader["dateinputseason"].ToString(),
                         dateoutputseason = sqlDataReader["dateoutputseason"].ToString(),
                         description = sqlDataReader["description"].ToString(),
@@ -46,13 +47,14 @@ namespace Data
             return season;
         }//
 
-        public void InsertSeason(int id, string dateinputseason, string dateoutputseason, string description, int state, int percentation)
+        public void InsertSeason(int id, int idtyperoom, string dateinputseason, string dateoutputseason, string description, int state, int percentation)
         {
             SqlConnection connection = new SqlConnection(this.connString);
             String sqlStoredProcedure = "InsertSeason";
             SqlCommand cmdInsertar = new SqlCommand(sqlStoredProcedure, connection);
             cmdInsertar.CommandType = System.Data.CommandType.StoredProcedure;
             cmdInsertar.Parameters.Add(new SqlParameter("@id", id));
+            cmdInsertar.Parameters.Add(new SqlParameter("@idtyperoom", idtyperoom));
             cmdInsertar.Parameters.Add(new SqlParameter("@dateinputseason", dateinputseason));
             cmdInsertar.Parameters.Add(new SqlParameter("@dateoutputseason", dateoutputseason));
             cmdInsertar.Parameters.Add(new SqlParameter("@description", description));

@@ -78,6 +78,6 @@ namespace Data
             }//Fin del foreach.
 
             return typeRoom;
-        }
+        }//
     }
 }
