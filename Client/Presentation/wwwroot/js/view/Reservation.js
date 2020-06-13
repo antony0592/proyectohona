@@ -121,7 +121,7 @@ $(document).ready(function () {
                             "<td>" + result[i].quantitybed + "</td>" +
                             "<td>" + result[i].amount + "</td>" +
                             '<td><button class="btn btn-success btn-lg" type="button" onclick="return GetById(\'' + result[i].id + '\')">Reservar</button></td>' +
-                            "<tr>" +
+                            "<tr>";
                             $("#bodytable").append(tr);
 
                         if (result[i].idtyperoom == $('#typeroomcb').val()) {
