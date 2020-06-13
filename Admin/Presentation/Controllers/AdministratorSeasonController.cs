@@ -40,6 +40,7 @@ namespace Presentation.Controllers.Administrator
 
                 SeasonModel reservationNew = new SeasonModel();
                 reservationNew.id = season[i].id;
+                reservationNew.idtyperoom = season[i].idtyperoom;
                 reservationNew.percentation = season[i].percentation;
                 reservationNew.state = season[i].state;
                 reservationNew.dateinputseason = season[i].dateinputseason;
@@ -64,16 +65,28 @@ namespace Presentation.Controllers.Administrator
 
         [Authorize]
         [HttpPost]
-        public ActionResult insert(string dateinputseason, string dateoutputseason, string descriptionText, int percentation)
+        public ActionResult insert(string description, string dateinputseason, string dateoutputseason, string descriptionText, int percentation)
         {
             RepositoryTypeRoom repositoryTyperoom = new RepositoryTypeRoom(connectionString);
             SeasonModel seasonModel = new SeasonModel(connectionString);
 
             IList<TypeRoom> typeRoom = repositoryTyperoom.GetAllTypeRoom();
-            int idtyperoom = 1;
+            int idtyperoom = 0;
             List<TypeRoomModel> typeroomModel = new List<TypeRoomModel>();
 
-            seasonModel.InsertSeason(idtyperoom, dateinputseason, dateoutputseason, descriptionText, 1, percentation);
+            for (int j = 0; j < typeRoom.Count; j++)
+            {
+                TypeRoomModel typeRoomNew = new TypeRoomModel(connectionString);
+                typeRoomNew.description = typeRoom[j].description;
+                typeRoomNew.id = typeRoom[j].id;
+                if (description.Equals(typeRoom[j].description))
+                {
+                    idtyperoom = typeRoom[j].id;
+                }
+                typeroomModel.Add(typeRoomNew);
+            }
+
+            seasonModel.InsertSeason(idtyperoom, idtyperoom, dateinputseason, dateoutputseason, descriptionText, 1, percentation);
 
             Season();
 

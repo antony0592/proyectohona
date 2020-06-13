@@ -11,7 +11,25 @@
             <div class="col-6">
                 <div>
                     <h5 class="text-center"> Temporadas y Ofertas Especiales </h5>
+                    <div>
+                        <div>
+                            <br />
 
+                            <div class="form-group ">
+                                <label for="typeroomS">Tipo de habitación:</label>
+                                <select class="form-control" id="description" name="description">
+                                    <option value="0">-Seleccione una opción-</option>
+                                    @foreach (var typeroom in Model)
+                                    {
+                                        <option value="@typeroom.description">@typeroom.description</option>
+                                    }
+                                </select>
+                            </div>
+
+                            <br />
+
+                        </div>
+                    </div>
                     <div>
                         <label for="arrivaldate">Fecha de Inicio</label>
                         <input type="date" class="form-control" id="dateinputseason" name="dateinputseason" onchange="datechange()" required>
@@ -47,7 +65,7 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-
+                        <th>Tipo de Habitación</th>
                         <th>Fecha de Inicion</th>
                         <th>Fecha fin</th>
                         <th>Descripción</th>
@@ -61,25 +79,29 @@
                     @for (int i = 0; i < seasonlist.Count(); i++)
                     {
                         <tr>
-
-
-                            <td class="id">@seasonlist[i].id</td>
-
-                            <td class="datein">@seasonlist[i].dateinputseason</td>
-                            <td class="dateout">@seasonlist[i].dateoutputseason</td>
-                            <td class="descrip">@seasonlist[i].description</td>
-                            <td class="percer">@seasonlist[i].percentation</td>
-                            @if (@seasonlist[i].state == 1)
+                            @for (int j = 0; j < typeroomlist.Count(); j++)
                             {
-                                <td><input type="checkbox" checked></td>
-                            }
-                            else
-                            {
-                                <td><input type="checkbox"></td>
-                            }
-                            <td href="#" id="deleteSeason" class="deleteSeason">Eliminar</td>
+                                if (@seasonlist[i].idtyperoom == @typeroomlist[j].id)
+                                {
+                                    <td class="id">@seasonlist[i].id</td>
+                                    <td class="desc">@typeroomlist[j].description</td>
+                                    <td class="datein">@seasonlist[i].dateinputseason</td>
+                                    <td class="dateout">@seasonlist[i].dateoutputseason</td>
+                                    <td class="descrip">@seasonlist[i].description</td>
+                                    <td class="percer">@seasonlist[i].percentation</td>
+                                    @if (@seasonlist[i].state == 1)
+                                    {
+                                        <td><input type="checkbox" checked></td>
+                                    }
+                                    else
+                                    {
+                                        <td><input type="checkbox"></td>
+                                    }
+                                    <td href="#" id="deleteSeason" class="deleteSeason">Eliminar</td>
 
 
+                                }
+                            }
 
                         </tr>
                     }

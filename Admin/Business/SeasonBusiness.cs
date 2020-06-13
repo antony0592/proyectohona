@@ -20,9 +20,9 @@ namespace Business
             return this.seasonData.GetAllSeason();
         }
 
-        public void InsertSeason(int id, string dateinputseason, string dateoutputseason, string description, int state, int percentation)
+        public void InsertSeason(int id, int idtyperoom, string dateinputseason, string dateoutputseason, string description, int state, int percentation)
         {
-            this.seasonData.InsertSeason(id, dateinputseason, dateoutputseason, description, state, percentation);
+            this.seasonData.InsertSeason(id, idtyperoom, dateinputseason, dateoutputseason, description, state, percentation);
         }
         public void DeleteSeason(int id)
         {

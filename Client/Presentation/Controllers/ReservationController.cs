@@ -38,7 +38,6 @@ namespace Presentation.Controllers
 
         public JsonResult GetRoomById(int id) 
         {
-
             return Json(id);
         }
 
