@@ -20,8 +20,10 @@ namespace Business
             return this.voucherData.GetAllVoucher();
         }
 
-
-
+        public void DeleteVoucherList(int id)
+        {
+            this.voucherData.DeleteVoucherList(id);
+        }
 
     }
 }

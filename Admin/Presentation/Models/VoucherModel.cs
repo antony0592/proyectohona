@@ -1,11 +1,6 @@
 ﻿using Domain;
 using Business;
-using Domain;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 
 namespace Presentation.Models
 {
@@ -25,6 +20,11 @@ namespace Presentation.Models
         public List<Voucher> GetAllVoucher()
         {
             return this.voucherBusiness.GetAllVoucher();
+        }
+
+        public void DeleteVoucherList(int id)
+        {
+            this.voucherBusiness.DeleteVoucherList(id);
         }
 
 

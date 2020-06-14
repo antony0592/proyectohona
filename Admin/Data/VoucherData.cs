@@ -46,33 +46,22 @@ namespace Data
             return voucher;
         }
 
-        //public List<Room> Getsearchroom(int typeroom)
-        //{
-        //    List<Room> room = new List<Room>();
+        public int DeleteVoucherList(int idreservation)
+        {
+            int resultToReturn;
+            using (SqlConnection connection = new SqlConnection(connString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand("DeleteVoucher", connection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@idreservation", idreservation);
 
-        //    using (SqlConnection connection = new SqlConnection(connString))
-        //    {
-        //        connection.Open();
-        //        SqlCommand command = new SqlCommand("SearchRoom", connection);
-        //        command.CommandType = System.Data.CommandType.StoredProcedure;
-        //        command.Parameters.Add("@typeroom", SqlDbType.Int).Value = typeroom;
+                resultToReturn = command.ExecuteNonQuery();
 
-        //        SqlDataReader sqlDataReader = command.ExecuteReader();
-        //        //this reads all the rows coming from DB
-        //        while (sqlDataReader.Read())
-        //        {
-        //            room.Add(new Room
-        //            {
-        //                id = Convert.ToInt32(sqlDataReader["id"]),
-        //                idtyperoom = Convert.ToInt32(sqlDataReader["idtyperoom"]),
-        //                state = Convert.ToInt32(sqlDataReader["state"]),
-        //                number = Convert.ToInt32(sqlDataReader["number"])
+                connection.Close();
 
-        //            });
-        //        }
-        //        connection.Close();
-        //    }
-        //    return room;
-        //}
+            }
+            return resultToReturn;
+        }
     }
 }

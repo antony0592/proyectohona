@@ -14,7 +14,7 @@
                     <h5> Lista de reservaciones </h5>
                 </div>
                 <div style="overflow-x:auto;">
-                    <table class="table table-striped table-bordered table-sm display" id="tbl"  style="width:100%">
+                    <table class="table table-striped table-bordered table-sm display" id="tbl"  style="width:100%" >
                         <thead>
                             <tr>
                                 <th>Fecha</th>
@@ -26,26 +26,26 @@
                                 <th>Fecha llegada</th>
                                 <th>Fecha de salida</th>
                                 <th>Tipo Habitación</th>
-                                <th>Ver</th>
+                                <th>Ver Detalles</th>
                                 <th>Eliminar</th>
                             </tr>
                         </thead>
                         <tbody>
                             @for (int i = 0; i < voucher.Count(); i++)
                             {
-                                <tr>
-                                    <td class="creationdate">@voucher[i].creationdate</td>
-                                    <td class="id">@voucher[i].id</td>
-                                    <td class="name">@client[i].name</td>
-                                    <td class="lastname">@client[i].lastname</td>
-                                    <td class="email">@client[i].email</td>
-                                    <td class="number">@paymentcard[i].cardnumber</td>
-                                    <td class="arrivaldate">@reservation[i].arrivaldate</td>
-                                    <td class="departuredate">@reservation[i].departuredate</td>
-                                    <td class="description">@typeroom[i].description</td>
-                                    <td id="consult" class="consult" onclick="cambiaVisibilidad()">Ver</td>
-                                    <td href="#" id="delete" class="delete">Eliminar</td>
-                                </tr>
+                            <tr>
+                                <td class="creationdate">@voucher[i].creationdate</td>
+                                <td class="id">@voucher[i].idreservation</td>
+                                <td class="name">@client[i].name</td>
+                                <td class="lastname">@client[i].lastname</td>
+                                <td class="email">@client[i].email</td>
+                                <td class="number">@paymentcard[i].cardnumber</td>
+                                <td class="arrivaldate">@reservation[i].arrivaldate</td>
+                                <td class="departuredate">@reservation[i].departuredate</td>
+                                <td class="description">@typeroom[i].description</td>
+                                <td bgcolor="#DDE0FC" id="consult" class="consult" onclick="cambiaVisibilidad()"><img src="https://img.icons8.com/ios/20/000000/view-details.png">Ver</td>                              
+                                <td bgcolor="#DDE0FC" id="delete" class="delete"><img src="https://img.icons8.com/wired/20/000000/filled-trash.png">Eliminar</td>
+                            </tr>
                             }
                         </tbody>
                     </table>

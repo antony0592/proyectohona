@@ -64,7 +64,7 @@ function deleteValues(e) {
     id = elementosTD[1].innerHTML;
 
     $.ajax({
-        url: "/AdministratorReservationList/DeleteReservationList",
+        url: "/AdministratorReservationList/DeleteVoucherList",
         data: { 'id':id },
         type: 'GET',
 

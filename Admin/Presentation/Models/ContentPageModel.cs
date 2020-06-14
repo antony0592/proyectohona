@@ -37,6 +37,26 @@ namespace Presentation.Models
             this.contentepageBusiness.UpdateContentPageHotel(referentpage, urlimage);
         }
 
+        public int SaveImage(IFormFile file, string folderFiles)
+        {
+            var filePath = Path.Combine(folderFiles, file.FileName);
+            try
+            {
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    file.CopyTo(fileStream);
+                    fileStream.Close();
+                }
+                return 1;
+            }
+            catch (Exception e)
+            {
+                return 0;
+            }
+
+        }
+
+
 
         //PUBLICITY
         public List<ContentPage> GetContentPagePublicity(string reference)
