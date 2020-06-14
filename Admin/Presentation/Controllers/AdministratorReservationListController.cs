@@ -120,14 +120,12 @@ namespace Presentation.Controllers.Administrator
             return View();
         }
 
-     
-        public ActionResult DeleteReservationList(int id)
+        public ActionResult DeleteVoucherList(int id)
         {
-            ReservationModel repositoryReservation = new ReservationModel(connectionString);
-            Console.WriteLine(id);
-            repositoryReservation.DeleteReservationList(id);
+            VoucherModel voucherModel = new VoucherModel(connectionString);
+            voucherModel.DeleteVoucherList(id);
             return View();
         }
-        
+
     }
 }

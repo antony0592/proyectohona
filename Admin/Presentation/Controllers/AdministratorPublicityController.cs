@@ -35,7 +35,6 @@ namespace Presentation.Controllers.Administrator
         {
             ContentPageModel cp = new ContentPageModel(connectionString);
             List<ContentPage> contentpublicity = cp.GetContentPagePublicity("publicity");
-
             ViewBag.contentPage = contentpublicity;
             return View();
         }
