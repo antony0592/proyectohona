@@ -45,6 +45,11 @@ namespace Business
         {
             return contentPageData.UpdatePublicity(contentPage);
         }
+        public int UpdatePublicityContent(ContentPage contentPage)
+        {
+            return contentPageData.UpdatePublicityContent(contentPage);
+        }
+
         public int DeletePublicity(int id)
         {
             return this.contentPageData.DeletePublicity(id); 

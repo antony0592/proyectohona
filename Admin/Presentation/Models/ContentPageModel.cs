@@ -73,6 +73,11 @@ namespace Presentation.Models
         {
             return contentepageBusiness.UpdatePublicity(contentPage);
         }
+
+        public int UpdatePublicityContent(ContentPage contentPage)
+        {
+            return contentepageBusiness.UpdatePublicityContent(contentPage);
+        }
         public int DeletePublicity(int id)
         {
             return contentepageBusiness.DeletePublicity(id);

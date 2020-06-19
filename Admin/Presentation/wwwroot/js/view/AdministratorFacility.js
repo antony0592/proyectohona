@@ -1,16 +1,16 @@
 ﻿//Document ready
 $(document).ready(function () {
-    loadData();
+    loadDataFacilities();
 });
 
 function AddFacility() {
 
     $("#updatefacility").hide();
     $("#addfacility").show();
-    $("#divactualimage").hide();
+    $("#divactualimageF").hide();
     $("#contentFacility").val("");
     $("#fileFacility").val("");
-    $("#list").hide();
+    $("#listF").hide();
 
     $(".modal").on("click", "button#addfacility", function () {
 
@@ -25,10 +25,7 @@ function AddFacility() {
             alert("Por favor ingrese un texto");
         } else if (selectFile == null) {
             alert("Por favor ingrese una imagen");
-        }
-
-        if ($("#contentFacility").val()!=null) {
-
+        } else {
             $.ajax({
                 url: "/AdministratorFacility/AddUpdateFacility",
                 type: "POST",
@@ -42,7 +39,7 @@ function AddFacility() {
                         $('output').find('span').remove();
                         $("#fileFacility").val("");
                         $("#UpdateModalFacility .close").click();
-                        loadData();
+                        loadDataFacilities();
                     } else {
                         alert("Error.Por favor intente de nuevo");
                     }
@@ -52,14 +49,13 @@ function AddFacility() {
                 }
             });
         }
-        else {
-            alert("NO deje descripción en blanco");
-        }
+
+       
     });
 
 }
 
-function deletecontentpage(id) {
+function deletecontentpageFacility(id) {
     $(".modal").on("click", "button#btndeletefacility", function () {
         $.ajax({
             url: "/AdministratorFacility/DeleteFacility/" + id,
@@ -67,7 +63,7 @@ function deletecontentpage(id) {
             contentType: "application/json;charset=UTF-8",
             dataType: "json",
             success: function (result) {
-                loadData();
+                loadDataFacilities();
                 $("#DeleteModalFacility .close").click();
             },
             error: function (errormessage) {
@@ -77,14 +73,13 @@ function deletecontentpage(id) {
     });
 }
 
-function GetById(id) {
+function updatecontentpageFacility(id) {
 
-}
-
-function updatecontentpage(id) {
-
+    $("#fileFacility").val("");
+    $("#divactualimageF").show();
     $("#updatefacility").show();
     $("#addfacility").hide();
+    $('output').find('span').remove();
 
     //get seleted facility by id
     $.ajax({
@@ -106,9 +101,6 @@ function updatecontentpage(id) {
     });
 
 
-
-
-
     $(".modal").on("click", "button#updatefacility", function () {
 
         var formData = new FormData();
@@ -121,9 +113,10 @@ function updatecontentpage(id) {
 
         if (content.trim() == "") {
             alert("Por favor ingrese un texto");
-        } else if (selectFile == null) {
-            alert("Por favor ingrese una imagen");
         }
+        //else if (selectFile == null) {
+        //    alert("Por favor ingrese una imagen");
+        //}
 
         if ($("#contentFacility").val() !=null) {
 
@@ -140,7 +133,7 @@ function updatecontentpage(id) {
                         $('output').find('span').remove();
                         $("#fileFacility").val("");
                         $("#UpdateModalFacility .close").click();
-                        loadData();
+                        loadDataFacilities();
                     } else {
                         alert("Error.Por favor intente de nuevo");
                     }
@@ -173,7 +166,7 @@ function isNull(object) {
     return inWhite;
 }
 
-function loadData() {
+function loadDataFacilities() {
 
     $.ajax({
         url: "/AdministratorFacility/ListAll",
@@ -187,11 +180,11 @@ function loadData() {
 
                 data = [
                     item.id,
-                    '<a target="_blank" href="' + item.content + '">' + item.content + ' </a>',
+                    '<p>' + item.content + ' </p>',
                     '<td class="text-center"><img class="img-responsive rounded mx-25 d-block" src="' + item.urlimage + '" alt="" width="70" height="50"></td>',
                     '<td class= "text-center">' +
-                    '  <div data-toggle="modal" data-target="#UpdateModalFacility" class="btn-group btn-group-xs"><a href="#" onclick="return updatecontentpage(' + item.id + ')" title="Modificar" class="btn btn-default"><i class="fa fa-pen-square"></i> </a></div>' +
-                    '  <div data-toggle="modal" data-target="#DeleteModalFacility" class="btn-group btn-group-xs"><a href="#" onclick="return deletecontentpage(' + item.id + ')" title="Eliminar" class="btn btn -default"><i class="fa fa-eraser"></i> </a></div>' +
+                    '  <div data-toggle="modal" data-target="#UpdateModalFacility" class="btn-group btn-group-xs"><a href="#" onclick="return updatecontentpageFacility(' + item.id + ')" title="Modificar" class="btn btn-default"><i class="fa fa-pen-square"></i> </a></div>' +
+                    '  <div data-toggle="modal" data-target="#DeleteModalFacility" class="btn-group btn-group-xs"><a href="#" onclick="return deletecontentpageFacility(' + item.id + ')" title="Eliminar" class="btn btn -default"><i class="fa fa-eraser"></i> </a></div>' +
                     '</td >'
                 ];
 
@@ -203,7 +196,7 @@ function loadData() {
                 "bDestroy": true,
                 responsive: true,
                 scrollX: true,
-                lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]]
+                lengthMenu: [[5, 10, 20, -1], [5, 10, 20, "All"]]
 
             });
 
@@ -214,7 +207,8 @@ function loadData() {
     })
 }
 
-function handleFileSelect(evt) {
+function handleFileSelectFacility(evt) {
+    $('output').find('span').remove();
     var files = evt.target.files; // FileList object
 
     // Loop through the FileList and render image files as thumbnails.
@@ -234,8 +228,8 @@ function handleFileSelect(evt) {
                     '" title="', escape(theFile.name), '"/>'
                 ].join('');
 
-                $("#list").show();
-                document.getElementById('list').insertBefore(span, null);
+                $("#listF").show();
+                document.getElementById('listF').insertBefore(span, null);
             };
         })(f);
         // Read in the image file as a data URL.
@@ -244,4 +238,4 @@ function handleFileSelect(evt) {
 
 }
 
-/*document.getElementById('fileFacility').addEventListener('change', handleFileSelect, false);
+document.getElementById('fileFacility').addEventListener('change', handleFileSelectFacility, false);
