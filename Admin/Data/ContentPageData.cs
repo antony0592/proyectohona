@@ -75,6 +75,23 @@ namespace Data
             command.Connection.Close();
             return result;
         }
+
+        public int UpdatePublicityContent(ContentPage contentPage)
+        {
+            SqlConnection connection = new SqlConnection(this.connString);
+            String sqlStoredProcedure = "InsertUpdatePublicityContent";
+            SqlCommand command = new SqlCommand(sqlStoredProcedure, connection);
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+            command.Parameters.Add(new SqlParameter("@id", contentPage.id));
+            command.Parameters.Add(new SqlParameter("@content", contentPage.content));
+            command.Connection.Open();
+            int result = command.ExecuteNonQuery();
+            command.Connection.Close();
+            return result;
+        }
+
+
+        
         public int AddPublicity(ContentPage contentPage)
         {
             SqlConnection connection = new SqlConnection(this.connString);

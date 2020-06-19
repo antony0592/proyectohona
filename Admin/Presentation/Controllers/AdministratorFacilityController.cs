@@ -61,6 +61,11 @@ namespace Presentation.Controllers.Administrator
         public JsonResult AddUpdateFacility(int idFacility, string content, IFormFile files)
         {
 
+            if (files == null & idFacility == 0 & content == null)
+            {
+                return Json(0);
+            }
+
             ContentPageModel contentPageModel = new ContentPageModel(connectionString);
             FacilityModel facilityModel = new FacilityModel(environment);
 
@@ -68,38 +73,57 @@ namespace Presentation.Controllers.Administrator
             var pathClient = "../../../Client/Presentation/wwwroot/images/Facilidades/";
             string folderFiles = Path.Combine(environment.WebRootPath, path);
             string folderFilesClient = Path.Combine(environment.WebRootPath, pathClient);
-            int resultSaveImage = facilityModel.SaveImage(files, folderFiles);
-
-            int resultSaveImage2 = facilityModel.SaveImage(files, folderFilesClient);
-
+            int resultSaveImage = 0;
+            int resultSaveImage2 = 0;
             int resultSaveFacility = 0;
 
-            if (resultSaveImage > 0)
+            if (files != null)
             {
+                resultSaveImage = facilityModel.SaveImage(files, folderFiles);
+                resultSaveImage2 = facilityModel.SaveImage(files, folderFilesClient);
+                if (resultSaveImage > 0)
+                {
+                    ContentPage facility = new ContentPage()
+                    {
+                        id = idFacility,
+                        referentpage = "facility",
+                        urlimage = "/images/Facilidades/" + files.FileName,
+                        typeimage = "1",
+                        content = content
+                    };
+
+                    //save or update Facility
+                    if (idFacility == 0)
+                    {
+                        //save new facility
+                        resultSaveFacility = contentPageModel.AddFacility(facility);
+                    }
+                    else
+                    {
+                        //save complete update facility
+                        resultSaveFacility = contentPageModel.UpdateFacility(facility);
+                    }
+
+                }
+            }
+
+            if (idFacility > 0 & content != null & files == null)
+            {
+                //save update publicity only content
                 ContentPage facility = new ContentPage()
                 {
                     id = idFacility,
                     referentpage = "facility",
-                    urlimage = "/images/Facilidades/" + files.FileName,
+                    urlimage = "",
                     typeimage = "1",
                     content = content
                 };
-
-                //save or update Facility
-                if (idFacility == 0)
-                {
-                    resultSaveFacility = contentPageModel.AddFacility(facility);
-                }
-                else
-                {
-                    resultSaveFacility = contentPageModel.UpdateFacility(facility);
-                }
-
+                resultSaveFacility = contentPageModel.UpdatePublicityContent(facility);
             }
 
-            if (resultSaveImage < 1 || resultSaveFacility < 1 || resultSaveImage2 < 1)
+            if (resultSaveFacility < 1)
             {
-                return null;
+                return Json(0);
             }
 
             return Json(1);

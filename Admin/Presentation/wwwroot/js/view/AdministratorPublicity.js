@@ -1,16 +1,16 @@
 //Document ready
     $(document).ready(function () {
-        loadData();       
+        loadDataPublicity();       
     });
 
 function AddPublicity() {
 
     $("#updatepublicity").hide();
     $("#addpublicity").show();
-    $("#divactualimage").hide();
+    $("#divactualimageP").hide();
     $("#contentPublicity").val("");
     $("#filePublicity").val("");
-    $("#list").hide();
+    $("#listP").hide();
 
     $(".modal").on("click", "button#addpublicity", function () {
 
@@ -42,7 +42,7 @@ function AddPublicity() {
                         $('output').find('span').remove();
                         $("#filePublicity").val("");
                         $("#UpdateModalPublicity .close").click();
-                        loadData();
+                        loadDataPublicity();
                     } else {
                         alert("Error.Por favor intente de nuevo");
                     }
@@ -59,7 +59,7 @@ function AddPublicity() {
     
 }
 
-function deletecontentpage(id) {
+function deletecontentpagePublicity(id) {
         $(".modal").on("click", "button#btndeletepublicity", function () {
             $.ajax({
                 url: "/AdministratorPublicity/DeletePublicity/" + id,
@@ -67,7 +67,7 @@ function deletecontentpage(id) {
                 contentType: "application/json;charset=UTF-8",
                 dataType: "json",
                 success: function (result) {
-                    loadData();
+                    loadDataPublicity();
                     $("#DeleteModalPublicity .close").click();
                 },
                 error: function (errormessage) {
@@ -77,14 +77,14 @@ function deletecontentpage(id) {
         });
     }
 
-function GetById(id) {
-       
-    }
+function updatecontentpagePublicity(id) {
 
-function updatecontentpage(id) {
-
+    $("#filePublicity").val("");
+    $("#divactualimageP").show();
     $("#updatepublicity").show();
     $("#addpublicity").hide();
+    $('output').find('span').remove();  
+    
 
     //get seleted publicity by id
     $.ajax({
@@ -117,9 +117,10 @@ function updatecontentpage(id) {
 
         if (content.trim() == "") {
             alert("Por favor ingrese un texto");
-        } else if (selectFile == null) {
-            alert("Por favor ingrese una imagen");
         }
+        //else if (selectFile == null) {
+        //    alert("Por favor ingrese una imagen");
+        //}
 
         if ($("#contentPublicity").val().match(/^(ht|f)tps?:\/\/\w+([\.\-\w]+)?\.([a-z]{2,6})?([\.\-\w\/_]+)$/i)) {
 
@@ -136,7 +137,7 @@ function updatecontentpage(id) {
                         $('output').find('span').remove();
                         $("#filePublicity").val("");
                         $("#UpdateModalPublicity .close").click();
-                        loadData();
+                        loadDataPublicity();
                     } else {
                         alert("Error.Por favor intente de nuevo");
                     }
@@ -169,7 +170,7 @@ function isNull(object) {
         return inWhite;
     }   
 
-function loadData() {
+function loadDataPublicity() {
 
         $.ajax({
             url: "/AdministratorPublicity/ListAll",
@@ -186,8 +187,8 @@ function loadData() {
                         '<a target="_blank" href="' + item.content + '">' + item.content +' </a>',
                         '<td class="text-center"><img class="img-responsive rounded mx-25 d-block" src="' + item.urlimage +'" alt="" width="70" height="50"></td>',
                         '<td class= "text-center">' +
-                        '  <div data-toggle="modal" data-target="#UpdateModalPublicity" class="btn-group btn-group-xs"><a href="#" onclick="return updatecontentpage(' + item.id + ')" title="Modificar" class="btn btn-default"><i class="fa fa-pen-square"></i> </a></div>' +
-                        '  <div data-toggle="modal" data-target="#DeleteModalPublicity" class="btn-group btn-group-xs"><a href="#" onclick="return deletecontentpage(' + item.id + ')" title="Eliminar" class="btn btn -default"><i class="fa fa-eraser"></i> </a></div>' +
+                        '  <div data-toggle="modal" data-target="#UpdateModalPublicity" class="btn-group btn-group-xs"><a href="#" onclick="return updatecontentpagePublicity(' + item.id + ')" title="Modificar" class="btn btn-default"><i class="fa fa-pen-square"></i> </a></div>' +
+                        '  <div data-toggle="modal" data-target="#DeleteModalPublicity" class="btn-group btn-group-xs"><a href="#" onclick="return deletecontentpagePublicity(' + item.id + ')" title="Eliminar" class="btn btn -default"><i class="fa fa-eraser"></i> </a></div>' +
                         '</td >'
                     ];
 
@@ -199,7 +200,7 @@ function loadData() {
                     "bDestroy": true,
                     responsive: true,
                     scrollX: true,
-                    lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]]
+                    lengthMenu: [[5, 10, 20, -1], [5, 10, 20, "All"]]
 
                 });
 
@@ -210,7 +211,8 @@ function loadData() {
         })
     }
 
-function handleFileSelect(evt) {
+function handleFileSelectPublicity(evt) {
+    $('output').find('span').remove();
     var files = evt.target.files; // FileList object
 
     // Loop through the FileList and render image files as thumbnails.
@@ -230,8 +232,8 @@ function handleFileSelect(evt) {
                     '" title="', escape(theFile.name), '"/>'
                 ].join('');
 
-                $("#list").show();
-                document.getElementById('list').insertBefore(span, null);
+                $("#listP").show();
+                document.getElementById('listP').insertBefore(span, null);
             };
         })(f);
         // Read in the image file as a data URL.
@@ -240,4 +242,4 @@ function handleFileSelect(evt) {
     
 }
 
-document.getElementById('filePublicity').addEventListener('change', handleFileSelect, false);
+document.getElementById('filePublicity').addEventListener('change', handleFileSelectPublicity, false);

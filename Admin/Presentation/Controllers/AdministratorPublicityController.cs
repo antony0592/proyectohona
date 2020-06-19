@@ -56,8 +56,12 @@ namespace Presentation.Controllers.Administrator
     
 
         [HttpPost]
-        public JsonResult AddUpdatePublicity(int idPublicity,string content, IFormFile files)
+        public JsonResult AddUpdatePublicity(int idPublicity, string content, IFormFile files)
         {
+            if (files == null & idPublicity==0 & content==null) 
+            {
+                return Json(0);
+            }
 
             ContentPageModel contentPageModel = new ContentPageModel(connectionString);
             PublicityModel publicityModel = new PublicityModel(environment);
@@ -66,39 +70,56 @@ namespace Presentation.Controllers.Administrator
             var pathClient = "../../../Client/Presentation/wwwroot/images/Publicidad/";
             string folderFiles = Path.Combine(environment.WebRootPath, path);
             string folderFilesClient = Path.Combine(environment.WebRootPath, pathClient);
-            int resultSaveImage = publicityModel.SaveImage(files,folderFiles);
+            int resultSaveImage = 0;
+            int resultSaveImage2 = 0;
+            int resultSavePublicity = 0;
 
-            int resultSaveImage2 = publicityModel.SaveImage(files, folderFilesClient);
-
-
-            int resultSavePublicity=0;
-
-            if (resultSaveImage > 0) 
+            if (files != null) 
             {
+                resultSaveImage = publicityModel.SaveImage(files, folderFiles);
+                resultSaveImage2 = publicityModel.SaveImage(files, folderFilesClient);
+                if (resultSaveImage > 0)
+                {
+                    ContentPage publicity = new ContentPage()
+                    {
+                        id = idPublicity,
+                        referentpage = "publicity",
+                        urlimage = "/images/Publicidad/" + files.FileName,
+                        typeimage = "1",
+                        content = content
+                    };
+
+                    //save or update publicity
+                    if (idPublicity == 0 & files != null & content != null)
+                    {
+                        //save new publicity
+                        resultSavePublicity = contentPageModel.AddPublicity(publicity);
+                    }
+                    else if (idPublicity > 0 & content != null)
+                    {
+                        //save complete update publicity
+                        resultSavePublicity = contentPageModel.UpdatePublicity(publicity);
+                    }
+                }
+            }
+
+            if (idPublicity > 0 & content != null & files == null)
+            {
+                //save update publicity only content
                 ContentPage publicity = new ContentPage()
                 {
                     id = idPublicity,
                     referentpage = "publicity",
-                    urlimage = "/images/Publicidad/" + files.FileName,
+                    urlimage = "",
                     typeimage = "1",
                     content = content
                 };
-
-                //save or update publicity
-                if (idPublicity == 0)
-                {
-                    resultSavePublicity = contentPageModel.AddPublicity(publicity);
-                }
-                else 
-                {
-                    resultSavePublicity = contentPageModel.UpdatePublicity(publicity);
-                }
-                
+                resultSavePublicity = contentPageModel.UpdatePublicityContent(publicity);
             }
 
-            if (resultSaveImage < 1 || resultSavePublicity < 1 || resultSaveImage2 < 1) 
+            if (resultSavePublicity < 1) 
             {
-                return null;
+                return Json(0);
             }
 
             return Json(1);
