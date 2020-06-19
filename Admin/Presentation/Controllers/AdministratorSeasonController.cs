@@ -65,13 +65,13 @@ namespace Presentation.Controllers.Administrator
 
         [Authorize]
         [HttpPost]
-        public ActionResult insert(string description,string dateinputseason, string dateoutputseason, string descriptionText, int percentation)
+        public ActionResult insert(string description, string dateinputseason, string dateoutputseason, string descriptionText, int percentation)
         {
             RepositoryTypeRoom repositoryTyperoom = new RepositoryTypeRoom(connectionString);
             SeasonModel seasonModel = new SeasonModel(connectionString);
 
             IList<TypeRoom> typeRoom = repositoryTyperoom.GetAllTypeRoom();
-            int idtyperoom=0;
+            int idtyperoom = 0;
             List<TypeRoomModel> typeroomModel = new List<TypeRoomModel>();
 
             for (int j = 0; j < typeRoom.Count; j++)
@@ -85,16 +85,16 @@ namespace Presentation.Controllers.Administrator
                 }
                 typeroomModel.Add(typeRoomNew);
             }
-          
+
             seasonModel.InsertSeason(idtyperoom, idtyperoom, dateinputseason, dateoutputseason, descriptionText, 1, percentation);
-            
+
             Season();
-           
+
             return View("Season", typeroomModel);
-          
+
         }
 
-       
+
         public ActionResult DeleteSeason(int id)
         {
             RepositoryTypeRoom repositoryTyperoom = new RepositoryTypeRoom(connectionString);

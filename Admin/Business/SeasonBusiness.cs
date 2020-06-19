@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Business
 {
-   public class SeasonBusiness
+    public class SeasonBusiness
     {
         private SeasonData seasonData;
 
@@ -20,7 +20,7 @@ namespace Business
             return this.seasonData.GetAllSeason();
         }
 
-        public void InsertSeason(int id, int idtyperoom, string dateinputseason, string dateoutputseason, string description, int state,int percentation)
+        public void InsertSeason(int id, int idtyperoom, string dateinputseason, string dateoutputseason, string description, int state, int percentation)
         {
             this.seasonData.InsertSeason(id, idtyperoom, dateinputseason, dateoutputseason, description, state, percentation);
         }

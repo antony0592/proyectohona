@@ -104,6 +104,52 @@ namespace Data
             return result;
         }
 
+
+        //FACILITY
+        public int UpdateFacility(ContentPage contentPage)
+        {
+            SqlConnection connection = new SqlConnection(this.connString);
+            String sqlStoredProcedure = "InsertUpdateFacility";
+            SqlCommand command = new SqlCommand(sqlStoredProcedure, connection);
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+            command.Parameters.Add(new SqlParameter("@id", contentPage.id));
+            command.Parameters.Add(new SqlParameter("@urlimage", contentPage.urlimage));
+            command.Parameters.Add(new SqlParameter("@content", contentPage.content));
+            command.Parameters.Add(new SqlParameter("@action", "Update"));
+            command.Connection.Open();
+            int result = command.ExecuteNonQuery();
+            command.Connection.Close();
+            return result;
+        }
+        public int AddFacility(ContentPage contentPage)
+        {
+            SqlConnection connection = new SqlConnection(this.connString);
+            String sqlStoredProcedure = "InsertUpdateFacility";
+            SqlCommand command = new SqlCommand(sqlStoredProcedure, connection);
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+            command.Parameters.Add(new SqlParameter("@id", contentPage.id));
+            command.Parameters.Add(new SqlParameter("@urlimage", contentPage.urlimage));
+            command.Parameters.Add(new SqlParameter("@content", contentPage.content));
+            command.Parameters.Add(new SqlParameter("@action", "Insert"));
+            command.Connection.Open();
+            int result = command.ExecuteNonQuery();
+            command.Connection.Close();
+            return result;
+        }
+
+        public int DeleteFacility(int id)
+        {
+            SqlConnection connection = new SqlConnection(this.connString);
+            String sqlStoredProcedure = "DeleteFacility";
+            SqlCommand command = new SqlCommand(sqlStoredProcedure, connection);
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+            command.Parameters.Add(new SqlParameter("@Id", id));
+            command.Connection.Open();
+            int result = command.ExecuteNonQuery();
+            command.Connection.Close();
+            return result;
+        }
+
     }
 }
 

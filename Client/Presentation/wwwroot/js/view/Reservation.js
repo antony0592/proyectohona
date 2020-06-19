@@ -106,6 +106,9 @@ $(document).ready(function () {
             success: function (result) {
                 $("#bodytable").html("");//limpia tabla
                 if (result) {
+                    var totalamount = result[0].amount;
+                    localStorage.clear();
+                    localStorage.setItem("totalamount", totalamount);
                     for (var i = 0; i < result.length; i++) {
                         $("#amountsumit").val(result[i].amount);
                         $("#roomsumit").val(result[i].typeroom);
@@ -118,7 +121,7 @@ $(document).ready(function () {
                             "<td>" + result[i].quantitybed + "</td>" +
                             "<td>" + result[i].amount + "</td>" +
                             '<td><button class="btn btn-success btn-lg" type="button" onclick="return GetById(\'' + result[i].id + '\')">Reservar</button></td>' +
-                            "<tr>" +
+                            "<tr>";
                             $("#bodytable").append(tr);
 
                         if (result[i].idtyperoom == $('#typeroomcb').val()) {
@@ -171,7 +174,7 @@ function GetById(id) {
     var arrivaldate = document.getElementById("arrivaldate").value;
     var departuredate = document.getElementById("departuredate").value;
 
-    localStorage.clear();
+    
     localStorage.setItem("arrivaldate", arrivaldate);
     localStorage.setItem("departuredate", departuredate);
     localStorage.setItem("idroom", id);
@@ -204,14 +207,15 @@ $(document).ready(function () {
         var departuredate = localStorage.getItem("departuredate");
         var resta = new Date(departuredate).getTime() - new Date(arrivaldate).getTime();
         var datequantity = Math.round(resta / (1000 * 60 * 60 * 24));
-
+        var totalamount = localStorage.getItem("totalamount");
         $("#arrivaldateF").val(arrivaldate);
         $("#departuredateF").val(departuredate);
         $("#days").val(datequantity);
-        $("#totalamount").val($("#dayamount").val() * datequantity);
+        $("#totalamount").val(totalamount * datequantity);
+        $("#amountperday").text(totalamount);
+        $("#dayamount").val(totalamount);
         $("#idroomF").val(localStorage.getItem("idroom"));
     }
-
 
 
 });

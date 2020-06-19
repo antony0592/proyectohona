@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Data
 {
-   public class SeasonData
+    public class SeasonData
     {
         private String connString;
 
@@ -47,7 +47,7 @@ namespace Data
             return season;
         }//
 
-        public void InsertSeason(int id, int idtyperoom, string dateinputseason, string dateoutputseason, string description, int state,int percentation)
+        public void InsertSeason(int id, int idtyperoom, string dateinputseason, string dateoutputseason, string description, int state, int percentation)
         {
             SqlConnection connection = new SqlConnection(this.connString);
             String sqlStoredProcedure = "InsertSeason";

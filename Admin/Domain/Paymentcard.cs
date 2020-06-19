@@ -10,22 +10,20 @@ namespace Domain
         {
         }
 
-        public Paymentcard(int id, long number, int idclient, string date, int cvv, string type)
+        public Paymentcard(int id, long cardnumber, string expirationdate, int cvv, string cardtype)
         {
             this.id = id;
-            this.number = number;
-            this.idclient = idclient;
-            this.date = date;
+            this.cardnumber = cardnumber;
+            this.expirationdate = expirationdate;
             this.cvv = cvv;
-            this.type = type;
+            this.cardtype = cardtype;
         }
 
         public int id { get; set; }
-        public long number { get; set; }
-        public int idclient { get; set; }
-        public string date { get; set; }
+        public long cardnumber { get; set; }
+        public string expirationdate { get; set; }
         public int cvv { get; set; }
-        public string type { get; set; }
+        public string cardtype { get; set; }
 
     }
 }

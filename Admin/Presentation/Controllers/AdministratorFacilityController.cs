@@ -14,13 +14,13 @@ using Presentation.Models;
 namespace Presentation.Controllers.Administrator
 {
     [Authorize(Roles = "Admin")]
-    public class AdministratorPublicityController : Controller
+    public class AdministratorFacilityController : Controller
     {
         private readonly IConfiguration _configuration;
         private readonly IHostingEnvironment environment;
         string connectionString = "";
 
-        public AdministratorPublicityController(IConfiguration configuration, IHostingEnvironment environment)
+        public AdministratorFacilityController(IConfiguration configuration, IHostingEnvironment environment)
         {
             _configuration = configuration;
             this.environment = environment;
@@ -31,72 +31,73 @@ namespace Presentation.Controllers.Administrator
 
         // GET: /<controller>/
         [Authorize]
-        public ActionResult Publicity()
+        public ActionResult Facility()
         {
             ContentPageModel cp = new ContentPageModel(connectionString);
-            List<ContentPage> contentpublicity = cp.GetContentPagePublicity("publicity");
-            ViewBag.contentPage = contentpublicity;
+            List<ContentPage> contentfacility = cp.GetContentPageFacility("facility");
+
+            ViewBag.contentPage = contentfacility;
             return View();
         }
 
-        public JsonResult GetPublicityById(int id) {
+        public JsonResult GetFacilityById(int id)
+        {
 
             ContentPageModel cp = new ContentPageModel(connectionString);
-            return Json(cp.GetContentPagePublicity("publicity").Find(p=>p.id==id));
+            return Json(cp.GetContentPageFacility("facility").Find(p => p.id == id));
 
         }
 
         public JsonResult ListAll()
         {
             ContentPageModel cp = new ContentPageModel(connectionString);
-            return Json(cp.GetContentPagePublicity("publicity"));
+            return Json(cp.GetContentPageFacility("facility"));
 
         }
 
-    
+
 
         [HttpPost]
-        public JsonResult AddUpdatePublicity(int idPublicity,string content, IFormFile files)
+        public JsonResult AddUpdateFacility(int idFacility, string content, IFormFile files)
         {
 
             ContentPageModel contentPageModel = new ContentPageModel(connectionString);
-            PublicityModel publicityModel = new PublicityModel(environment);
+            FacilityModel facilityModel = new FacilityModel(environment);
 
-            var path = "./images/Publicidad/";
-            var pathClient = "../../../Client/Presentation/wwwroot/images/Publicidad/";
+            var path = "./images/Facilidades/";
+            var pathClient = "../../../Client/Presentation/wwwroot/images/Facilidades/";
             string folderFiles = Path.Combine(environment.WebRootPath, path);
             string folderFilesClient = Path.Combine(environment.WebRootPath, pathClient);
-            int resultSaveImage = publicityModel.SaveImage(files,folderFiles);
+            int resultSaveImage = facilityModel.SaveImage(files, folderFiles);
 
-            int resultSaveImage2 = publicityModel.SaveImage(files, folderFilesClient);
+            int resultSaveImage2 = facilityModel.SaveImage(files, folderFilesClient);
 
+            int resultSaveFacility = 0;
 
-            int resultSavePublicity=0;
-
-            if (resultSaveImage > 0) 
+            if (resultSaveImage > 0)
             {
-                ContentPage publicity = new ContentPage()
+                ContentPage facility = new ContentPage()
                 {
-                    id = idPublicity,
-                    referentpage = "publicity",
-                    urlimage = "/images/Publicidad/" + files.FileName,
+                    id = idFacility,
+                    referentpage = "facility",
+                    urlimage = "/images/Facilidades/" + files.FileName,
                     typeimage = "1",
                     content = content
                 };
 
-                //save or update publicity
-                if (idPublicity == 0)
+                //save or update Facility
+                if (idFacility == 0)
                 {
-                    resultSavePublicity = contentPageModel.AddPublicity(publicity);
+                    resultSaveFacility = contentPageModel.AddFacility(facility);
                 }
-                else 
+                else
                 {
-                    resultSavePublicity = contentPageModel.UpdatePublicity(publicity);
+                    resultSaveFacility = contentPageModel.UpdateFacility(facility);
                 }
-                
+
             }
 
-            if (resultSaveImage < 1 || resultSavePublicity < 1 || resultSaveImage2 < 1) 
+            if (resultSaveImage < 1 || resultSaveFacility < 1 || resultSaveImage2 < 1)
             {
                 return null;
             }
@@ -104,17 +105,17 @@ namespace Presentation.Controllers.Administrator
             return Json(1);
         }
 
-        public JsonResult DeletePublicity(int id) 
+        public JsonResult DeleteFacility(int id)
         {
-            ContentPageModel  publicityModel = new ContentPageModel(connectionString);
-            return Json(publicityModel.DeletePublicity(id));
+            ContentPageModel publicityModel = new ContentPageModel(connectionString);
+            return Json(publicityModel.DeleteFacility(id));
         }
 
         [HttpPost]
         public JsonResult Delete(int id)
         {
             ContentPageModel cp = new ContentPageModel(connectionString);
-            return Json(cp.DeletePublicity(id));
+            return Json(cp.DeleteFacility(id));
         }
 
     }
