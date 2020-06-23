@@ -22,3 +22,8 @@ $(function () {
     });
 });
 
+
+$(document).ready(function () {
+    $('#facilitiesTable').DataTable();
+    $('#reservationTable').DataTable();
+});

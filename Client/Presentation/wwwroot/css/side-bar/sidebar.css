@@ -47,3 +47,168 @@ body {
         margin-left: -15rem;
     }
 }
+
+
+.logohotel1 {
+    border: 1px solid rgba(1, 1, 1, 1);
+    border-style: solid;
+    border-radius: 0.25rem;
+}
+
+div.separatorline {
+    height: 4px;
+    background: black;
+}
+
+div.separatorline2 {
+    height: 2px;
+    background: #808080;
+}
+
+h3#HotelPatito {
+    padding-left: 10px;
+}
+
+
+
+.footer {
+    padding: 10px;
+}
+
+/*Fondo color logo página pricipal*/
+#sidebar-wrapper .sidebar-heading {
+    background: url("../../images/background-tras.png");
+}
+
+/*linea oscura superior*/
+.bordecss {
+    border-bottom: 1px solid #000 !important;
+}
+
+/*titulo de las páginas*/
+.titulopagina {
+    font-weight: bold;
+    font-style: italic;
+}
+
+
+.img {
+    padding: 5px;
+    border: groove;
+}
+
+/* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+#map {
+    height: 100%;
+}
+
+.copyright {
+    font: italic !important;
+    font-weight: bold;
+}
+
+/*Hover en el menú*/
+a.bg-light:hover, a.bg-light:focus, button.bg-light:hover, button.bg-light:focus {
+    background: #c4daec !important;
+}
+
+/*Letra negrita menu*/
+#sidebar-wrapper .list-group {
+    font-weight: bold !important;
+}
+
+/*Color fondo menu y frente*/
+.bg-light {
+    background: url("../../images/background-tras.png");
+
+/*botón Administrador Menu principal*/
+.navbar-light .navbar-nav .nav-link {
+    border-style: dotted !important;
+    border: 1px solid #007bff !important;
+    border-top-style: solid !important;
+    border-right-style: solid !important;
+    border-bottom-style: solid !important;
+    border-left-style: solid !important;
+    background-color: #007bff !important;
+    border-radius: 0.25rem !important;
+    color: white;
+}
+
+
+/*Efecto brdes en el menú lateral*/
+.list-group {
+    border-top-style: solid;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-style: solid;
+    border-radius: 0.25rem;
+}
+
+.list-group-item:hover {
+    color: #007bff;
+}
+
+.publicityimg {
+    height: 250px;
+    width: 250px;
+}
+
+figcaption {
+    display: block;
+}
+
+figcaption {
+    border-radius: 0.5em;
+    padding: 1em;
+    box-sizing: border-box;
+}
+
+div#map {
+    width: 47em;
+    height: 20em;
+    border-radius: 0,53em;
+}
+
+/*PARA HACER RESPONSIVE*/
+
+/* para 980px o menos */
+@media screen and (max-width:1080px) {
+    .row {
+        width: 100%;
+    }
+
+    div#map {
+        width: 100%;
+    }
+}
+
+/* para 700px o menos */
+@media screen and (max-width:790px) {
+    .row {
+        width: 100%;
+    }
+
+    div#map {
+        width: 100%;
+    }
+}
+
+/* para 480px o menos */
+@media screen and (max-width:480px) {
+    .row {
+        width: 100%;
+    }
+
+    div#map {
+        width: 100%;
+    }
+}
+
+img#paypallogo {
+    width: 30%;
+}
+
+
+
