@@ -2,21 +2,21 @@
 
 
 
-<div class="container">
+<div class="container pText">
     <br />
-    <h5 class="titulopagina"> Tarifas </h5>
+    <h4 class="titulopagina"> Tarifas </h4>
     <div class="row">
         @foreach (var content in Model)
         {
-            <div class="col-4">
+            <div class="col-lg-4 col-md-4 col-sm-12" >
 
                 <div class="img">
                     <img src="@content.urlimage" class="img-fluid">
                 </div>
             </div>
-            <div class="col-8">
+            <div class="col-lg-8 col-md-8 col-sm-12 text-justify">
 
-                <h6>@content.description</h6>
+                <h5>@content.description</h5>
                 <p>
                     @content.descriptiontyperoom 
 

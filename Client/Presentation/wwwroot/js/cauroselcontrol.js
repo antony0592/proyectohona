@@ -15,9 +15,8 @@ function publicitycarousel() {
             for (var i in result) {
                 $(".carousel-inner").append(
                     "<div class='carousel-item' data-interval='10000'>" +
-                    "<img src='" + result[i].urlimage+"' class=' publicityimg d-block w-100'>"
+                    "<a href='" + result[i].content + "' target='_blank' ><img src='" + result[i].urlimage+"' class=' publicityimg d-block w-100'> </a>"
                     + " </div >");
-                console.log(result[i].urlimage);
             }
         },
         error: function (errorMessage) {
