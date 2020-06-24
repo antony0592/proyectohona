@@ -18,6 +18,11 @@ namespace Data
 
         public PaymentCard AddPaymentCard(PaymentCard paymentCard)
         {
+            //valirdar null cardname
+            if (paymentCard.cardname == null) 
+            {
+                return null;
+            }
             PaymentCard resultPaymentCard = new PaymentCard();
 
             SqlConnection connection = new SqlConnection(this.connString);

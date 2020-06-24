@@ -12,17 +12,26 @@ $(document).ready(function () {
                 contentType: "application/json;charset=utf-8",
                 dataType: "json",
                 success: function (result) {
-                    $("#clientname").val(result.name);
-                    $("#clientlastname").val(result.lastname);
-                    $("#clientemail").val(result.email);
-                    $("#paypalemail").val(result.email);
-                    $("#welcomeback").html("Gracias por reservar nuevamente con nosotros: <br/> <small> " + result.name + " " + result.lastname + "</small> <br/>");
+                    if (result != null) {
+                        $("#clientname").val(result.name);
+                        $("#clientlastname").val(result.lastname);
+                        $("#clientemail").val(result.email);
+                        $("#paypalemail").val(result.email);
+                        $("#welcomeback").html("Gracias por reservar nuevamente con nosotros: <br/> <small> " + result.name + " " + result.lastname + "</small> <br/>");
+                    }
+                    
                 },
 
                 error: function (errorMessage) {
                     alert(errorMessage.responseText);
                 }
             });
+        } else {
+            $("#clientname").val("");
+            $("#clientlastname").val("");
+            $("#clientemail").val("");
+            $("#paypalemail").val("");
+            $("#welcomeback").html("");
         }
     });
 
@@ -30,7 +39,7 @@ $(document).ready(function () {
 
         client = {
             id: $("#idnumber").val(),
-            name: $("clientname").val(),
+            name: $("#clientname").val(),
             lastname: $("#clientlastname").val(),
             email: $("#clientemail").val()
         };
@@ -49,6 +58,7 @@ $(document).ready(function () {
 
 });
 
+//Login Paypal
 $(document).ready(function () {
 
     $('form').on('click', '#loginpaypal', function (e) {
@@ -93,6 +103,7 @@ function isNull(object) {
     return inWhite;
 }
 
+//Search Room
 $(document).ready(function () {
     $("#searchroom").on("click", function (e) {
         e.preventDefault();
@@ -151,6 +162,7 @@ $(document).ready(function () {
     });
 });
 
+//Pay whith pay Pal
 $(document).ready(function () {
     $("#gopay").on("click", function (e) {
         e.preventDefault();
@@ -220,28 +232,26 @@ $(document).ready(function () {
 
 });
 
+//Pay confirmation
 $(document).ready(function () {
 
     $('form').on('click', '#PayConfirmation', function (e) {
-        e.preventDefault();
-
 
         var PaymentCard = {
             id: "0",
             cardname: $("#cardname").val(),
             cvv: $("#PaymentCardCvv").val(),
-            cardtype: "PayPal",
+            cardtype: "",
             cardnumber: $("#PaymentCardNumber").val(),
             expirationdate: $("#PaymentCardDate").val()
         };
 
-
-
-
-        if (PaymentCard.cvv.trim() == "" || PaymentCard.cardnumber.trim() == "" || PaymentCard.expirationdate.trim() == "") {
+        var inWhite = isNull(PaymentCard);
+        if (inWhite.length > 1) {
             $("#paypalerror2").html("Debe de llenar todos los datos");
         } else {
-
+            e.preventDefault();
+            PaymentCard.cardtype = "PayPal";
             $.ajax({
                 url: "/PaymentCard/AddPaymentCard",
                 data: PaymentCard,
@@ -279,6 +289,37 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () { $("#paymentConfirmation").hide(); });
+
+
+$(document).ready(function () {
+    $("#idnumber").ForceNumericOnly();
+    $("#PaymentCardNumber").ForceNumericOnly();
+    $("#PaymentCardDate").ForceNumericOnly();
+    $("#PaymentCardCvv").ForceNumericOnly();
+});
+
+// Numeric only control handler
+jQuery.fn.ForceNumericOnly =
+    function () {
+        return this.each(function () {
+            $(this).keydown(function (e) {
+                var key = e.charCode || e.keyCode || 0;
+                // allow backspace, tab, delete, enter, arrows, numbers and keypad numbers ONLY
+                // home, end, period, and numpad decimal
+                return (
+                    key == 8 ||
+                    key == 9 ||
+                    key == 13 ||
+                    key == 46 ||
+                    key == 110 ||
+                    key == 190 ||
+                    (key >= 35 && key <= 40) ||
+                    (key >= 48 && key <= 57) ||
+                    (key >= 96 && key <= 105));
+            });
+        });
+    };
+
 
 
 
