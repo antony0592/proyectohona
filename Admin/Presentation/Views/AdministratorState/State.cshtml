@@ -10,15 +10,17 @@
     List<ReservationModel> reservationlistfree = ViewBag.reservationfree;
 
 }
-<div class="container">
-    <div class="row">
+<div class="container pText">
+    <div class="row table-responsive">
         <div class="col-12">
             <div>
                 <br />
-                <h5> Estado del hotel </h5>
+                <h4> Estado del hotel </h4>
                 <div>
-                    <input class="btn btn-primary" value="Export" onclick="fnExcelReport();" />
+                    <input type="button" class="btn btn-success" value="Exportar PDF" onclick="fnExcelReport();" />
                     <iframe id="txtArea1" style="display:none"></iframe>
+                    <br />
+                    <br />
                 </div>
                 <table class="table table-striped table-bordered table-sm" id="stateTable" name="stateTable">
                     <thead>
@@ -44,7 +46,7 @@
                             <tr>
                                 <td class="id">@roomlistfree[j].number</td>
                                 <td class="id">@typeroomlistfree[j].description</td>
-                                
+                                <td></td>
                             </tr>
 
                         }

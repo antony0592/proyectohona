@@ -3,16 +3,16 @@
     HotelModel hotel = (HotelModel)ViewBag.hotel;
 }
 
-<div class="container">
+<div class="container pText w-75">
     <div class="row">
         <form action="/AdministratorModifyPage/UpdateHome" method="post" enctype = "multipart/form-data">
             <div class="col-12">
                 <div>
                     <br />
-                    <h5> Modificar Páginas </h5>
+                    <h4> Modificar Páginas </h4>
                     <br />
-                    <h6>Home</h6>
-                    <textarea id="description" name="description" rows="10" cols="300">@hotel.description</textarea>
+                    <h5>Home</h5>
+                    <textarea id="description" name="description" rows="10" cols="200" >@hotel.description</textarea>
                 </div>
             </div>
             <div class="col-12">
@@ -35,8 +35,8 @@
                         </div>
                         <br />
                         <br />
-                        <input id="update" type="submit" class="btn-group" value="Guardar">
-                        <a href="ModifyPage"><input type="button" class="btn-group" value="Cancelar"></a>
+                        <input title="Guardar Cambios" id="updateHome" type="submit" class="btn btn-primary" value="Guardar">
+                        <a title="Volver" href="ModifyPage"><input type="button" class="btn btn-danger" value="Cancelar"></a>
                     </div>
                 </div>
             </div>

@@ -24,6 +24,6 @@ $(function () {
 
 
 $(document).ready(function () {
-    $('#facilitiesTable').DataTable();
-    $('#reservationTable').DataTable();
+    $('#facilitiesTable').DataTable({"lengthMenu": [[5, 10, 20, -1], [5, 10, 20, "All"]]});
+    $('#reservationTable').DataTable({"lengthMenu": [[5, 10, 20, -1], [5, 10, 20, "All"]]});
 });

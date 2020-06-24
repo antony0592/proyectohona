@@ -3,10 +3,6 @@
     $("#wrapper").toggleClass("toggled");
 });
 
-$(document).ready(function () {
-    $('#summernote').summernote();
-});
-
 /*Efecto Titulo*/
 $(function () {
     var $jittery = $('.titulo'),
@@ -23,4 +19,10 @@ $(function () {
         $(this).css('animation-delay', '-' + i + '70ms');
     });
 });
+
+
+$(document).ready(function () {
+    $('#stateTable').DataTable({ "lengthMenu": [[5, 10, 20, -1], [5, 10, 20, "All"]] });
+});
+
 

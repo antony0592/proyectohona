@@ -57,12 +57,16 @@ p {
 color:#333;
 }
 
-/*--------------------------------------------------------------
+.table-responsive {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    overflow-x:auto;
+    
+}
+    /*--------------------------------------------------------------
 # background image
 --------------------------------------------------------------*/
-
-
-.pText {
+    .pText {
     background:url(../images/background-tras.png);
     padding:20px;
     border-radius: 10px;
