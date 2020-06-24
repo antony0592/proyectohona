@@ -107,5 +107,6 @@
     /*Cambia automáticamente el límite del siguiente selector de fecha*/
     function datechange() {
         document.getElementById('departuredate').min = document.getElementById('arrivaldate').value;
+        document.getElementById('departuredate').value = document.getElementById('arrivaldate').value;
     }
 </script>
