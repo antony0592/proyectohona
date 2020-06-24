@@ -5,17 +5,12 @@
     List<ReservationModel> reservation = (List<ReservationModel>)ViewBag.reservation;
 }
 
-<!-- include summernote css/js -->
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote-lite.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote-lite.min.js"></script>
-
-<div class="container">
+<div class="container pText text-center w-75">
     <div style="display:none;" class="row" id="manageroom">
         <div class="col-12">
             <div>
                 <br />
-                <h5>Modificar Habitaciones </h5>
+                <h4>Modificar Habitaciones </h4>
                 <br />
                 <h6>Home</h6>
                 <form action="/AdministratorManageRooms/ManageRooms" method="post">
@@ -38,12 +33,6 @@
         <form action="/AdministratorManageRooms/Update" method="post">
             <input type="text" id="amount" name="amount"><br><br>
 
-
-            @*<div id="summernote" name="summernote"></div>
-                <script>
-                    $("#summernote").summernote("editor.pasteHTML", "<p>@descriptionType</p>");
-                    var hola = summernote.activeEditor.selection.getContent();
-                </script>*@
             <textarea id="descriptionArea" name="descriptionArea" rows="8" cols="50"></textarea>
 
             <div class="col-12">
@@ -60,13 +49,12 @@
 
                         <label class="custom-file-label" for="customFile">Choose file</label>
                     </div>
-                    <button id="descriptionB" type="submit" class="btn-group">Guardar</button>
+                    <br />
+                    <br />
+                    <button id="descriptionB" type="submit" class="btn btn-primary">Guardar</button>
+                    <button type="submit" class="btn btn-danger">Cancelar</button>
                 </div>
             </div>
-        </form>
-        <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="/Home/Index" method="post" id="logoutForm" class="navbar-right">
-            <span class="navbar-text" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"></span>
-            <button type="submit" class="btn navbar-btn navbar-link">Cancelar</button>
         </form>
     </div>
     @* //////////////////////////////////////////////////////// *@
@@ -74,7 +62,7 @@
     <div>
         <br />
         <h5> Administrar Habitaciones</h5>
-        <button id="updateRoom" type="submit" class="btn-group">Modificar Habitación</button>
+        <button id="updateRoom" type="button" class="btn btn-primary">Modificar Habitación</button>
     </div>
     @foreach (var typeroom in Model)
     {

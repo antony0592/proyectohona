@@ -183,8 +183,8 @@ function loadDataFacilities() {
                     '<p>' + item.content + ' </p>',
                     '<td class="text-center"><img class="img-responsive rounded mx-25 d-block" src="' + item.urlimage + '" alt="" width="70" height="50"></td>',
                     '<td class= "text-center">' +
-                    '  <div data-toggle="modal" data-target="#UpdateModalFacility" class="btn-group btn-group-xs"><a href="#" onclick="return updatecontentpageFacility(' + item.id + ')" title="Modificar" class="btn btn-default"><i class="fa fa-pen-square"></i> </a></div>' +
-                    '  <div data-toggle="modal" data-target="#DeleteModalFacility" class="btn-group btn-group-xs"><a href="#" onclick="return deletecontentpageFacility(' + item.id + ')" title="Eliminar" class="btn btn -default"><i class="fa fa-eraser"></i> </a></div>' +
+                    '  <div data-toggle="modal" data-target="#UpdateModalFacility" class="btn-group btn-group-xs"><a href="#" onclick="return updatecontentpageFacility(' + item.id + ')" title="Modificar" class="btn btn-default"><i class="fa fa-pen-square">Modificar</i> </a></div>' +
+                    '  <div data-toggle="modal" data-target="#DeleteModalFacility" class="btn-group btn-group-xs"><a href="#" onclick="return deletecontentpageFacility(' + item.id + ')" title="Eliminar" class="btn btn -default"><i class="fa fa-eraser">Eliminar</i> </a></div>' +
                     '</td >'
                 ];
 

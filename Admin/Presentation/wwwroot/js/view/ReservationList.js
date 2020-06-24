@@ -93,6 +93,6 @@ $(document).on("click", ".delete", function () {
 
 
 $(document).ready(function () {
-    $('#tbl').DataTable();
+    $('#tbl').DataTable({ "lengthMenu": [[5, 10, 20, -1], [5, 10, 20, "All"]] });
 });
 
