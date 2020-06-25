@@ -4,16 +4,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Presentation.Models;
-using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using Presentation.Models;
 using System.IO;
-
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Presentation.Controllers.Administrator
 {
@@ -31,13 +24,14 @@ namespace Presentation.Controllers.Administrator
             connectionString = _configuration.GetConnectionString("DefaultConnection");
         }
 
-        // GET: /<controller>/
+        
         [Authorize]
         public IActionResult ModifyPage()
         {
             return View();
         }
 
+        //Home
         [Authorize]
         public IActionResult ModifyHome()
         {
@@ -64,55 +58,32 @@ namespace Presentation.Controllers.Administrator
             ViewBag.hotel = hotel;
             return View();
         }
-
-        [Authorize]
-        public IActionResult ModifyAbout()
-        {
-            HotelModel hotelModel = new HotelModel(connectionString);
-            Hotel hotels = hotelModel.GetAllHotel();
-            HotelModel hotel = new HotelModel();
-            hotel.id = hotels.id;
-            hotel.aboutus = hotels.aboutus;
-
-            ViewBag.hotel = hotel;
-            return View();
-        }
-
-        [Authorize]
-        public IActionResult ModifyFacilities()
-        {
-            return View();
-        }
-
-
-        [Authorize]
-        public IActionResult ModifyLocate()
-        {
-            HotelModel hotelModel = new HotelModel(connectionString);
-            Hotel hotels = hotelModel.GetAllHotel();
-            HotelModel hotel = new HotelModel();
-            hotel.id = hotels.id;
-            hotel.address = hotels.address;
-            ViewBag.hotel = hotel;
-            return View();
-        }
-
+        
         [HttpPost]
         public ActionResult UpdateHome(string description, IFormFile file)
         {
             HotelModel hotelModel = new HotelModel(connectionString);
-            hotelModel.UpdateHome(description);
+
+            if (description != null)
+            {
+                hotelModel.UpdateHome(description);
+            }
+
             ContentPageModel contentpageModel = new ContentPageModel(connectionString);
             IList<ContentPage> content = contentpageModel.GetAllContentPage();
-            string urlimage = "/images/" + file.FileName;
 
+            string urlimage = "";
             var path = "./images/";
             var pathClient = "../../../Client/Presentation/wwwroot/images/";
             string folderFiles = Path.Combine(environment.WebRootPath, path);
             string folderFilesClient = Path.Combine(environment.WebRootPath, pathClient);
-            contentpageModel.SaveImage(file, folderFiles);
 
-            contentpageModel.SaveImage(file, folderFilesClient);
+            if (file != null)
+            {
+                contentpageModel.SaveImage(file, folderFiles);
+                contentpageModel.SaveImage(file, folderFilesClient);
+                urlimage = "/images/" + file.FileName;
+            }
 
             for (int i = 0; i < content.Count; i++)
             {
@@ -131,7 +102,19 @@ namespace Presentation.Controllers.Administrator
             return View("ModifyPage", "ModifyPage");
         }
 
+        //About us
+        [Authorize]
+        public IActionResult ModifyAbout()
+        {
+            HotelModel hotelModel = new HotelModel(connectionString);
+            Hotel hotels = hotelModel.GetAllHotel();
+            HotelModel hotel = new HotelModel();
+            hotel.id = hotels.id;
+            hotel.aboutus = hotels.aboutus;
 
+            ViewBag.hotel = hotel;
+            return View();
+        }
         [HttpPost]
         public ActionResult UpdateAboutUs(string aboutus)
         {
@@ -139,6 +122,26 @@ namespace Presentation.Controllers.Administrator
 
             hotelModel.UpdateAboutUs(aboutus);
             return View("ModifyPage", "ModifyPage");
+        }
+
+        //Facilities
+        [Authorize]
+        public IActionResult ModifyFacilities()
+        {
+            return View();
+        }
+
+        //Locate
+        [Authorize]
+        public IActionResult ModifyLocate()
+        {
+            HotelModel hotelModel = new HotelModel(connectionString);
+            Hotel hotels = hotelModel.GetAllHotel();
+            HotelModel hotel = new HotelModel();
+            hotel.id = hotels.id;
+            hotel.address = hotels.address;
+            ViewBag.hotel = hotel;
+            return View();
         }
         
         [HttpPost]

@@ -255,10 +255,7 @@ $(document).ready(function () {
             $.ajax({
                 url: "/PaymentCard/AddPaymentCard",
                 data: PaymentCard,
-                // data: JSON.stringify(data),
                 type: "POST",
-                //contentType: "application/json;charset=utf-8",
-                // dataType: "json",
                 success: function (result) {
                     if (result != null) {
 
@@ -289,7 +286,6 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () { $("#paymentConfirmation").hide(); });
-
 
 $(document).ready(function () {
     $("#idnumber").ForceNumericOnly();

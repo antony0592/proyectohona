@@ -12,7 +12,8 @@
                     <h4> Modificar Páginas </h4>
                     <br />
                     <h5>Home</h5>
-                    <textarea id="description" name="description" rows="10" cols="200" >@hotel.description</textarea>
+                    <p style="color:red" id="messageModifyHome"></p>
+                    <textarea id="description" name="description" rows="10" cols="200">@hotel.description</textarea>
                 </div>
             </div>
             <div class="col-12">
@@ -30,13 +31,14 @@
                         <br />
                         <br />
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" name="file" id="file">
+                            <input type="file" class="custom-file-input" name="file" id="fileModifyHome">
                             <label class="custom-file-label" for="customFile">Choose file</label>
                         </div>
                         <br />
                         <br />
                         <input title="Guardar Cambios" id="updateHome" type="submit" class="btn btn-primary" value="Guardar">
                         <a title="Volver" href="ModifyPage"><input type="button" class="btn btn-danger" value="Cancelar"></a>
+                        
                     </div>
                 </div>
             </div>
