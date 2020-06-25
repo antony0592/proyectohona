@@ -1,9 +1,8 @@
 ﻿$(document).ready(function () {
-    $("#description").on("click", function (e) {
-        e.preventDefault();
-        var dataObject = JSON.stringify({
-            'input': $('#description').val()
-        });
+    $("#file").val() == "";
+
+    $("#description").change(function () {
+        $("#descriptionArea").html("");
 
         $.ajax({
             url: "/AdministratorManageRooms/GetManageRooms",
@@ -11,12 +10,11 @@
             data: { 'description': $('#description').val() },
             contentType: "application/json;charset=utf-8",
             dataType: "json",
-            //data: dataObject,
             success: function (result) {
                 console.log(result);
                 if (result) {
                     $("#amount").val(result.amount);
-                    $("#descriptionArea").html(" " + result.descriptiontyperoom + " ");
+                    $("#descriptionArea").val(result.descriptiontyperoom);
                     $("#image").attr("src", result.urlimage);
                 }
 
@@ -34,14 +32,13 @@
 });
 
 $(document).on("click", "#updateRoom", function () {
-    var div1 = document.getElementById('principal');
-    var div2 = document.getElementById('manageroom');
-    if (div2.style.display == 'block') {
-        div2.style.display = 'none';
-        div1.style.display = 'block';
-
-    } else {
-        div2.style.display = 'block';
-        div1.style.display = 'none';
-    }
+    $("#principal").hide();
+    $("#manageroom").show();
 });
+
+$(document).on("click", "#cancelManageRoom", function () {
+
+    $("#principal").show();
+    $("#manageroom").hide();
+});
+

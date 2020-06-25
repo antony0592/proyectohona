@@ -23,6 +23,7 @@ $(function () {
 
 $(document).ready(function () {
     $('#stateTable').DataTable({ "lengthMenu": [[5, 10, 20, -1], [5, 10, 20, "All"]] });
+    $('.tableTypeRoom').DataTable({ "lengthMenu": [[5, 10, 20, -1], [5, 10, 20, "All"]] });
 });
 
 
