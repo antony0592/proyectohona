@@ -65,7 +65,7 @@ using Presentation.Models;
             WriteLiteral("<div class=\"container\">\r\n    <br />\r\n\r\n    <div class=\"row\">\r\n        ");
             EndContext();
             BeginContext(231, 2585, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "51afb1b13298435280da9c9e7149e3ed", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "cebe1c0f09244e19b02cd5554a0f6185", async() => {
                 BeginContext(288, 512, true);
                 WriteLiteral(@"
             <div class=""col-6"">
@@ -81,7 +81,7 @@ using Presentation.Models;
                                     ");
                 EndContext();
                 BeginContext(800, 50, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b8fb8385d8484fd9b44dae257be0d5c0", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6e544a1d54534a31af49385e6a2d6e64", async() => {
                     BeginContext(818, 23, true);
                     WriteLiteral("-Seleccione una opción-");
                     EndContext();
@@ -112,7 +112,7 @@ using Presentation.Models;
                 WriteLiteral("                                        ");
                 EndContext();
                 BeginContext(1001, 68, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ae07d5b71420415c9b087edfa3962dd4", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "38f105f8efc54347ba4de13bed180bc8", async() => {
                     BeginContext(1040, 20, false);
 #line 24 "E:\Documentos\GitHub\proyectohona\Admin\Presentation\Views\AdministratorSeason\Season.cshtml"
                                                                          Write(typeroom.description);
