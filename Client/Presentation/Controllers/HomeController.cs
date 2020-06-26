@@ -35,10 +35,12 @@ namespace Presentation.Controllers
             hotel.name = hotels.name;
             hotel.description = hotels.description;
             hotel.address = hotels.address;
+
             /***************************************************/
             RepositoryContentPage contentpageModel = new RepositoryContentPage(connectionString);
             IList<ContentPage> content = contentpageModel.GetAllContentPage();
             List<ContentPageModel> contentPage = new List<ContentPageModel>();
+
 
             for (int i = 0; i < content.Count; i++)
             {
@@ -53,6 +55,7 @@ namespace Presentation.Controllers
                 }
             }
             ViewBag.contentPage = contentPage;
+            ViewBag.allContentPage = contentpageModel.GetAllContentPage();
             ViewBag.hotel = hotel;
             return View();
         }
