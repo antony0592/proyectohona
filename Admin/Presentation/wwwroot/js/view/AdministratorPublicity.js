@@ -11,6 +11,7 @@ function AddPublicity() {
     $("#contentPublicity").val("");
     $("#filePublicity").val("");
     $("#listP").hide();
+    $("#messagePublicity").text("");
 
     $(".modal").on("click", "button#addpublicity", function () {
 
@@ -22,9 +23,11 @@ function AddPublicity() {
         formData.append("content", content);
 
         if (content.trim() == "") {
-            alert("Por favor ingrese un texto");
+            $("#messagePublicity").text("Por favor ingrese un texto");
+            //alert("Por favor ingrese un texto");
         } else if (selectFile == null) {
-            alert("Por favor ingrese una imagen");
+            $("#messagePublicity").text("Por favor ingrese una imagen");
+            //alert("Por favor ingrese una imagen");
         }
 
         if ($("#contentPublicity").val().match(/^(ht|f)tps?:\/\/\w+([\.\-\w]+)?\.([a-z]{2,6})?([\.\-\w\/_]+)$/i)) {
@@ -44,16 +47,19 @@ function AddPublicity() {
                         $("#UpdateModalPublicity .close").click();
                         loadDataPublicity();
                     } else {
-                        alert("Error.Por favor intente de nuevo");
+                        $("#messagePublicity").text("Error.Por favor intente de nuevo");
+                        //alert("Error.Por favor intente de nuevo");
                     }
                 },
                 error: function (errorMessage) {
-                    alert("Error.Por favor intente de nuevo");
+                    $("#messagePublicity").text("Error.Por favor intente de nuevo");
+                    //alert("Error.Por favor intente de nuevo");
                 }
             });
         }
         else {
-            alert("Dirección web no válida");
+            $("#messagePublicity").text("Dirección web no válida");
+            //alert("Dirección web no válida");
         }
     });
     
@@ -101,7 +107,8 @@ function updatecontentpagePublicity(id) {
         },
 
         error: function (errorMessage) {
-            alert("Error al cargar los datos");
+            $("#messagePublicity").text("Error al cargar los datos");
+          //  alert("Error al cargar los datos");
         }
     });
 
@@ -116,11 +123,10 @@ function updatecontentpagePublicity(id) {
         formData.append("idPublicity", id);
 
         if (content.trim() == "") {
-            alert("Por favor ingrese un texto");
+            $("#messagePublicity").text("Por favor ingrese un texto");
+
+            //alert("Por favor ingrese un texto");
         }
-        //else if (selectFile == null) {
-        //    alert("Por favor ingrese una imagen");
-        //}
 
         if ($("#contentPublicity").val().match(/^(ht|f)tps?:\/\/\w+([\.\-\w]+)?\.([a-z]{2,6})?([\.\-\w\/_]+)$/i)) {
 
@@ -139,16 +145,22 @@ function updatecontentpagePublicity(id) {
                         $("#UpdateModalPublicity .close").click();
                         loadDataPublicity();
                     } else {
-                        alert("Error.Por favor intente de nuevo");
+                        $("#messagePublicity").text("Error.Por favor intente de nuevo");
+
+                       // alert("Error.Por favor intente de nuevo");
                     }
                 },
                 error: function (errorMessage) {
-                    alert("Error.Por favor intente de nuevo");
+                    $("#messagePublicity").text("Error.Por favor intente de nuevo");
+
+                  //  alert("Error.Por favor intente de nuevo");
                 }
             });
         }
         else {
-            alert("Dirección web no válida");
+            $("#messagePublicity").text("Dirección web no válida");
+
+           // alert("Dirección web no válida");
         }
     });
 }

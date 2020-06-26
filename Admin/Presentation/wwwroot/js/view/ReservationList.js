@@ -16,7 +16,7 @@
             elementsDelete[i].addEventListener("click", deleteValues);
         }
     }
-    
+
 }
 // funcion que se ejecuta cada vez que se hace clic
 function obtainValues(e) {
@@ -65,7 +65,7 @@ function deleteValues(e) {
 
     $.ajax({
         url: "/AdministratorReservationList/DeleteVoucherList",
-        data: { 'id':id },
+        data: { 'id': id },
         type: 'GET',
 
     });
@@ -95,4 +95,3 @@ $(document).on("click", ".delete", function () {
 $(document).ready(function () {
     $('#tbl').DataTable({ "lengthMenu": [[5, 10, 20, -1], [5, 10, 20, "All"]] });
 });
-

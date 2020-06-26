@@ -42,6 +42,7 @@ $(document).ready(function () {
         }
     })
 
+    //rooms
     $("#descriptionB").click(function (e) {
 
         if ($("#amount").val() == 0 || $("#amount").val().trim() == "") {
@@ -58,6 +59,27 @@ $(document).ready(function () {
             e.preventDefault();
             $("#messageModifyRooms2").text("Seleccione un tipo de habitación");
         }
+    })
+
+    //rooms
+    $("#descriptionSeason").click(function (e) {
+
+        if ($("#percentation").val() == 0 || $("#percentation").val().trim() == "") {
+            e.preventDefault();
+            $("#messageSeason").text("Coloque un %");
+        }
+
+        if ($("#descriptionText").val() == 0 || $("#descriptionText").val().trim() == "") {
+            e.preventDefault();
+            $("#messageSeason").text("Coloque una descripción");
+        }
+
+    })
+
+    $("#description").click(function (e) {
+        if ($("#description").val() == -1) {
+            $("#messageSeason").text("Seleccione un tipo de habitación");
+        } else { $("#messageSeason").text("");}
     })
 
 
