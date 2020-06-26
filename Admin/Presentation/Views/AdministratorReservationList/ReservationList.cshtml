@@ -44,7 +44,7 @@
                                 <td class="departuredate">@reservation[i].departuredate</td>
                                 <td class="description">@typeroom[i].description</td>
                                 <td id="consult" class="consult" onclick="cambiaVisibilidad()">
-                                    <a href="#" title="Ver Detalles" style="color:black">
+                                    <a  title="Ver Detalles" style="color:black">
                                         <img src="https://img.icons8.com/ios/20/000000/view-details.png">Ver
                                     </a>
                                 </td>
@@ -62,10 +62,7 @@
             </div>
         </div>
         <div style="display:none;" id="getreservation" class="text-center row">
-            <div class="col-12 text-left">
-                <button title="Volver" onclick="cambiaVisibilidad()" type="button" class="btn btn-danger" value="Volver"> Volver </button>
-                <br />
-            </div>
+
             <div class="col-12 text-center">
                 <h2>Lista de reservaciones-Ver Reserva</h2>
                 <br />
@@ -78,6 +75,10 @@
                 <h5 id="arrivaldate" name="arrivaldate">Fecha Llegada: </h5>
                 <h5 id="departuredate" name="departuredate">Fecha Salida: </h5>
                 <h5 id="description" name="description">Tipo Habitación: </h5>
+            </div>
+            <div class="col-12 text-left">
+                <a href="ReservationList" title="Volver" type="submit" class="btn btn-danger" value="Volver"> Volver </a>
+                <br />
             </div>
         </div>
         

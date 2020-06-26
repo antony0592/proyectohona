@@ -1,18 +1,19 @@
 ﻿window.onload = function () {
+
     // creamos los eventos para cada elemento con la clase "boton"
-    let elementsDelete = document.getElementsByClassName("deleteSeason");
-    if (elementsDelete != null) {
-        for (let i = 0; i < elementsDelete.length; i++) {
+    let elementsDeleteSeason = document.getElementsByClassName("deleteSeason");
+
+    if (elementsDeleteSeason != null) {
+        for (let i = 0; i < elementsDeleteSeason.length; i++) {
             // cada vez que se haga clic sobre cualquier de los elementos,
             // ejecutamos la función obtenerValores()
-            elementsDelete[i].addEventListener("click", deleteValues);
+            elementsDeleteSeason[i].addEventListener("click", deleteValuesSeason);
         }
     }
-
 }
-function deleteValues(e) {
-    var id = "";
 
+function deleteValuesSeason(e) {
+    var id = "";
     // vamos al elemento padre (<tr>) y buscamos todos los elementos < td >
     // que contenga el elemento padre
     var elementosTD = e.srcElement.parentElement.getElementsByTagName("td");
@@ -33,6 +34,18 @@ $(document).on("click", ".deleteSeason", function () {
     if (window.confirm("¿Desea eliminar?")) {
         $(this).closest('#tableSeason tr').remove();
     }
+
+    // creamos los eventos para cada elemento con la clase "boton"
+    let elementsDeleteSeason = document.getElementsByClassName("deleteSeason");
+
+    if (elementsDeleteSeason != null) {
+        for (let i = 0; i < elementsDeleteSeason.length; i++) {
+            // cada vez que se haga clic sobre cualquier de los elementos,
+            // ejecutamos la función obtenerValores()
+            elementsDeleteSeason[i].addEventListener("click", deleteValuesSeason);
+        }
+    }
+
 });
 $(document).ready(function () {
     $('#tableSeason').DataTable({ "lengthMenu": [[5, 10, 20, -1], [5, 10, 20, "All"]] });

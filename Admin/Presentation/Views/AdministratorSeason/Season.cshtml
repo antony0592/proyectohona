@@ -3,7 +3,7 @@
     List<SeasonModel> seasonlist = ViewBag.season;
     List<TypeRoomModel> typeroomlist = ViewBag.type;
 }
-<div class="container pText w-75">
+<div class="container pText">
     <br />
     <div class="row">
         <div class="col-lg-12 col-sm-12">
@@ -13,7 +13,7 @@
                     <div class="col-12">
                                 <label for="typeroomS">Tipo de habitación:</label>
                                 <select class="form-control" id="description" name="description">
-                                    <option value="0">-Seleccione una opción-</option>
+                                    <option value="-1">-Seleccione una opción-</option>
                                     @foreach (var typeroom in Model)
                                     {
                                         <option value="@typeroom.description">@typeroom.description</option>
@@ -36,15 +36,16 @@
                     </div>
                     <div class="col-6">
                         <label class="text-center">Porcentaje de la Temporada u Oferta </label>
-                        <input type="number" id="percentation" name="percentation"><br><br>
+                        <input type="number" id="percentation" name="percentation" required><br><br>
                     </div>
                     <div class="col-12">
                         <h5 class="text-center">Descripción de la Temporada o Oferta </h5>
-                        <textarea id="descriptionText" name="descriptionText" rows="8" cols="50"></textarea>
+                        <textarea id="descriptionText" name="descriptionText" rows="8" cols="50" required></textarea>
                     </div>
                     <div class="col-6">
                         <br />
-                        <button title="Guardar" id="descriptionB" type="submit" class="btn btn-primary">Guardar</button>
+                        <button title="Guardar" id="descriptionSeason" type="submit" class="btn btn-primary">Guardar</button>
+                        <p id="messageSeason" style="color:red"></p>
                     </div>
                 </div>
 
@@ -67,29 +68,30 @@
                 <tbody>
                     @for (int i = 0; i < seasonlist.Count(); i++)
                     {
-                        <tr>
-                            @for (int j = 0; j < typeroomlist.Count(); j++)
+                    <tr>
+                        @for (int j = 0; j < typeroomlist.Count(); j++)
+                        {
+                            if (@seasonlist[i].idtyperoom == @typeroomlist[j].id)
                             {
-                                if (@seasonlist[i].idtyperoom == @typeroomlist[j].id)
+                                <td class="id">@seasonlist[i].id</td>
+                                <td class="desc">@typeroomlist[j].description</td>
+                                <td class="datein">@seasonlist[i].dateinputseason</td>
+                                <td class="dateout">@seasonlist[i].dateoutputseason</td>
+                                <td class="descrip">@seasonlist[i].description</td>
+                                <td class="percer">@seasonlist[i].percentation</td>
+                                @if (@seasonlist[i].state == 1)
                                 {
-                                    <td class="id">@seasonlist[i].id</td>
-                                    <td class="desc">@typeroomlist[j].description</td>
-                                    <td class="datein">@seasonlist[i].dateinputseason</td>
-                                    <td class="dateout">@seasonlist[i].dateoutputseason</td>
-                                    <td class="descrip">@seasonlist[i].description</td>
-                                    <td class="percer">@seasonlist[i].percentation</td>
-                                    @if (@seasonlist[i].state == 1)
-                                    {
-                                        <td><input type="checkbox" checked></td>
-                                    }
-                                    else
-                                    {
-                                        <td><input type="checkbox"></td>
-                                    }
-                                    <td href="#" id="deleteSeason" class="deleteSeason">Eliminar</td>
+                                    <td><input type="checkbox" checked></td>
                                 }
+                                else
+                                {
+                                    <td><input type="checkbox"></td>
+                                }
+                                <td bgcolor="#DDE0FC" id="deleteSeason" class="deleteSeason">
+                        Eliminar</td>
                             }
-                        </tr>
+                        }
+                    </tr>
                     }
                 </tbody>
             </table>

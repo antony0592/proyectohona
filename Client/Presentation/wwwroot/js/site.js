@@ -27,3 +27,17 @@ $(document).ready(function () {
     $('#facilitiesTable').DataTable({"lengthMenu": [[5, 10, 20, -1], [5, 10, 20, "All"]]});
     $('#reservationTable').DataTable({"lengthMenu": [[5, 10, 20, -1], [5, 10, 20, "All"]]});
 });
+
+$(document).ready(function () {
+
+    var path = window.location.pathname;
+    var abc = path.split("/");
+    var controller = abc[1];
+    var id = "#" + controller;
+    if (id == "#") {id="#Home" }
+    $(id).attr("style", "color:#2dca98");
+    $(id).css("font-size","125%");
+    $(id).css("textext-align", "right");
+    $(id).animate({ left: '20px' }, "slowx");
+    
+});

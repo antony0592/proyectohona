@@ -21,6 +21,7 @@
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
 
+
 </head>
 <body>
 
@@ -30,15 +31,14 @@
         <div class="bg-light border-right" id="sidebar-wrapper">
             <div class="sidebar-heading"> <a><img class="img-fluid" src="~/images/Hotel_Patito-01.svg" alt="LOGO" /></a></div>
             <div class="list-group list-group-flush">
-                <a href="/Home/Index" class="list-group-item list-group-item-action bg-light">Home</a>
-                <a href="/AdministratorModifyPage/ModifyPage" class="list-group-item list-group-item-action bg-light">Modificar Páginas</a>
-                <a href="/AdministratorReservationList/ReservationList" class="list-group-item list-group-item-action bg-light">Listado de Reservas</a>
-                <a href="/AdministratorManageRooms/ManageRooms" class="list-group-item list-group-item-action bg-light">Administrar habitaciones</a>
-                <a href="/AdministratorState/State" class="list-group-item list-group-item-action bg-light">Ver estado de hoy</a>
-                <a href="/AdministratorAvailability/Availability" class="list-group-item list-group-item-action bg-light">Consultar disponibilidad de habitaciones</a>
-                <a href="/AdministratorSeason/Season" class="list-group-item list-group-item-action bg-light">Temporadas y Ofertas Especiales</a>
-                <a href="/AdministratorPublicity/Publicity" class="list-group-item list-group-item-action bg-light">Publicidad</a>
-               
+                <a href="/Home/Index" id="Home" class="list-group-item list-group-item-action bg-light">Home</a>
+                <a href="/AdministratorModifyPage/ModifyPage" id="AdministratorModifyPage" class="list-group-item list-group-item-action bg-light">Modificar Páginas</a>
+                <a href="/AdministratorReservationList/ReservationList" id="AdministratorReservationList" class="list-group-item list-group-item-action bg-light">Listado de Reservas</a>
+                <a href="/AdministratorManageRooms/ManageRooms" id="AdministratorManageRooms" class="list-group-item list-group-item-action bg-light">Administrar habitaciones</a>
+                <a href="/AdministratorState/State" id="AdministratorState" class="list-group-item list-group-item-action bg-light">Ver estado de hoy</a>
+                <a href="/AdministratorAvailability/Availability" id="AdministratorAvailability" class="list-group-item list-group-item-action bg-light">Consultar disponibilidad de habitaciones</a>
+                <a href="/AdministratorSeason/Season" id="AdministratorSeason" class="list-group-item list-group-item-action bg-light">Temporadas y Ofertas Especiales</a>
+                <a href="/AdministratorPublicity/Publicity" id="AdministratorPublicity" class="list-group-item list-group-item-action bg-light">Publicidad</a>
             </div>
 
         </div>
@@ -64,6 +64,7 @@
                 @RenderBody()
             </div>
         </div>
+        <!-- /#page-content-wrapper -->
     </div>
     <div class="container body-content">
         @RenderBody()
@@ -82,15 +83,17 @@
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
-        <script src="~/js/view/RoomAvailability.js"></script>
-        <script src="~/js/view/ManageRoom.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="~/js/view/ReservationList.js"></script>
         <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
-        <script src="~/js/view/AdministratorPublicity.js"></script>
+
         <script src="~/js/view/AdministratorFacility.js"></script>
+        <script src="~/js/view/AdministratorPublicity.js"></script>
+        <script src="~/js/view/ManageRoom.js"></script>
+        <script src="~/js/view/RoomAvailability.js"></script>
         <script src="~/js/view/Season.js"></script>
         <script src="~/js/Validations.js"></script>
+        <script src="~/js/view/ReservationList.js"></script>
+
 
     </environment>
     <environment exclude="Development">
@@ -106,7 +109,6 @@
                 crossorigin="anonymous"
                 integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd">
         </script>
-        <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
 
     @RenderSection("Scripts", required: false)
