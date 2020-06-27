@@ -33,24 +33,13 @@
                     <tbody>
                         @for (int i = 0; i < reservationlist.Count(); i++)
                         {
-                            <tr>
-                                <td class="id">@roomlist[i].number</td>
-                                <td class="id">@typeroomlist[i].description</td>
-                                <td class="id">@reservationlist[i].arrivaldate</td>
-                            </tr>
+                        <tr>
+                            <td class="id">@roomlist[i].number</td>
+                            <td class="id">@typeroomlist[i].description</td>
+                            <td><input type="checkbox" checked></td>
+                        </tr>
 
                         }
-
-                        @for (int j = 0; j < reservationlistfree.Count(); j++)
-                        {
-                            <tr>
-                                <td class="id">@roomlistfree[j].number</td>
-                                <td class="id">@typeroomlistfree[j].description</td>
-                                <td></td>
-                            </tr>
-
-                        }
-
 
                     </tbody>
                 </table>
