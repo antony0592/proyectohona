@@ -74,7 +74,6 @@ namespace Presentation.Controllers.Administrator
         {
             RepositoryTypeRoom repositoryTyperoom = new RepositoryTypeRoom(connectionString);
             List<TypeRoom> typeRoom = repositoryTyperoom.GetAllTypeRoom();
-
             TypeRoom typeRoomNew = new TypeRoom();
             typeRoomNew = typeRoom.Find(r => r.description == description);
             counter = description;
@@ -84,7 +83,7 @@ namespace Presentation.Controllers.Administrator
         [HttpPost]
         public ActionResult Update(IFormFile file, string descriptionArea, string amount)
         {            
-            String descriptionType = counter;
+            string descriptionType = counter;
 
             RepositoryTypeRoom repositoryTyperoom = new RepositoryTypeRoom(connectionString);
             IList<TypeRoom> typeRoom = repositoryTyperoom.GetAllTypeRoom();
@@ -104,36 +103,23 @@ namespace Presentation.Controllers.Administrator
                 repositoryTyperoom.SaveImage(file, folderFilesClient);
                 urlimage = "/images/TipoHabitacion/" + file.FileName;
             }
-
             for (int i = 0; i < typeRoom.Count; i++)
             {
                 if (typeRoom[i].description == descriptionType)
                 {
                     idTypeRoom = typeRoom[i].id;
+                    if (file == null)
+                    {
+                        urlimage = typeRoom[i].urlimage;
+                    }
                 }
-                if (file == null)
-                {
-                    urlimage = typeRoom[i].urlimage;
-                }
+                
                 TypeRoomModel typeRoomNew = new TypeRoomModel(connectionString);
                 typeRoomNew.description = typeRoom[i].description;
                 typeroomModel.Add(typeRoomNew);
             }
-            repositoryTyperoom.UpdateTypeRoom(descriptionArea, amount, urlimage, idTypeRoom);
+            repositoryTyperoom.UpdateTypeRoom(descriptionArea, amount, urlimage, idTypeRoom);           
             
-            RoomModel room = new RoomModel(connectionString);
-            IList<Room> listRoom = room.GetAllRoom();
-            List<RoomModel> roomModel = new List<RoomModel>();
-
-            for (int i = 0; i < listRoom.Count; i++)
-            {
-                RoomModel roomNew = new RoomModel(connectionString);
-                roomNew.state = listRoom[i].state;
-                roomNew.number = listRoom[i].number;
-                roomNew.idtyperoom = listRoom[i].idtyperoom;
-                roomModel.Add(roomNew);
-            }
-            ViewBag.room = roomModel;
             return RedirectToAction("ManageRooms");
         }
     }
