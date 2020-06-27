@@ -65,7 +65,7 @@ using Presentation.Models;
             WriteLiteral("<div class=\"container pText\">\r\n    <br />\r\n    <div class=\"row\">\r\n        <div class=\"col-lg-12 col-sm-12\">\r\n            ");
             EndContext();
             BeginContext(282, 2535, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c78b5aeed7594b41903b6d2299d2f59e", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ac88536e34a54a4785c683007d7c59d0", async() => {
                 BeginContext(339, 387, true);
                 WriteLiteral(@"
                 <div class=""form-row"">
@@ -76,7 +76,7 @@ using Presentation.Models;
                                     ");
                 EndContext();
                 BeginContext(726, 51, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9638544bbe6e4943af9c53cb74b2e49a", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "af17bf0a046f4d56802a17746b41175a", async() => {
                     BeginContext(745, 23, true);
                     WriteLiteral("-Seleccione una opción-");
                     EndContext();
@@ -107,7 +107,7 @@ using Presentation.Models;
                 WriteLiteral("                                        ");
                 EndContext();
                 BeginContext(928, 68, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "47968599f8cc4c0fa6464d7d659b317e", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3cc5b7d3b9394042b73b2a7395f7cf2b", async() => {
                     BeginContext(967, 20, false);
 #line 19 "E:\Documentos\GitHub\proyectohona\Admin\Presentation\Views\AdministratorSeason\Season.cshtml"
                                                                          Write(typeroom.description);

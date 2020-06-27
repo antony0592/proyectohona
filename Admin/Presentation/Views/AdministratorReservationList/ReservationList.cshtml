@@ -5,6 +5,7 @@
     List<PaymentcardModel> paymentcard = (List<PaymentcardModel>)ViewBag.paymentcard;
     List<TypeRoomModel> typeroom = (List<TypeRoomModel>)ViewBag.typeroom;
     List<VoucherModel> voucher = (List<VoucherModel>)ViewBag.voucher;
+    string date=DateTime.Now.ToString("yyyy-MM-dd");
 }
     <div class="container pText">
         <div id="principal" class="show">
@@ -33,6 +34,8 @@
                         <tbody>
                             @for (int i = 0; i < voucher.Count(); i++)
                             {
+                                if (@reservation[i].departuredate>DateTime.Parse(date))
+                                {
                             <tr>
                                 <td class="creationdate">@voucher[i].creationdate</td>
                                 <td class="id">@voucher[i].idreservation</td>
@@ -48,6 +51,7 @@
                                 <td bgcolor="#DDE0FC" id="delete" class="delete"><img src="https://img.icons8.com/wired/20/000000/filled-trash.png">Eliminar</td>
 
                             </tr>
+                                }
                             }
                         </tbody>
                     </table>
