@@ -48,7 +48,8 @@ namespace Presentation.Controllers.Administrator
             List<RoomModel> roomModelfree = new List<RoomModel>();
 
             string date=DateTime.Now.ToString("yyyy-MM-dd");
-            
+            DateTime enteredDate1 = DateTime.Parse(date);
+
             for (int i = 0; i < reservation.Count; i++)
                 {
                     
@@ -56,10 +57,13 @@ namespace Presentation.Controllers.Administrator
                     reservationNew.idroom = reservation[i].idroom;
                     reservationNew.arrivaldate = reservation[i].arrivaldate;
                    string strDate = reservation[i].arrivaldate.ToString("yyyy-MM-dd");
+                   string strDate1 = reservation[i].departuredate.ToString("yyyy-MM-dd");
+                DateTime enteredDate2 = DateTime.Parse(strDate);
+                DateTime enteredDate3 = DateTime.Parse(strDate1);
 
                 for (int j = 0; j < room.Count; j++)
                     {
-                        if (reservationNew.idroom.Equals(room[j].id) && strDate.Equals(date))
+                        if (reservationNew.idroom.Equals(room[j].id) && (enteredDate1 >= enteredDate2 && enteredDate1 <= enteredDate3))
                         {
                             RoomModel RoomNew = new RoomModel(connectionString);
                             RoomNew.id = room[j].id;
