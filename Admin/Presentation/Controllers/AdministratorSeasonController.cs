@@ -86,7 +86,18 @@ namespace Presentation.Controllers.Administrator
                 typeroomModel.Add(typeRoomNew);
             }
 
-            seasonModel.InsertSeason(idtyperoom, idtyperoom, dateinputseason, dateoutputseason, descriptionText, 1, percentation);
+            if (idtyperoom != 0 || percentation !=0) 
+            {
+                seasonModel.InsertSeason(idtyperoom, idtyperoom, dateinputseason, dateoutputseason, descriptionText, 1, percentation);
+            }
+            
+           
+            idtyperoom = 0;
+            percentation = 0;
+            dateinputseason = null;
+            dateoutputseason = null;
+            descriptionText = null;
+           
 
             Season();
 
