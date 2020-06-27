@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Presentation.Models;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -16,19 +18,19 @@ namespace Presentation.Controllers.Administrator
     {
         public static string counter;
         private readonly IConfiguration _configuration;
+        private readonly IHostingEnvironment environment;
         string connectionString = "";
 
-        public AdministratorManageRoomsController(IConfiguration configuration)
+        public AdministratorManageRoomsController(IConfiguration configuration, IHostingEnvironment environment)
         {
             _configuration = configuration;
+            this.environment = environment;
             connectionString = _configuration.GetConnectionString("DefaultConnection");
-
         }
 
         // GET: /<controller>/
         public IActionResult ManageRooms()
         {
-            //*******//
             RepositoryTypeRoom repositoryTyperoom = new RepositoryTypeRoom(connectionString);
             IList<TypeRoom> typeRoom = repositoryTyperoom.GetAllTypeRoom();
             TypeRoomModel typeRoomModel = new TypeRoomModel(connectionString);
@@ -66,7 +68,7 @@ namespace Presentation.Controllers.Administrator
             ViewBag.reservation = reservationModel;
             ViewBag.room = roomModel;
             return View(typeroomModel);
-        }//
+        }
 
         public JsonResult GetManageRooms(string description)
         {
@@ -80,25 +82,36 @@ namespace Presentation.Controllers.Administrator
         }
 
         [HttpPost]
-        public ActionResult Update(string file, string descriptionArea, string amount)
-        {
-            string destinationFile = "/images/TipoHabitacion/" + file;
-            Console.WriteLine(destinationFile);
-            String urlimage = "/images/TipoHabitacion/" + file;
+        public ActionResult Update(IFormFile file, string descriptionArea, string amount)
+        {            
             String descriptionType = counter;
 
             RepositoryTypeRoom repositoryTyperoom = new RepositoryTypeRoom(connectionString);
             IList<TypeRoom> typeRoom = repositoryTyperoom.GetAllTypeRoom();
             List<TypeRoomModel> typeroomModel = new List<TypeRoomModel>();
 
+            string urlimage = "";
+            var path = "./images/TipoHabitacion/";
+            var pathClient = "../../../Client/Presentation/wwwroot/images/TipoHabitacion/";
+            string folderFiles = Path.Combine(environment.WebRootPath, path);
+            string folderFilesClient = Path.Combine(environment.WebRootPath, pathClient);
+
             int idTypeRoom = 0;
+
+            if (file != null)
+            {
+                repositoryTyperoom.SaveImage(file, folderFiles);
+                repositoryTyperoom.SaveImage(file, folderFilesClient);
+                urlimage = "/images/TipoHabitacion/" + file.FileName;
+            }
 
             for (int i = 0; i < typeRoom.Count; i++)
             {
-                if (typeRoom[i].description == descriptionType) {
+                if (typeRoom[i].description == descriptionType)
+                {
                     idTypeRoom = typeRoom[i].id;
                 }
-                if (file == null || file == "")
+                if (file == null)
                 {
                     urlimage = typeRoom[i].urlimage;
                 }
@@ -107,7 +120,7 @@ namespace Presentation.Controllers.Administrator
                 typeroomModel.Add(typeRoomNew);
             }
             repositoryTyperoom.UpdateTypeRoom(descriptionArea, amount, urlimage, idTypeRoom);
-
+            
             RoomModel room = new RoomModel(connectionString);
             IList<Room> listRoom = room.GetAllRoom();
             List<RoomModel> roomModel = new List<RoomModel>();
@@ -121,9 +134,7 @@ namespace Presentation.Controllers.Administrator
                 roomModel.Add(roomNew);
             }
             ViewBag.room = roomModel;
-            return View("ManageRooms", typeroomModel);
+            return RedirectToAction("ManageRooms");
         }
-
     }
-
 }
