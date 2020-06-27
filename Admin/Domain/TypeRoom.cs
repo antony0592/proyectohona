@@ -26,8 +26,8 @@ namespace Domain
         public int quantitybed { get; set; }
         public String description { get; set; }
         public int amount { get; set; }
-        public String urlimage { get; set; }
-        public String descriptiontyperoom { get; set; }
+        public string urlimage { get; set; }
+        public string descriptiontyperoom { get; set; }
     }
 
 }
